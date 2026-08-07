@@ -107,7 +107,7 @@ export default function FounderPage() {
               </button>
 
               <a
-                href="https://drive.google.com/file/d/1dWrNJdZh6apMImukeileyYT_YkCDvt9S/view?usp=drive_link"
+                href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center justify-between w-full sm:w-64 px-5 py-3 border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300"
