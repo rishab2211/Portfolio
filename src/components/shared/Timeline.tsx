@@ -109,11 +109,11 @@ export function Timeline({ variant }: TimelineProps) {
           {filteredData.map((event, index) => (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, x: -10, filter: "blur(5px)" }}
-              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, x: 10, filter: "blur(5px)" }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="relative pl-6 sm:pl-8 pb-12 sm:pb-16 group last:pb-4"
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 8 }}
+              transition={{ duration: 0.25, delay: index * 0.03 }}
+              className="relative pl-6 sm:pl-8 pb-12 sm:pb-16 group last:pb-4 transform-gpu"
             >
               {/* TIMELINE NODE DOT */}
               <div
@@ -133,20 +133,13 @@ export function Timeline({ variant }: TimelineProps) {
                 }`}
               >
                 {/* Meta details */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 mb-2">
+                <div className="flex items-center justify-between gap-4 mb-2">
                   <span
                     className={`font-mono text-xs ${
                       isStalker ? "text-green-500/80" : "text-zinc-500 font-medium"
                     }`}
                   >
                     {event.date}
-                  </span>
-                  <span
-                    className={`font-mono text-[11px] sm:text-xs ${
-                      isStalker ? "text-zinc-500" : "text-zinc-600"
-                    }`}
-                  >
-                    {event.role}
                   </span>
                 </div>
 

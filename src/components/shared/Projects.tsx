@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Terminal, ArrowUpRight } from "lucide-react";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { projectsData } from "@/data/projects";
 import { SocialIcon } from "react-social-icons";
 import { Tooltip } from "@/components/shared/Tooltip";
@@ -17,12 +17,12 @@ export function Projects({ variant }: ProjectsProps) {
     <div className="w-full">
       {/* HEADER SECTION (Rendered only for founder mode to prevent redundancy with stalker section header) */}
       {!isStalker && (
-        <div className="mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
           <div>
-            <h2 className="text-sm font-medium tracking-widest text-zinc-500 uppercase font-mono mb-3">
+            <h2 className="text-xs sm:text-sm font-medium tracking-widest text-zinc-500 uppercase font-mono mb-2 sm:mb-3">
               Proof of Work
             </h2>
-            <p className="text-3xl sm:text-4xl font-medium text-white tracking-tight leading-snug">
+            <p className="text-2xl sm:text-4xl font-medium text-white tracking-tight leading-snug">
               Systems & Architecture.
             </p>
           </div>
@@ -31,8 +31,8 @@ export function Projects({ variant }: ProjectsProps) {
 
       {/* GRID SECTION */}
       <div
-        className={`grid grid-cols-1 gap-6 ${
-          isStalker ? "md:grid-cols-2" : "lg:grid-cols-2 gap-y-12"
+        className={`grid grid-cols-1 gap-5 sm:gap-6 ${
+          isStalker ? "md:grid-cols-2" : "lg:grid-cols-2 gap-y-8 sm:gap-y-12"
         }`}
       >
         {projectsData.map((project, index) => {
@@ -43,14 +43,14 @@ export function Projects({ variant }: ProjectsProps) {
           return (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`group relative flex flex-col justify-between overflow-hidden transition-all duration-500 transform-gpu ${
+              transition={{ duration: 0.35, delay: index * 0.08 }}
+              className={`group relative flex flex-col justify-between overflow-hidden transition-all duration-300 transform-gpu ${
                 isStalker
-                  ? "rounded-md border border-green-500/20 bg-[#050505] hover:border-green-500/60 shadow-[0_0_15px_rgba(34,197,94,0.05)] hover:shadow-[0_0_20px_rgba(34,197,94,0.15)]"
-                  : "rounded-xl border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/[0.15]"
+                  ? "rounded-xl border border-green-500/20 bg-[#050705] hover:border-green-500/50 shadow-[0_0_15px_rgba(34,197,94,0.05)] hover:shadow-[0_0_20px_rgba(34,197,94,0.12)]"
+                  : "rounded-2xl border border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/[0.2]"
               }`}
             >
               {/* STALKER TERMINAL HEADER */}
@@ -61,29 +61,19 @@ export function Projects({ variant }: ProjectsProps) {
                     <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></div>
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500/80"></div>
                   </div>
-                  <span className="font-mono text-xs text-green-400/80">
+                  <span className="font-mono text-xs text-green-400/80 truncate">
                     node://projects/{project.id}
                   </span>
                 </div>
               )}
 
               {/* CARD CONTENT */}
-              <div className="flex flex-col justify-between flex-1 p-6 sm:p-8">
+              <div className="flex flex-col justify-between flex-1 p-5 sm:p-8">
                 {/* Title & Links */}
-                <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="flex items-start justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div>
-                    {isStalker ? (
-                      <span className="font-mono text-xs text-green-500/70 block mb-1">
-                        {"//"} {project.category}
-                      </span>
-                    ) : (
-                      <span className="font-mono text-xs tracking-widest text-zinc-500 uppercase block mb-1">
-                        {project.category}
-                      </span>
-                    )}
-
                     <h3
-                      className={`text-xl font-medium tracking-tight text-white ${
+                      className={`text-lg sm:text-xl font-medium tracking-tight text-white ${
                         isStalker
                           ? "group-hover:text-green-300 transition-colors"
                           : ""
@@ -91,9 +81,19 @@ export function Projects({ variant }: ProjectsProps) {
                     >
                       {project.name}
                     </h3>
+
+                    <p
+                      className={`mt-1 text-xs leading-relaxed ${
+                        isStalker
+                          ? "font-mono text-green-500/80"
+                          : "font-mono text-zinc-400 uppercase text-[10px] sm:text-[11px] tracking-wider"
+                      }`}
+                    >
+                      {activeData.tagline}
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                     {project.links.github && (
                       <Tooltip content="View source code on GitHub" side="top">
                         <SocialIcon
@@ -103,8 +103,8 @@ export function Projects({ variant }: ProjectsProps) {
                           bgColor="transparent"
                           fgColor="currentColor"
                           style={{
-                            height: isStalker ? 32 : 28,
-                            width: isStalker ? 32 : 28,
+                            height: isStalker ? 30 : 26,
+                            width: isStalker ? 30 : 26,
                           }}
                           className={`transition-all hover:scale-110 ${
                             isStalker
@@ -131,9 +131,9 @@ export function Projects({ variant }: ProjectsProps) {
                           }`}
                         >
                           {isStalker ? (
-                            <ExternalLink size={22} />
+                            <ExternalLink size={20} />
                           ) : (
-                            <ArrowUpRight size={24} strokeWidth={1.5} />
+                            <ArrowUpRight size={22} strokeWidth={1.5} />
                           )}
                         </a>
                       </Tooltip>
@@ -143,25 +143,25 @@ export function Projects({ variant }: ProjectsProps) {
 
                 {/* Descriptions */}
                 <div
-                  className={`flex-1 mb-8 space-y-4 ${
-                    isStalker ? "font-mono text-sm" : "font-sans text-base"
+                  className={`flex-1 mb-6 sm:mb-8 space-y-3 sm:space-y-4 ${
+                    isStalker ? "font-mono text-xs sm:text-sm" : "font-sans text-xs sm:text-sm"
                   }`}
                 >
                   {activeData.description.map((desc, i) => (
                     <div
                       key={i}
                       className={`flex items-start ${
-                        isStalker ? "gap-3" : "gap-0"
+                        isStalker ? "gap-2.5 sm:gap-3" : "gap-0"
                       }`}
                     >
                       {isStalker && (
-                        <span className="mt-1 text-green-500/50">{">"}</span>
+                        <span className="mt-0.5 text-green-500/50">{">"}</span>
                       )}
                       <p
                         className={`leading-relaxed ${
                           isStalker
                             ? "text-zinc-400"
-                            : "text-zinc-400 font-light border-l border-white/10 pl-5 group-hover:border-zinc-500 group-hover:text-zinc-300 transition-colors"
+                            : "text-zinc-400 font-light border-l border-white/10 pl-3.5 sm:pl-5 group-hover:border-zinc-500 group-hover:text-zinc-300 transition-colors"
                         }`}
                       >
                         {desc}
@@ -170,40 +170,21 @@ export function Projects({ variant }: ProjectsProps) {
                   ))}
                 </div>
 
-                {/* Stacks & Metrics */}
+                {/* Stacks & Tech Badges */}
                 <div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((t, idx) => (
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2 border-t border-white/5">
+                    {project.tech_stack.map((t, idx) => (
                       <span
                         key={idx}
-                        className={`text-xs px-2.5 py-1 rounded transition-colors ${
+                        className={`px-2 py-0.5 rounded transition-colors ${
                           isStalker
-                            ? "font-mono bg-green-500/5 border border-green-500/20 text-green-400/90"
-                            : "bg-white/[0.03] border border-white/[0.06] text-zinc-400 font-mono text-[11px]"
+                            ? "font-mono bg-green-500/5 border border-green-500/20 text-green-400/90 text-[10px] sm:text-xs"
+                            : "bg-white/[0.03] border border-white/[0.08] text-zinc-400 font-mono text-[9px] sm:text-[10px]"
                         }`}
                       >
                         {isStalker ? `#${t}` : t}
                       </span>
                     ))}
-                  </div>
-
-                  <div
-                    className={`pt-4 border-t ${
-                      isStalker
-                        ? "border-green-500/10 flex items-center justify-between font-mono text-xs text-zinc-500"
-                        : "border-white/[0.06] flex items-center justify-between font-mono text-xs text-zinc-400"
-                    }`}
-                  >
-                    <span>
-                      {isStalker ? "STATUS: PROD_READY" : "METRIC / IMPACT"}
-                    </span>
-                    <span
-                      className={`font-semibold ${
-                        isStalker ? "text-green-400" : "text-white"
-                      }`}
-                    >
-                      {activeData.highlight}
-                    </span>
                   </div>
                 </div>
               </div>

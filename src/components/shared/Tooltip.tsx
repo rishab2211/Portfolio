@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useId, useEffect } from "react";
+import React, { useState, useRef, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TooltipProps {
@@ -24,23 +24,15 @@ export function Tooltip({
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const id = useId();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isTouch = window.matchMedia("(hover: none)").matches || "ontouchstart" in window;
-      if (isTouch) setIsTouchDevice(true);
+  if (disabled || !content) return <>{children}</>;
+
+  const show = (e: React.MouseEvent | React.FocusEvent) => {
+    // Only show for mouse pointer devices with hover capability
+    if (typeof window !== "undefined" && window.matchMedia && !window.matchMedia("(hover: hover)").matches) {
+      return;
     }
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, []);
-
-  // On touch/mobile devices, completely bypass tooltips for max performance
-  if (disabled || !content || isTouchDevice) return <>{children}</>;
-
-  const show = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setIsVisible(true), delay);
   };
@@ -67,7 +59,7 @@ export function Tooltip({
   };
 
   return (
-    <div
+    <span
       className={`relative inline-flex items-center ${className}`}
       onMouseEnter={show}
       onMouseLeave={hide}
@@ -79,7 +71,7 @@ export function Tooltip({
 
       <AnimatePresence>
         {isVisible && (
-          <motion.div
+          <motion.span
             id={id}
             role="tooltip"
             initial={{
@@ -93,9 +85,9 @@ export function Tooltip({
             className={`pointer-events-none absolute z-[999] whitespace-nowrap rounded-md border border-green-500/30 bg-[#070b07] px-2.5 py-1 text-[10px] font-mono tracking-wider text-zinc-200 shadow-xl ${getPositionClass()}`}
           >
             {content}
-          </motion.div>
+          </motion.span>
         )}
       </AnimatePresence>
-    </div>
+    </span>
   );
 }

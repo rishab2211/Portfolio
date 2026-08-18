@@ -18,8 +18,10 @@ import { Tooltip } from "@/components/shared/Tooltip";
 // Isolated zero-re-render timer component
 const LiveTime = memo(function LiveTime() {
   const [time, setTime] = useState("");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const updateTime = () => {
       const now = new Date();
       setTime(
@@ -37,23 +39,24 @@ const LiveTime = memo(function LiveTime() {
     return () => clearInterval(interval);
   }, []);
 
-  return <span>[{time || "00:00:00"}]</span>;
+  if (!mounted) return <span suppressHydrationWarning>[--:--:--]</span>;
+  return <span suppressHydrationWarning>[{time}]</span>;
 });
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { delay: 1.2, duration: 0.5, staggerChildren: 0.12 },
+    transition: { delay: 0.1, duration: 0.35, staggerChildren: 0.08 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 14 },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.35, ease: [0.25, 0.4, 0.25, 1] },
   },
 };
 
@@ -78,7 +81,7 @@ export default function GatewayPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [router]);
 
-  // Zero-rerender hardware-accelerated mouse light tracking
+  // Zero-rerender hardware-accelerated mouse light tracking (desktop pointer only)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     const clientX = e.clientX;
@@ -104,9 +107,9 @@ export default function GatewayPage() {
         } as React.CSSProperties
       }
     >
-      {/* Hardware-accelerated CSS Spotlight (0 React re-renders) */}
+      {/* Hardware-accelerated CSS Spotlight (Desktop only, 0 overhead on mobile) */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500 opacity-40 will-change-[background]"
+        className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-500 opacity-40 will-change-[background] hidden sm:block"
         style={{
           background: `radial-gradient(650px circle at var(--mouse-x) var(--mouse-y), ${
             hoveredCard === "stalker"
@@ -119,7 +122,7 @@ export default function GatewayPage() {
       />
 
       {/* Subtle Radial Glow */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-20">
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-20 hidden sm:flex">
         <div className="h-[35rem] w-[35rem] rounded-full bg-gradient-to-tr from-zinc-800 to-zinc-900 blur-3xl transform-gpu" />
       </div>
 
@@ -170,8 +173,8 @@ export default function GatewayPage() {
         {/* Intro sequence */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 1, 0.4] }}
-          transition={{ duration: 1.8, times: [0, 0.2, 0.8, 1] }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
           className="font-mono text-[11px] sm:text-xs tracking-widest text-zinc-500 uppercase mb-3 sm:mb-4"
         >
           &gt; Context dictates the experience.
@@ -179,9 +182,9 @@ export default function GatewayPage() {
 
         {/* The Main Question */}
         <motion.h1
-          initial={{ opacity: 0, filter: "blur(6px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05, duration: 0.4 }}
           className="font-sans text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-zinc-100"
         >
           What brings you here today?
@@ -206,7 +209,7 @@ export default function GatewayPage() {
               variants={itemVariants}
               whileHover={{ y: -3, scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-emerald-500/50 hover:bg-[#070e08]/90 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] backdrop-blur-xl transform-gpu"
+              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909] sm:bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-emerald-500/50 hover:bg-[#070e08] sm:backdrop-blur-xl transform-gpu"
             >
               <div>
                 {/* Header Tag */}
@@ -279,7 +282,7 @@ export default function GatewayPage() {
               variants={itemVariants}
               whileHover={{ y: -3, scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-white/40 hover:bg-[#0e0e0e]/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] backdrop-blur-xl transform-gpu"
+              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909] sm:bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-white/40 hover:bg-[#0e0e0e] sm:backdrop-blur-xl transform-gpu"
             >
               <div>
                 {/* Header Tag */}

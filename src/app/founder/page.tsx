@@ -441,9 +441,9 @@ function BentoCard({
   tags: string[];
 }) {
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/90 p-5 sm:p-8 transition-all duration-500 hover:border-white/30 hover:bg-[#0e0e0e] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-xl">
-      {/* Ambient hover light bloom */}
-      <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-white/[0.04] blur-3xl group-hover:bg-white/[0.08] transition-all duration-500" />
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#090909] sm:bg-[#090909]/90 p-5 sm:p-8 transition-all duration-300 hover:border-white/30 hover:bg-[#0e0e0e] sm:backdrop-blur-xl">
+      {/* Ambient hover light bloom (Desktop only) */}
+      <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-white/[0.04] blur-3xl group-hover:bg-white/[0.08] transition-all duration-500 hidden sm:block" />
 
       <div>
         {/* Top Metric Bar */}

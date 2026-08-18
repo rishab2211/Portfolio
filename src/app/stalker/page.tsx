@@ -41,11 +41,11 @@ type SpotifyData = {
   songUrl?: string;
 };
 
-// Scanline + noise overlay
+// Scanline + noise overlay (Desktop only for max mobile performance)
 function CRTOverlay() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[100] opacity-[0.02] transform-gpu"
+      className="pointer-events-none fixed inset-0 z-[100] opacity-[0.02] transform-gpu hidden sm:block"
       style={{
         backgroundImage: `repeating-linear-gradient(
           0deg,
@@ -59,11 +59,11 @@ function CRTOverlay() {
   );
 }
 
-// Subtle grid background
+// Subtle grid background (Desktop only)
 function GridBackground() {
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 opacity-30"
+      className="pointer-events-none fixed inset-0 z-0 opacity-25 hidden sm:block"
       style={{
         backgroundImage: `
           linear-gradient(rgba(34,197,94,0.03) 1px, transparent 1px),
@@ -455,15 +455,15 @@ export default function StalkerPage() {
 
       {/* ── SECTION 1: HERO (AUTHENTIC DEVELOPER TERMINAL) ── */}
       <section className="relative flex min-h-[100dvh] items-center justify-center px-3.5 sm:px-8 py-20 lg:py-24">
-        {/* Soft Ambient Glow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] sm:h-[400px] w-[90vw] sm:w-[650px] rounded-full bg-green-500/[0.04] blur-[100px] pointer-events-none" />
+        {/* Soft Ambient Glow (Desktop only) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[650px] rounded-full bg-green-500/[0.04] blur-[100px] pointer-events-none hidden sm:block" />
 
         <AnimatePresence mode="wait">
           {!bootDone ? (
             <motion.div
               key="boot"
-              exit={{ opacity: 0, filter: "blur(6px)" }}
-              transition={{ duration: 0.25 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
               className="w-full max-w-lg rounded-xl border border-green-500/20 bg-black/90 p-5 sm:p-6 font-mono text-xs sm:text-sm backdrop-blur-xl"
             >
               <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-3">
@@ -493,9 +493,9 @@ export default function StalkerPage() {
           ) : (
             <motion.div
               key="card"
-              initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.45 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
               className="relative z-10 w-full max-w-5xl"
             >
               {/* Terminal Window */}
