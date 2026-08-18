@@ -67,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" data-scroll-behavior="smooth">
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-[#050505] text-white antialiased min-h-screen selection:bg-zinc-800 selection:text-white`}
       >
