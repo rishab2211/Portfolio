@@ -44,7 +44,7 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { delay: 1.5, duration: 0.5, staggerChildren: 0.12 },
+    transition: { delay: 1.2, duration: 0.5, staggerChildren: 0.12 },
   },
 };
 
@@ -124,27 +124,27 @@ export default function GatewayPage() {
       </div>
 
       {/* ── TOP HUD HEADER ── */}
-      <header className="relative z-30 w-full px-4 sm:px-8 pt-6 sm:pt-8 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-zinc-500">
-        <div className="flex items-center gap-2.5 sm:gap-3">
+      <header className="relative z-30 w-full px-4 sm:px-8 pt-5 sm:pt-8 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-zinc-500">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Tooltip content="Systems operational • Available for engineering roles" side="bottom">
-            <span className="flex items-center gap-2.5 cursor-help">
+            <span className="flex items-center gap-2 cursor-help">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="text-zinc-300 font-semibold tracking-wider">RISHAB RAJ</span>
+              <span className="text-zinc-200 font-semibold tracking-wider">RISHAB RAJ</span>
             </span>
           </Tooltip>
           <span className="text-zinc-700 hidden sm:inline">•</span>
           <span className="hidden sm:inline text-zinc-500">SYSTEMS & AI ENGINEER</span>
         </div>
 
-        <div className="flex items-center gap-4 text-[10px] sm:text-[11px]">
+        <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px]">
           <Tooltip content="Local time in New Delhi, India" side="bottom">
             <div className="flex items-center gap-1.5 text-zinc-400 cursor-help">
               <Radio className="h-3 w-3 text-emerald-400 shrink-0" />
               <span>DELHI, IN</span>
-              <span className="text-zinc-600 hidden sm:inline">
+              <span className="text-zinc-600">
                 <LiveTime />
               </span>
             </div>
@@ -166,13 +166,13 @@ export default function GatewayPage() {
       </header>
 
       {/* ── MAIN HERO & PROMPT ── */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-6 py-10 max-w-5xl mx-auto w-full text-center">
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 max-w-5xl mx-auto w-full text-center">
         {/* Intro sequence */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1, 1, 0.4] }}
-          transition={{ duration: 2, times: [0, 0.2, 0.8, 1] }}
-          className="font-mono text-xs sm:text-sm tracking-widest text-zinc-500 uppercase mb-4"
+          transition={{ duration: 1.8, times: [0, 0.2, 0.8, 1] }}
+          className="font-mono text-[11px] sm:text-xs tracking-widest text-zinc-500 uppercase mb-3 sm:mb-4"
         >
           &gt; Context dictates the experience.
         </motion.div>
@@ -181,18 +181,18 @@ export default function GatewayPage() {
         <motion.h1
           initial={{ opacity: 0, filter: "blur(6px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="font-sans text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-zinc-100"
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="font-sans text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-zinc-100"
         >
           What brings you here today?
         </motion.h1>
 
-        {/* The Elevated Choice Cards */}
+        {/* The Choice Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="mt-10 sm:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl"
+          className="mt-8 sm:mt-14 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full max-w-3xl"
         >
           {/* Path A: Stalker */}
           <Link
@@ -206,16 +206,16 @@ export default function GatewayPage() {
               variants={itemVariants}
               whileHover={{ y: -3, scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-7 sm:p-8 transition-colors duration-300 hover:border-emerald-500/50 hover:bg-[#070e08]/90 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] backdrop-blur-xl transform-gpu"
+              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-emerald-500/50 hover:bg-[#070e08]/90 hover:shadow-[0_0_40px_rgba(16,185,129,0.12)] backdrop-blur-xl transform-gpu"
             >
               <div>
                 {/* Header Tag */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2 font-mono text-[10px] text-emerald-400/80 tracking-widest uppercase">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] text-emerald-400/80 tracking-widest uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>[01 // DEV_LOGS]</span>
                   </div>
-                  <Tooltip content="Shortcut: Press '1' or 'S'" side="top">
+                  <Tooltip content="Shortcut: Press '1' or 'S'" side="top" align="end">
                     <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
                       KEY [1]
                     </span>
@@ -223,52 +223,44 @@ export default function GatewayPage() {
                 </div>
 
                 {/* Icon & Title */}
-                <div className="flex items-center gap-3.5 mb-2.5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 group-hover:scale-105 transition-transform duration-300 shrink-0">
                     <Terminal className="h-5 w-5" />
                   </div>
                   <div>
-                    <h2 className="font-sans text-xl sm:text-2xl font-medium text-white group-hover:text-emerald-300 transition-colors">
+                    <h2 className="font-sans text-lg sm:text-2xl font-medium text-white group-hover:text-emerald-300 transition-colors">
                       I&apos;m just a Stalker
                     </h2>
                   </div>
                 </div>
 
-                <p className="font-mono text-xs text-zinc-400 mt-2">
+                <p className="font-mono text-[11px] sm:text-xs text-zinc-400 mt-1 sm:mt-2">
                   [ Just Stalking • The Hacker Perspective ]
                 </p>
 
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-3.5">
+                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-2.5 sm:mt-3.5">
                   For curious devs, peers & late-night explorers. Check live Spotify telemetry, decrypt technical stacks, explore candid memories, and leave a permanent mark on the wall.
                 </p>
 
                 {/* Tech Pills */}
-                <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <Tooltip content="Live Spotify track synchronization" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                      #LiveTelemetry
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="Real-time WebSockets & Socket.io" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                      #WebSockets
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="Leave public messages on live wall" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                      #DigitalWall
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="Cloudinary dynamic memories gallery" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                      #Memories
-                    </span>
-                  </Tooltip>
+                <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                    #LiveTelemetry
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                    #WebSockets
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                    #DigitalWall
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                    #Memories
+                  </span>
                 </div>
               </div>
 
               {/* Action Footer */}
-              <div className="mt-7 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-emerald-400 transition-colors">
+              <div className="mt-6 sm:mt-7 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-emerald-400 transition-colors">
                 <span className="tracking-widest uppercase text-[11px]">&gt; Enter Terminal</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
@@ -287,16 +279,16 @@ export default function GatewayPage() {
               variants={itemVariants}
               whileHover={{ y: -3, scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-7 sm:p-8 transition-colors duration-300 hover:border-white/40 hover:bg-[#0e0e0e]/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] backdrop-blur-xl transform-gpu"
+              className="relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/80 p-5 sm:p-8 transition-colors duration-300 hover:border-white/40 hover:bg-[#0e0e0e]/90 hover:shadow-[0_0_40px_rgba(255,255,255,0.08)] backdrop-blur-xl transform-gpu"
             >
               <div>
                 {/* Header Tag */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-400 tracking-widest uppercase">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] text-zinc-400 tracking-widest uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     <span>[02 // SYSTEMS_ROI]</span>
                   </div>
-                  <Tooltip content="Shortcut: Press '2' or 'F'" side="top">
+                  <Tooltip content="Shortcut: Press '2' or 'F'" side="top" align="end">
                     <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-colors">
                       KEY [2]
                     </span>
@@ -304,52 +296,44 @@ export default function GatewayPage() {
                 </div>
 
                 {/* Icon & Title */}
-                <div className="flex items-center gap-3.5 mb-2.5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] text-zinc-200 group-hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] text-zinc-200 group-hover:scale-105 transition-transform duration-300 shrink-0">
                     <Briefcase className="h-5 w-5" />
                   </div>
                   <div>
-                    <h2 className="font-sans text-xl sm:text-2xl font-medium text-white transition-colors">
+                    <h2 className="font-sans text-lg sm:text-2xl font-medium text-white transition-colors">
                       I need a Builder
                     </h2>
                   </div>
                 </div>
 
-                <p className="font-mono text-xs text-zinc-400 mt-2">
+                <p className="font-mono text-[11px] sm:text-xs text-zinc-400 mt-1 sm:mt-2">
                   [ Founders & Recruiters • Proof of Work ]
                 </p>
 
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-3.5">
+                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-2.5 sm:mt-3.5">
                   For founders, recruiters, and engineering leaders. High-concurrency system design, scalable microservices, edge compute, and technical execution built for business impact.
                 </p>
 
                 {/* Tech Pills */}
-                <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <Tooltip content="Distributed systems & schema indexing" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                      System Architecture
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="1M+ RPS Java socket engine benchmark" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                      High Concurrency
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="Gemini AI workflows & autonomous scraping" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                      Full-Stack AI
-                    </span>
-                  </Tooltip>
-                  <Tooltip content="160+ Student branch scaling & national awards" side="top">
-                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                      Technical Leadership
-                    </span>
-                  </Tooltip>
+                <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                    System Architecture
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                    High Concurrency
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                    Full-Stack AI
+                  </span>
+                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                    Technical Leadership
+                  </span>
                 </div>
               </div>
 
               {/* Action Footer */}
-              <div className="mt-7 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-white transition-colors">
+              <div className="mt-6 sm:mt-7 pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-white transition-colors">
                 <span className="tracking-widest uppercase text-[11px]">&gt; View Proof of Work</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
@@ -359,13 +343,13 @@ export default function GatewayPage() {
       </div>
 
       {/* ── FLOATING BOTTOM DOCK ── */}
-      <footer className="relative z-30 w-full px-6 sm:px-12 pb-6 sm:pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-500">
-        <div className="flex items-center gap-2 text-zinc-600 text-[10px] sm:text-[11px]">
-          <span className="h-1.5 w-1.5 rounded-full bg-zinc-600" />
-          <span>STACK: JAVA • SPRING BOOT • NODE.JS • REACT • NEXT.JS • AWS • DOCKER</span>
+      <footer className="relative z-30 w-full px-4 sm:px-12 pb-5 sm:pb-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 font-mono text-xs text-zinc-500">
+        <div className="flex items-center gap-2 text-zinc-600 text-[10px] sm:text-[11px] text-center">
+          <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 shrink-0" />
+          <span className="truncate">STACK: JAVA • SPRING BOOT • NODE.JS • REACT • NEXT.JS • DOCKER</span>
         </div>
 
-        <div className="flex items-center gap-3 text-[11px]">
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 text-[11px]">
           <Tooltip content="View latest resume PDF on Google Drive" side="top">
             <a
               href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
@@ -402,7 +386,7 @@ export default function GatewayPage() {
             </a>
           </Tooltip>
 
-          <Tooltip content="rishab2211.hashnode.dev (Technical engineering blogs)" side="top">
+          <Tooltip content="rishab2211.hashnode.dev (Technical engineering blogs)" side="top" align="end">
             <a
               href="https://rishab2211.hashnode.dev"
               target="_blank"

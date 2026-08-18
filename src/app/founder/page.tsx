@@ -49,11 +49,11 @@ export default function FounderPage() {
       />
 
       {/* Top Floating Nav */}
-      <nav className="fixed top-6 left-6 z-50">
+      <nav className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50">
         <Tooltip content="Return to Gateway selection" side="right">
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono text-xs rounded-full bg-black/80 px-4 py-2 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10 hover:border-white/25 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
+            className="flex items-center gap-2 font-mono text-[11px] sm:text-xs rounded-full bg-black/80 px-3.5 py-1.5 sm:px-4 sm:py-2 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10 hover:border-white/25 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Gateway
@@ -62,7 +62,7 @@ export default function FounderPage() {
       </nav>
 
       {/* ── SECTION 1: HERO (THE ARCHITECT & BUILDER) ── */}
-      <section className="relative min-h-[90dvh] flex flex-col justify-center px-6 sm:px-12 md:px-24 pt-32 pb-16">
+      <section className="relative min-h-[90dvh] flex flex-col justify-center px-4 sm:px-12 md:px-24 pt-28 sm:pt-32 pb-12 sm:pb-16">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -70,30 +70,30 @@ export default function FounderPage() {
           className="max-w-5xl"
         >
           {/* Identity & Role Block */}
-          <div className="mb-8 sm:mb-10">
-            <h2 className="text-xl sm:text-2xl text-zinc-200 font-medium tracking-tight mb-1.5">
+          <div className="mb-6 sm:mb-10">
+            <h2 className="text-lg sm:text-2xl text-zinc-200 font-medium tracking-tight mb-1">
               Rishab Raj
             </h2>
-            <p className="font-mono text-xs tracking-widest text-zinc-500 uppercase">
+            <p className="font-mono text-[11px] sm:text-xs tracking-widest text-zinc-500 uppercase">
               Software Development Engineer Intern @ Lolocab • Full-Stack AI Engineer
             </p>
           </div>
 
           {/* Core Value Proposition */}
-          <h1 className="font-sans text-4xl sm:text-6xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter text-white leading-[1.05]">
+          <h1 className="font-sans text-3xl sm:text-5xl md:text-7xl lg:text-[7rem] font-medium tracking-tighter text-white leading-[1.08] sm:leading-[1.05]">
             Engineering systems that <br />
             <span className="text-zinc-600">multiply</span> leverage.
           </h1>
 
-          <div className="mt-10 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl">
-            <p className="text-base sm:text-lg text-zinc-400 leading-relaxed font-light">
+          <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl">
+            <p className="text-sm sm:text-lg text-zinc-400 leading-relaxed font-light">
               I build high-concurrency backends, autonomous AI pipelines, and
               edge-optimized microservices aligned directly with business ROI.
               Code engineered to eliminate latency bottlenecks, scale gracefully,
               and endure heavy loads.
             </p>
 
-            <div className="flex flex-col items-start gap-5 sm:gap-6">
+            <div className="flex flex-col items-start gap-4 sm:gap-6">
               <a
                 href="#execution"
                 className="group flex items-center gap-3 font-mono text-xs sm:text-sm text-white uppercase tracking-widest hover:text-zinc-400 transition-colors"
@@ -110,12 +110,12 @@ export default function FounderPage() {
                 <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
               </a>
 
-              <Tooltip content="Open formal resume PDF in Google Drive" side="right">
+              <Tooltip content="Open formal resume PDF in Google Drive" side="top">
                 <a
                   href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between w-full sm:w-64 px-5 py-3 border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300 rounded-xs"
+                  className="group flex items-center justify-between w-full sm:w-64 px-4 sm:px-5 py-2.5 sm:py-3 border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300 rounded-xs"
                 >
                   <span className="font-mono text-[10px] sm:text-xs text-zinc-400 uppercase tracking-widest group-hover:text-white transition-colors">
                     View Formal Resume
@@ -129,25 +129,25 @@ export default function FounderPage() {
       </section>
 
       {/* ── SECTION 2: COMPETENCIES (REFINED ARCHITECTURAL BENTO) ── */}
-      <section className="relative px-6 sm:px-12 md:px-24 py-20 sm:py-32 border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+      <section className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-20 items-start">
           {/* Left Sticky Column */}
           <div className="lg:w-1/3 shrink-0 lg:sticky lg:top-32">
-            <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500 tracking-widest uppercase mb-4">
+            <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-500 tracking-widest uppercase mb-3 sm:mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
               <span>[01 // COMPETENCIES]</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
+            <h2 className="text-2xl sm:text-4xl font-medium text-white tracking-tight leading-tight mb-4 sm:mb-5">
               Specialized domain knowledge.
             </h2>
 
-            <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed mb-8">
+            <p className="text-xs sm:text-base text-zinc-400 font-light leading-relaxed mb-6 sm:mb-8">
               A strict focus on high-throughput backend mechanics, JVM concurrency,
               autonomous web extraction pipelines, and high-impact engineering leadership.
             </p>
 
-            <div className="flex flex-col gap-3 font-mono text-xs text-zinc-500">
+            <div className="flex flex-col gap-2.5 font-mono text-xs text-zinc-500">
               <div className="flex items-center gap-2">
                 <span className="text-zinc-600">&gt;</span>
                 <span>PRODUCTION MICROSERVICES</span>
@@ -164,7 +164,7 @@ export default function FounderPage() {
           </div>
 
           {/* Right 2x2 Bento Cards */}
-          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 w-full">
+          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full">
             <BentoCard
               icon={<BrainCircuit className="h-5 w-5" />}
               title="Agentic AI & Scraping"
@@ -201,20 +201,20 @@ export default function FounderPage() {
       </section>
 
       {/* ── SECTION 2.5: OPERATING FRAMEWORK ── */}
-      <section className="relative px-6 sm:px-12 md:px-24 py-20 sm:py-32 border-t border-white/[0.04] bg-[#030303]">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24">
+      <section className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04] bg-[#030303]">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 lg:gap-24">
           {/* Left Column */}
           <div className="lg:w-1/3 shrink-0">
-            <div className="sticky top-32">
-              <h2 className="flex items-center gap-3 text-sm font-medium tracking-widest text-zinc-500 uppercase font-mono mb-6">
+            <div className="lg:sticky lg:top-32">
+              <h2 className="flex items-center gap-3 text-xs sm:text-sm font-medium tracking-widest text-zinc-500 uppercase font-mono mb-4 sm:mb-6">
                 <span className="h-px w-6 bg-zinc-700" />
                 Execution Framework
               </h2>
-              <p className="text-3xl sm:text-4xl font-medium text-white tracking-tight leading-snug mb-6">
+              <p className="text-2xl sm:text-4xl font-medium text-white tracking-tight leading-snug mb-4 sm:mb-6">
                 Code is a commodity. <br />
                 <span className="text-zinc-600">Judgment is not.</span>
               </p>
-              <p className="text-base text-zinc-400 font-light leading-relaxed max-w-sm">
+              <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed max-w-sm">
                 Scaling products requires a multi-disciplinary lens. Systems must
                 be evaluated against user psychology, speed to market, and
                 fault-tolerant engineering.
@@ -226,31 +226,31 @@ export default function FounderPage() {
           <div className="lg:w-2/3 relative group/list">
             <div className="absolute left-[23px] sm:left-[31px] top-4 bottom-4 w-px bg-white/[0.03] hidden sm:block" />
 
-            <div className="flex flex-col gap-12 sm:gap-16">
+            <div className="flex flex-col gap-10 sm:gap-16">
               {/* Principle 01 */}
-              <div className="group/item relative flex gap-6 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
+              <div className="group/item relative flex gap-4 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="font-mono text-4xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-2">
+                  <div className="font-mono text-3xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-1 sm:py-2">
                     01
                   </div>
                   <div className="absolute top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white opacity-0 transition-all duration-500 scale-0 group-hover/item:opacity-100 group-hover/item:scale-100 hidden sm:block" />
                 </div>
 
-                <div className="flex-1 pt-4 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
-                  <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-zinc-200 mb-3 group-hover/item:text-white transition-colors">
+                <div className="flex-1 pt-1 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
+                  <h3 className="text-lg sm:text-2xl font-medium tracking-tight text-zinc-200 mb-2 sm:mb-3 group-hover/item:text-white transition-colors">
                     Cognitive Friction is the Enemy
                   </h3>
-                  <p className="text-sm sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
+                  <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
                     A mathematically fast backend is useless if the user
                     abandons the interface. I design data flows that reduce
                     human friction, optimizing for intuitive state management
                     over unnecessary technical acrobatics.
                   </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [DOMAIN: UX_ARCHITECTURE]
                     </span>
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [FOCUS: ZERO_FRICTION]
                     </span>
                   </div>
@@ -258,29 +258,29 @@ export default function FounderPage() {
               </div>
 
               {/* Principle 02 */}
-              <div className="group/item relative flex gap-6 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
+              <div className="group/item relative flex gap-4 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="font-mono text-4xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-2">
+                  <div className="font-mono text-3xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-1 sm:py-2">
                     02
                   </div>
                   <div className="absolute top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white opacity-0 transition-all duration-500 scale-0 group-hover/item:opacity-100 group-hover/item:scale-100 hidden sm:block" />
                 </div>
 
-                <div className="flex-1 pt-4 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
-                  <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-zinc-200 mb-3 group-hover/item:text-white transition-colors">
+                <div className="flex-1 pt-1 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
+                  <h3 className="text-lg sm:text-2xl font-medium tracking-tight text-zinc-200 mb-2 sm:mb-3 group-hover/item:text-white transition-colors">
                     Market Viability {">"} Mechanics
                   </h3>
-                  <p className="text-sm sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
+                  <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
                     Every line of code is a business liability until it generates
                     real leverage. Technical decisions—from edge compute routing
                     to relational schema indexing—are evaluated strictly against
                     reliability, time-to-market, and measurable value.
                   </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [DOMAIN: PRODUCT]
                     </span>
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [FOCUS: TIME_TO_VALUE]
                     </span>
                   </div>
@@ -288,29 +288,29 @@ export default function FounderPage() {
               </div>
 
               {/* Principle 03 */}
-              <div className="group/item relative flex gap-6 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
+              <div className="group/item relative flex gap-4 sm:gap-12 transition-all duration-500 hover:!opacity-100 group-hover/list:opacity-40">
                 <div className="relative z-10 flex flex-col items-center">
-                  <div className="font-mono text-4xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-2">
+                  <div className="font-mono text-3xl sm:text-6xl font-medium text-zinc-800 transition-colors duration-500 group-hover/item:text-zinc-300 bg-[#030303] py-1 sm:py-2">
                     03
                   </div>
                   <div className="absolute top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white opacity-0 transition-all duration-500 scale-0 group-hover/item:opacity-100 group-hover/item:scale-100 hidden sm:block" />
                 </div>
 
-                <div className="flex-1 pt-4 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
-                  <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-zinc-200 mb-3 group-hover/item:text-white transition-colors">
+                <div className="flex-1 pt-1 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
+                  <h3 className="text-lg sm:text-2xl font-medium tracking-tight text-zinc-200 mb-2 sm:mb-3 group-hover/item:text-white transition-colors">
                     Compound Execution Over Heroics
                   </h3>
-                  <p className="text-sm sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
+                  <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
                     Sustainable engineering velocity isn&apos;t built on late-night
                     firefighting. It is created through modular clean code,
                     observable telemetry, resilient error boundaries, and deep
                     architectural documentation.
                   </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [DOMAIN: ENGINEERING]
                     </span>
-                    <span className="px-2 py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                    <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
                       [FOCUS: COMPOUND_VELOCITY]
                     </span>
                   </div>
@@ -322,27 +322,27 @@ export default function FounderPage() {
       </section>
 
       {/* ── SECTION 3: PROOF OF WORK (PROJECTS) ── */}
-      <section id="execution" className="relative px-6 sm:px-12 md:px-24 py-20 sm:py-32 border-t border-white/[0.04]">
+      <section id="execution" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]">
         <div className="max-w-7xl mx-auto">
           <Projects variant="founder" />
         </div>
       </section>
 
       {/* ── SECTION 4: TIMELINE (EXPERIENCE & TRACK RECORD) ── */}
-      <section className="relative px-6 sm:px-12 md:px-24 py-20 sm:py-32 border-t border-white/[0.04] bg-[#030303]">
+      <section className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04] bg-[#030303]">
         <div className="max-w-7xl mx-auto">
           <Timeline variant="founder" />
         </div>
       </section>
 
       {/* ── SECTION 5: CONTACT & DISCUSS ALIGNMENT ── */}
-      <section id="contact" className="relative px-6 sm:px-12 md:px-24 py-24 sm:py-36 border-t border-white/[0.04]">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+      <section id="contact" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-36 border-t border-white/[0.04]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12">
           <div className="max-w-xl">
-            <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-white mb-6">
+            <h2 className="text-2xl sm:text-5xl font-medium tracking-tight text-white mb-4 sm:mb-6">
               Initiate Contact.
             </h2>
-            <p className="text-lg text-zinc-400 font-light leading-relaxed mb-10">
+            <p className="text-sm sm:text-lg text-zinc-400 font-light leading-relaxed mb-8 sm:mb-10">
               Open for high-impact software engineering roles, distributed systems discussions, and visionary product collaborations.
             </p>
 
@@ -350,20 +350,20 @@ export default function FounderPage() {
               <button
                 onClick={handleCopy}
                 aria-label="Copy Rishab's email address"
-                className="group flex items-center gap-4 text-left cursor-pointer"
+                className="group flex items-center gap-3 sm:gap-4 text-left cursor-pointer"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900/50 transition-colors group-hover:bg-white group-hover:text-black">
+                <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900/50 transition-colors group-hover:bg-white group-hover:text-black shrink-0">
                   {copied ? (
                     <CheckCircle2 className="h-5 w-5 text-green-400 group-hover:text-black" />
                   ) : (
                     <Copy className="h-5 w-5" />
                   )}
                 </div>
-                <div>
-                  <span className="block font-mono text-xs text-zinc-500 uppercase tracking-widest mb-1">
+                <div className="overflow-hidden">
+                  <span className="block font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest mb-0.5 sm:mb-1">
                     {copied ? "Copied to clipboard" : "Copy email address"}
                   </span>
-                  <span className="block text-xl text-zinc-200 transition-colors group-hover:text-white">
+                  <span className="block text-base sm:text-xl text-zinc-200 transition-colors group-hover:text-white truncate">
                     rishabraj2211@gmail.com
                   </span>
                 </div>
@@ -371,17 +371,17 @@ export default function FounderPage() {
             </Tooltip>
           </div>
 
-          <div className="flex flex-col gap-6 md:text-right">
-            <span className="font-mono text-xs tracking-widest text-zinc-600 uppercase">
+          <div className="flex flex-col gap-4 sm:gap-6 md:text-right w-full sm:w-auto">
+            <span className="font-mono text-[10px] sm:text-xs tracking-widest text-zinc-600 uppercase">
               External Nodes
             </span>
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-wrap sm:flex-col gap-3 sm:gap-3.5">
               <Tooltip content="github.com/rishab2211" side="left">
                 <a
                   href="https://github.com/rishab2211"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm sm:text-lg text-zinc-400 hover:text-white transition-colors"
                 >
                   GitHub
                 </a>
@@ -392,7 +392,7 @@ export default function FounderPage() {
                   href="https://linkedin.com/in/rishab2211"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm sm:text-lg text-zinc-400 hover:text-white transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -403,7 +403,7 @@ export default function FounderPage() {
                   href="https://rishab2211.hashnode.dev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm sm:text-lg text-zinc-400 hover:text-white transition-colors"
                 >
                   Hashnode Blogs
                 </a>
@@ -414,7 +414,7 @@ export default function FounderPage() {
                   href="https://x.com/Rshb_twts"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                  className="text-sm sm:text-lg text-zinc-400 hover:text-white transition-colors"
                 >
                   X (Twitter)
                 </a>
@@ -441,38 +441,38 @@ function BentoCard({
   tags: string[];
 }) {
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/90 p-6 sm:p-8 transition-all duration-500 hover:border-white/30 hover:bg-[#0e0e0e] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-xl">
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#090909]/90 p-5 sm:p-8 transition-all duration-500 hover:border-white/30 hover:bg-[#0e0e0e] hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-xl">
       {/* Ambient hover light bloom */}
       <div className="pointer-events-none absolute -top-20 -right-20 h-40 w-40 rounded-full bg-white/[0.04] blur-3xl group-hover:bg-white/[0.08] transition-all duration-500" />
 
       <div>
         {/* Top Metric Bar */}
-        <div className="flex items-center justify-between gap-3 mb-6">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300 transition-colors duration-300 group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white">
+        <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
+          <div className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] text-zinc-300 transition-colors duration-300 group-hover:border-white/30 group-hover:bg-white/10 group-hover:text-white shrink-0">
             {icon}
           </div>
 
           <Tooltip content="Production engineering metric" side="top" align="end">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] font-mono text-[10px] text-zinc-200 tracking-wider uppercase group-hover:border-white/30 group-hover:text-white transition-all shadow-xs cursor-help">
+            <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] font-mono text-[9px] sm:text-[10px] text-zinc-200 tracking-wider uppercase group-hover:border-white/30 group-hover:text-white transition-all shadow-xs cursor-help">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span>{metric}</span>
+              <span className="truncate">{metric}</span>
             </div>
           </Tooltip>
         </div>
 
         {/* Title */}
-        <h3 className="mb-2.5 text-xl font-medium tracking-tight text-white group-hover:text-zinc-100 transition-colors">
+        <h3 className="mb-2 sm:mb-2.5 text-lg sm:text-xl font-medium tracking-tight text-white group-hover:text-zinc-100 transition-colors">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm leading-relaxed text-zinc-400 font-light">
+        <p className="text-xs sm:text-sm leading-relaxed text-zinc-400 font-light">
           {description}
         </p>
       </div>
 
       {/* Tech Stack Tags */}
-      <div className="mt-6 pt-5 border-t border-white/5 flex flex-wrap gap-1.5 font-mono text-[9px]">
+      <div className="mt-5 sm:mt-6 pt-4 sm:pt-5 border-t border-white/5 flex flex-wrap gap-1.5 font-mono text-[9px]">
         {tags.map((tag) => (
           <span
             key={tag}

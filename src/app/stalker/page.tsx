@@ -102,18 +102,18 @@ function SectionHeader({
   showCursor?: boolean;
 }) {
   return (
-    <div className="mb-8 sm:mb-12 flex flex-col gap-1">
+    <div className="mb-6 sm:mb-12 flex flex-col gap-1">
       <span className="font-mono text-[10px] sm:text-xs text-green-500/50 tracking-widest uppercase">
         {label}
       </span>
       <div className="flex items-center gap-2 flex-wrap">
         <span className="font-mono text-green-500/60 text-xs sm:text-sm">$</span>
-        <span className="font-mono text-green-400 text-sm sm:text-base tracking-tight break-all">
+        <span className="font-mono text-green-400 text-xs sm:text-base tracking-tight break-all">
           {command}
         </span>
         {showCursor && <Cursor />}
       </div>
-      <div className="mt-2.5 h-px w-16 bg-gradient-to-r from-green-500/50 to-transparent" />
+      <div className="mt-2 h-px w-16 bg-gradient-to-r from-green-500/50 to-transparent" />
     </div>
   );
 }
@@ -154,7 +154,7 @@ function SkillCard({
         tabIndex={0}
         aria-label={`View skill ${prefix}: ${title}`}
         onKeyDown={handleKeyDown}
-        className="relative h-32 cursor-pointer group [perspective:1000px] w-full outline-none focus-visible:ring-1 focus-visible:ring-green-400 rounded-xl"
+        className="relative h-28 sm:h-32 cursor-pointer group [perspective:1000px] w-full outline-none focus-visible:ring-1 focus-visible:ring-green-400 rounded-xl touch-manipulation"
         onClick={handleClick}
       >
         <motion.div
@@ -169,41 +169,41 @@ function SkillCard({
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* FRONT */}
-          <div className="absolute inset-0 w-full h-full rounded-xl border border-white/5 bg-[#080c08]/90 p-4 flex flex-col justify-between [backface-visibility:hidden] overflow-hidden transition-all duration-300 hover:border-green-500/40 hover:bg-[#0c120c]">
+          <div className="absolute inset-0 w-full h-full rounded-xl border border-white/5 bg-[#080c08]/90 p-3.5 sm:p-4 flex flex-col justify-between [backface-visibility:hidden] overflow-hidden transition-all duration-300 hover:border-green-500/40 hover:bg-[#0c120c]">
             <div className="flex items-start justify-between w-full">
-              <div className="flex items-center justify-center p-2 rounded-lg bg-green-500/10 text-green-400">
+              <div className="flex items-center justify-center p-1.5 sm:p-2 rounded-lg bg-green-500/10 text-green-400">
                 {icon}
               </div>
-              <span className="font-mono text-[10px] text-zinc-600 group-hover:text-green-500/70 transition-colors">
+              <span className="font-mono text-[9px] sm:text-[10px] text-zinc-600 group-hover:text-green-500/70 transition-colors">
                 [{prefix}]
               </span>
             </div>
 
             <div>
-              <h3 className="font-sans text-sm font-medium text-white group-hover:text-green-300 transition-colors">
+              <h3 className="font-sans text-xs sm:text-sm font-medium text-white group-hover:text-green-300 transition-colors truncate">
                 {title}
               </h3>
-              <p className="font-mono text-[10px] text-zinc-500 truncate mt-1">
-                Click to decrypt stack →
+              <p className="font-mono text-[9px] sm:text-[10px] text-zinc-500 truncate mt-0.5 sm:mt-1">
+                Tap to decrypt stack →
               </p>
             </div>
           </div>
 
           {/* BACK */}
-          <div className="absolute inset-0 w-full h-full rounded-xl border border-green-500/40 bg-[#050805] p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateX(180deg)] overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="flex items-center justify-between border-b border-green-500/20 pb-1.5 shrink-0">
-              <span className="font-mono text-[9px] text-green-400 font-semibold uppercase tracking-wider">
+          <div className="absolute inset-0 w-full h-full rounded-xl border border-green-500/40 bg-[#050805] p-3 sm:p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateX(180deg)] overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+            <div className="flex items-center justify-between border-b border-green-500/20 pb-1 shrink-0">
+              <span className="font-mono text-[8px] sm:text-[9px] text-green-400 font-semibold uppercase tracking-wider truncate">
                 {title}
               </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
             </div>
 
-            <p className="font-mono text-[11px] text-green-300 leading-relaxed">
+            <p className="font-mono text-[10px] sm:text-[11px] text-green-300 leading-snug line-clamp-3">
               {tech}
             </p>
 
-            <span className="font-mono text-[8px] text-zinc-600 text-right uppercase">
-              Click to flip
+            <span className="font-mono text-[7px] sm:text-[8px] text-zinc-600 text-right uppercase">
+              Tap to flip
             </span>
           </div>
         </motion.div>
@@ -231,12 +231,12 @@ function SocialPill({
         rel="noopener noreferrer"
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.98 }}
-        className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-300 w-full overflow-hidden"
+        className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-3.5 sm:px-4 py-2.5 sm:py-3 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-300 w-full overflow-hidden"
       >
         <span className="shrink-0 text-zinc-400 group-hover:text-green-400">
           {icon}
         </span>
-        <span className="truncate">{label}</span>
+        <span className="truncate text-[11px] sm:text-xs">{label}</span>
         <span className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-green-500/60">
           →
         </span>
@@ -397,14 +397,14 @@ export default function StalkerPage() {
       <main className="min-h-screen bg-black p-4 sm:p-8 font-mono text-green-400 overflow-y-auto flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between border-b border-green-500/30 pb-3 mb-4">
-            <span className="text-xs sm:text-sm font-bold">
-              ~/rishab_terminal [INTERACTIVE_SHELL]
+            <span className="text-xs sm:text-sm font-bold truncate">
+              ~/rishab_terminal [SHELL]
             </span>
             <button
               onClick={() => setEasterEggActive(false)}
               className="text-xs px-2.5 py-1 bg-green-500/10 border border-green-500/40 rounded hover:bg-green-500/20 text-green-300"
             >
-              [EXIT SHELL]
+              [EXIT]
             </button>
           </div>
 
@@ -427,7 +427,7 @@ export default function StalkerPage() {
             type="text"
             value={terminalInput}
             onChange={(e) => setTerminalInput(e.target.value)}
-            placeholder="Type command ('help', 'projects', 'whoami', 'experience')..."
+            placeholder="Type command ('help', 'projects', 'whoami')..."
             className="flex-1 bg-transparent text-green-300 font-mono text-xs sm:text-sm outline-none placeholder:text-green-500/30"
           />
         </form>
@@ -445,7 +445,7 @@ export default function StalkerPage() {
         <Tooltip content="Return to Gateway selection" side="right">
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono text-[11px] rounded-full bg-[#070c07]/90 px-4 py-2 text-zinc-400 hover:text-green-400 hover:bg-green-500/10 border border-green-500/20 hover:border-green-500/40 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
+            className="flex items-center gap-2 font-mono text-[11px] rounded-full bg-[#070c07]/90 px-3.5 py-1.5 sm:px-4 sm:py-2 text-zinc-400 hover:text-green-400 hover:bg-green-500/10 border border-green-500/20 hover:border-green-500/40 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             cd ..
@@ -454,9 +454,9 @@ export default function StalkerPage() {
       </nav>
 
       {/* ── SECTION 1: HERO (AUTHENTIC DEVELOPER TERMINAL) ── */}
-      <section className="relative flex min-h-[100dvh] items-center justify-center px-4 sm:px-8 py-20 lg:py-24">
+      <section className="relative flex min-h-[100dvh] items-center justify-center px-3.5 sm:px-8 py-20 lg:py-24">
         {/* Soft Ambient Glow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[650px] rounded-full bg-green-500/[0.04] blur-[100px] pointer-events-none" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] sm:h-[400px] w-[90vw] sm:w-[650px] rounded-full bg-green-500/[0.04] blur-[100px] pointer-events-none" />
 
         <AnimatePresence mode="wait">
           {!bootDone ? (
@@ -464,13 +464,13 @@ export default function StalkerPage() {
               key="boot"
               exit={{ opacity: 0, filter: "blur(6px)" }}
               transition={{ duration: 0.25 }}
-              className="w-full max-w-lg rounded-xl border border-green-500/20 bg-black/90 p-6 font-mono text-xs sm:text-sm backdrop-blur-xl"
+              className="w-full max-w-lg rounded-xl border border-green-500/20 bg-black/90 p-5 sm:p-6 font-mono text-xs sm:text-sm backdrop-blur-xl"
             >
               <div className="flex items-center gap-2 mb-4 border-b border-white/10 pb-3">
                 <div className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
                 <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-                <span className="ml-2 text-[11px] text-zinc-500">
+                <span className="ml-2 text-[10px] sm:text-[11px] text-zinc-500 truncate">
                   ~/init_stalker.sh
                 </span>
               </div>
@@ -479,7 +479,7 @@ export default function StalkerPage() {
                   key={i}
                   initial={{ opacity: 0, x: -6 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className={`leading-relaxed py-0.5 ${
+                  className={`leading-relaxed py-0.5 text-xs sm:text-sm ${
                     i === bootLines.length - 1
                       ? "text-green-400 font-semibold"
                       : "text-green-500/40"
@@ -501,17 +501,17 @@ export default function StalkerPage() {
               {/* Terminal Window */}
               <div className="rounded-2xl border border-green-500/20 bg-[#060a06]/95 backdrop-blur-2xl shadow-2xl">
                 {/* Title Bar */}
-                <div className="rounded-t-2xl flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-green-500/15 bg-[#080e08] font-mono text-xs text-zinc-400">
+                <div className="rounded-t-2xl flex items-center justify-between px-3.5 sm:px-6 py-3 border-b border-green-500/15 bg-[#080e08] font-mono text-xs text-zinc-400">
                   <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-red-500/60" />
-                    <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                    <div className="h-3 w-3 rounded-full bg-green-500/60" />
-                    <span className="ml-2 text-[11px] text-zinc-500">
-                      rishab@delhi: ~/portfolio (stalker)
+                    <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-red-500/60" />
+                    <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-yellow-500/60" />
+                    <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-green-500/60" />
+                    <span className="ml-1 sm:ml-2 text-[10px] sm:text-[11px] text-zinc-500 truncate max-w-[150px] xs:max-w-none">
+                      rishab@delhi: ~/stalker
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <Tooltip content="Click 3 times to reveal Easter egg shell" side="bottom">
                       <button
                         onClick={handlePinClick}
@@ -526,7 +526,7 @@ export default function StalkerPage() {
                     <Tooltip content="Launch interactive terminal commands" side="bottom" align="end">
                       <button
                         onClick={() => setEasterEggActive(true)}
-                        className="flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/20 transition-all cursor-pointer"
+                        className="flex items-center gap-1 text-[10px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/20 transition-all cursor-pointer"
                       >
                         <TerminalIcon className="h-3 w-3 text-green-400" />
                         <span>Terminal</span>
@@ -536,23 +536,23 @@ export default function StalkerPage() {
                 </div>
 
                 {/* Main Hero Content */}
-                <div className="rounded-b-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="rounded-b-2xl p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                   {/* Left Column: Identity & Authentic Bio */}
-                  <div className="lg:col-span-7 space-y-6">
+                  <div className="lg:col-span-7 space-y-5 sm:space-y-6">
                     <div>
-                      <div className="flex items-center gap-2 font-mono text-xs text-green-500/70 mb-2">
+                      <div className="flex items-center gap-2 font-mono text-xs text-green-500/70 mb-1.5 sm:mb-2">
                         <span>$</span>
                         <span>whoami</span>
                       </div>
-                      <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white">
+                      <h1 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white">
                         Rishab Raj
                       </h1>
-                      <p className="mt-2 text-sm sm:text-base font-mono text-green-400">
+                      <p className="mt-1.5 sm:mt-2 text-xs sm:text-base font-mono text-green-400">
                         Software Development Engineer Intern @ Lolocab
                       </p>
                     </div>
 
-                    <p className="font-sans text-sm sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-4 py-1">
+                    <p className="font-sans text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
                       I build high-concurrency Java socket servers, production
                       Node.js backends at <span className="text-white font-medium">Lolocab</span>,
                       and autonomous web automation pipelines with Gemini AI.
@@ -561,175 +561,145 @@ export default function StalkerPage() {
                     </p>
 
                     {/* Navigation Chips */}
-                    <div className="pt-2">
-                      <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-3">
+                    <div className="pt-1 sm:pt-2">
+                      <p className="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-2 sm:mb-3">
                         EXPLORE WORKFLOWS:
                       </p>
-                      <div className="flex flex-wrap gap-2 font-mono text-xs">
-                        <Tooltip content="Jump to technical skill matrix" side="top">
-                          <a
-                            href="#skills"
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 transition-all"
-                          >
-                            <Zap className="h-3.5 w-3.5 text-green-400" />
-                            <span>Stacks & Skills</span>
-                          </a>
-                        </Tooltip>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 font-mono text-xs">
+                        <a
+                          href="#skills"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 text-[11px] sm:text-xs transition-all"
+                        >
+                          <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Stacks & Skills</span>
+                        </a>
 
-                        <Tooltip content="Jump to featured software projects" side="top">
-                          <a
-                            href="#projects"
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                          >
-                            <Cpu className="h-3.5 w-3.5 text-green-400" />
-                            <span>Projects</span>
-                          </a>
-                        </Tooltip>
+                        <a
+                          href="#projects"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <Cpu className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Projects</span>
+                        </a>
 
-                        <Tooltip content="Jump to career experience & awards" side="top">
-                          <a
-                            href="#timeline"
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                          >
-                            <FileText className="h-3.5 w-3.5 text-green-400" />
-                            <span>Experience & Awards</span>
-                          </a>
-                        </Tooltip>
+                        <a
+                          href="#timeline"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Experience & Awards</span>
+                        </a>
 
-                        <Tooltip content="Jump to dynamic polaroid memories gallery" side="top">
-                          <a
-                            href="#memories"
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                          >
-                            <Sparkles className="h-3.5 w-3.5 text-green-400" />
-                            <span>Memories</span>
-                          </a>
-                        </Tooltip>
+                        <a
+                          href="#memories"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Memories</span>
+                        </a>
 
-                        <Tooltip content="Jump to digital guestbook graffiti wall" side="top">
-                          <a
-                            href="#guestbook"
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                          >
-                            <Code2 className="h-3.5 w-3.5 text-green-400" />
-                            <span>Guestbook</span>
-                          </a>
-                        </Tooltip>
+                        <a
+                          href="#guestbook"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <Code2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Guestbook</span>
+                        </a>
                       </div>
                     </div>
                   </div>
 
                   {/* Right Column: Live Telemetry & Bento Grid */}
-                  <div className="lg:col-span-5 space-y-4">
+                  <div className="lg:col-span-5 space-y-3 sm:space-y-4">
                     {/* Live Spotify Card */}
-                    <Tooltip
-                      content={
-                        spotifyData.isPlaying
-                          ? "Currently playing on Rishab's Spotify account"
-                          : spotifyData.lastPlayed
-                          ? "Last played track on Spotify"
-                          : "Spotify is currently idle"
-                      }
-                      side="top"
-                      className="w-full block"
-                    >
-                      <div className="rounded-xl border border-green-500/20 bg-[#091009] p-4 font-mono w-full">
-                        <div className="flex items-center justify-between text-[10px] text-zinc-500 uppercase tracking-widest mb-3 border-b border-green-500/10 pb-2">
-                          <div className="flex items-center gap-2 text-green-400">
-                            <SpotifyIcon size={14} className="text-green-400" />
-                            <span>
-                              {spotifyData.isPlaying
-                                ? "NOW PLAYING"
-                                : spotifyData.lastPlayed
-                                ? "LAST PLAYED"
-                                : "SPOTIFY STATUS"}
-                            </span>
-                          </div>
-
-                          {spotifyData.isPlaying && (
-                            <div className="flex items-end gap-0.5 h-3">
-                              <span className="w-1 bg-green-400 animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
-                              <span className="w-1 bg-green-400 animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
-                              <span className="w-1 bg-green-400 animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
-                              <span className="w-1 bg-green-400 animate-[pulse_0.5s_ease-in-out_infinite] h-2.5" />
-                            </div>
-                          )}
+                    <div className="rounded-xl border border-green-500/20 bg-[#091009] p-3.5 sm:p-4 font-mono w-full">
+                      <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-2.5 sm:mb-3 border-b border-green-500/10 pb-2">
+                        <div className="flex items-center gap-2 text-green-400">
+                          <SpotifyIcon size={14} className="text-green-400 shrink-0" />
+                          <span className="truncate">
+                            {spotifyData.isPlaying
+                              ? "NOW PLAYING"
+                              : spotifyData.lastPlayed
+                              ? "LAST PLAYED"
+                              : "SPOTIFY STATUS"}
+                          </span>
                         </div>
 
-                        {spotifyData.isPlaying || spotifyData.lastPlayed ? (
-                          <a
-                            href={spotifyData.songUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group block"
-                          >
-                            <p className="text-sm font-semibold text-white group-hover:text-green-400 transition-colors truncate">
-                              {spotifyData.title}
-                            </p>
-                            <p className="text-xs text-zinc-400 truncate mt-0.5">
-                              {spotifyData.artist}
-                            </p>
-                            <span className="text-[10px] text-green-500/70 mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
-                              Open in Spotify →
-                            </span>
-                          </a>
-                        ) : (
-                          <div className="text-xs text-zinc-500 flex items-center gap-2 py-1">
-                            <span className="h-2 w-2 rounded-full bg-zinc-700" />
-                            <span>Spotify is idle</span>
+                        {spotifyData.isPlaying && (
+                          <div className="flex items-end gap-0.5 h-3 shrink-0">
+                            <span className="w-1 bg-green-400 animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
+                            <span className="w-1 bg-green-400 animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
+                            <span className="w-1 bg-green-400 animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
+                            <span className="w-1 bg-green-400 animate-[pulse_0.5s_ease-in-out_infinite] h-2.5" />
                           </div>
                         )}
                       </div>
-                    </Tooltip>
+
+                      {spotifyData.isPlaying || spotifyData.lastPlayed ? (
+                        <a
+                          href={spotifyData.songUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group block"
+                        >
+                          <p className="text-xs sm:text-sm font-semibold text-white group-hover:text-green-400 transition-colors truncate">
+                            {spotifyData.title}
+                          </p>
+                          <p className="text-[11px] sm:text-xs text-zinc-400 truncate mt-0.5">
+                            {spotifyData.artist}
+                          </p>
+                          <span className="text-[9px] sm:text-[10px] text-green-500/70 mt-1.5 sm:mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
+                            Open in Spotify →
+                          </span>
+                        </a>
+                      ) : (
+                        <div className="text-xs text-zinc-500 flex items-center gap-2 py-1">
+                          <span className="h-2 w-2 rounded-full bg-zinc-700" />
+                          <span>Spotify is idle</span>
+                        </div>
+                      )}
+                    </div>
 
                     {/* 2x2 Telemetry Grid */}
-                    <div className="grid grid-cols-2 gap-3 font-mono text-xs">
-                      <Tooltip content="Lolocab: Carpooling & ridesharing platform" side="top" className="w-full">
-                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
-                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                            CURRENT ROLE
+                    <div className="grid grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs">
+                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
+                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                          CURRENT ROLE
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                          <span className="text-green-400 font-medium text-[10px] sm:text-[11px] truncate">
+                            SDE @ Lolocab
                           </span>
-                          <div className="flex items-center gap-1.5">
-                            <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                            <span className="text-green-400 font-medium text-[11px] truncate">
-                              SDE @ Lolocab
-                            </span>
-                          </div>
                         </div>
-                      </Tooltip>
+                      </div>
 
-                      <Tooltip content="Maharaja Agrasen Institute of Technology (2022-2026)" side="top" className="w-full">
-                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
-                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                            EDUCATION
-                          </span>
-                          <span className="text-zinc-200 font-medium text-[11px] truncate block">
-                            B.Tech IT • GPA 8.0
-                          </span>
-                        </div>
-                      </Tooltip>
+                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
+                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                          EDUCATION
+                        </span>
+                        <span className="text-zinc-200 font-medium text-[10px] sm:text-[11px] truncate block">
+                          B.Tech IT • GPA 8.0
+                        </span>
+                      </div>
 
-                      <Tooltip content="Former Vice-Chair & Mentor at IEEE MAIT" side="top" className="w-full">
-                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
-                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                            COMMUNITY
-                          </span>
-                          <span className="text-zinc-200 font-medium text-[11px] truncate block">
-                            160+ MAIT Engineers
-                          </span>
-                        </div>
-                      </Tooltip>
+                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
+                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                          COMMUNITY
+                        </span>
+                        <span className="text-zinc-200 font-medium text-[10px] sm:text-[11px] truncate block">
+                          160+ MAIT Engineers
+                        </span>
+                      </div>
 
-                      <Tooltip content="National IEEE awards for leadership & technical excellence" side="top" className="w-full">
-                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
-                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                            HONORS
-                          </span>
-                          <span className="text-green-400 font-medium text-[11px] truncate block">
-                            J.K. Pal & India Council
-                          </span>
-                        </div>
-                      </Tooltip>
+                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
+                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                          HONORS
+                        </span>
+                        <span className="text-green-400 font-medium text-[10px] sm:text-[11px] truncate block">
+                          J.K. Pal & India Council
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -743,7 +713,7 @@ export default function StalkerPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] text-zinc-600 flex flex-col items-center gap-2 pointer-events-none"
+          className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] text-zinc-600 flex flex-col items-center gap-1.5 sm:gap-2 pointer-events-none"
         >
           <span>$ scroll_down</span>
           <motion.div
@@ -757,14 +727,14 @@ export default function StalkerPage() {
       {/* ── SECTION 2: SKILL MATRIX ── */}
       <section
         id="skills"
-        className="relative py-16 sm:py-24 px-4 sm:px-8 bg-[#050805] border-t border-green-500/10"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
             command="./view_skills.sh"
             label="technical architecture & stacks"
           />
-          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-2.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <SkillCard
               index={0}
               icon={<BrainCircuit className="text-green-400 h-5 w-5" />}
@@ -820,7 +790,7 @@ export default function StalkerPage() {
       {/* ── SECTION 3: PROOF OF WORK ── */}
       <section
         id="projects"
-        className="relative py-16 sm:py-24 px-4 sm:px-8 border-t border-green-500/10"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
@@ -834,7 +804,7 @@ export default function StalkerPage() {
       {/* ── SECTION 4: TIMELINE / EXPERIENCE ── */}
       <section
         id="timeline"
-        className="relative py-16 sm:py-24 px-4 sm:px-8 bg-[#050805] border-t border-green-500/10"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
@@ -848,7 +818,7 @@ export default function StalkerPage() {
       {/* ── SECTION 5: MEMORIES GALLERY ── */}
       <section
         id="memories"
-        className="relative py-16 sm:py-24 px-4 sm:px-8 border-t border-green-500/10 overflow-hidden"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 overflow-hidden"
       >
         <PolaroidGallery />
       </section>
@@ -856,7 +826,7 @@ export default function StalkerPage() {
       {/* ── SECTION 6: GUESTBOOK ── */}
       <section
         id="guestbook"
-        className="relative py-16 sm:py-24 px-4 sm:px-8 bg-[#050805] border-t border-green-500/10"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
@@ -869,13 +839,13 @@ export default function StalkerPage() {
       </section>
 
       {/* ── SECTION 7: EXTERNAL NODES ── */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-8 border-t border-green-500/10 bg-black">
+      <section className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 bg-black">
         <div className="mx-auto max-w-5xl">
           <SectionHeader
             command="./connect_socials.sh"
             label="links & contact"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3">
             <SocialPill
               url="https://github.com/rishab2211"
               label="github.com/rishab2211"
@@ -917,7 +887,7 @@ export default function StalkerPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-green-500/10 py-8 px-4 text-center font-mono text-[10px] text-zinc-600">
+      <footer className="border-t border-green-500/10 py-6 sm:py-8 px-4 text-center font-mono text-[10px] text-zinc-600">
         <p>Rishab Raj • Portfolio Stalker Mode • Built with Next.js & TailwindCSS</p>
       </footer>
     </main>

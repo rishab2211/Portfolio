@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useId } from "react";
+import React, { useState, useRef, useId, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TooltipProps {
@@ -24,9 +24,21 @@ export function Tooltip({
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const id = useId();
 
-  if (disabled || !content) return <>{children}</>;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isTouch = window.matchMedia("(hover: none)").matches || "ontouchstart" in window;
+      if (isTouch) setIsTouchDevice(true);
+    }
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  // On touch/mobile devices, completely bypass tooltips for max performance
+  if (disabled || !content || isTouchDevice) return <>{children}</>;
 
   const show = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -72,13 +84,13 @@ export function Tooltip({
             role="tooltip"
             initial={{
               opacity: 0,
-              scale: 0.95,
-              y: side === "top" ? 3 : side === "bottom" ? -3 : 0,
+              scale: 0.96,
+              y: side === "top" ? 2 : side === "bottom" ? -2 : 0,
             }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className={`pointer-events-none absolute z-[999] whitespace-nowrap rounded-md border border-green-500/30 bg-[#070b07]/98 px-2.5 py-1 text-[10px] font-mono tracking-wider text-zinc-200 shadow-[0_4px_25px_rgba(0,0,0,0.9)] backdrop-blur-md ${getPositionClass()}`}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.12, ease: "easeOut" }}
+            className={`pointer-events-none absolute z-[999] whitespace-nowrap rounded-md border border-green-500/30 bg-[#070b07] px-2.5 py-1 text-[10px] font-mono tracking-wider text-zinc-200 shadow-xl ${getPositionClass()}`}
           >
             {content}
           </motion.div>

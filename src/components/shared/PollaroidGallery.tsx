@@ -48,11 +48,11 @@ export function PolaroidGallery() {
 
   return (
     <div
-      className="w-full max-w-5xl mx-auto py-16 sm:py-24 px-4 sm:px-6 overflow-hidden"
+      className="w-full max-w-5xl mx-auto py-12 sm:py-24 px-4 sm:px-6 overflow-hidden"
       ref={containerRef}
     >
-      <div className="mb-12 sm:mb-16 text-center relative z-50">
-        <h2 className="font-mono text-green-500/80 text-xs sm:text-sm tracking-[0.2em] uppercase mb-6 sm:mb-8">
+      <div className="mb-8 sm:mb-16 text-center relative z-50">
+        <h2 className="font-mono text-green-500/80 text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-8">
           {">"} system.memories --view={activeFolder.toLowerCase()}
         </h2>
 
@@ -82,9 +82,9 @@ export function PolaroidGallery() {
         </div>
       </div>
 
-      <div className="relative h-[480px] sm:h-[580px] w-full flex items-center justify-center">
+      <div className="relative h-[420px] sm:h-[580px] w-full flex items-center justify-center">
         {isSyncing && (
-          <div className="absolute top-4 right-4 font-mono text-[10px] text-green-500/40 animate-pulse">
+          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 font-mono text-[10px] text-green-500/40 animate-pulse">
             [SYNCING_CLOUDINARY...]
           </div>
         )}
@@ -96,9 +96,9 @@ export function PolaroidGallery() {
               drag
               dragConstraints={containerRef}
               dragElastic={0.2}
-              whileHover={{ scale: 1.05, zIndex: 50 }}
+              whileHover={{ scale: 1.04, zIndex: 50 }}
               whileDrag={{
-                scale: 1.1,
+                scale: 1.08,
                 zIndex: 100,
                 rotate: 0,
                 cursor: "grabbing",
@@ -106,8 +106,8 @@ export function PolaroidGallery() {
               initial={{
                 opacity: 0,
                 scale: 0.8,
-                y: -30,
-                x: photo.x,
+                y: -20,
+                x: photo.x * 0.7,
                 rotate: photo.rotation,
               }}
               animate={{
@@ -117,15 +117,14 @@ export function PolaroidGallery() {
                 y: photo.y,
                 rotate: photo.rotation,
               }}
-              exit={{ opacity: 0, scale: 0.8, y: 60 }}
+              exit={{ opacity: 0, scale: 0.8, y: 40 }}
               transition={{ type: "spring", damping: 25, stiffness: 140 }}
-              className="absolute cursor-grab bg-[#0a0a0a] p-2 pb-5 sm:pb-6 border border-white/10 rounded-sm shadow-[0_0_25px_rgba(0,0,0,0.8)] touch-none select-none max-w-[85vw] transform-gpu"
+              className="absolute cursor-grab bg-[#0a0a0a] p-2 pb-4 sm:pb-6 border border-white/10 rounded-sm shadow-[0_0_25px_rgba(0,0,0,0.8)] touch-none select-none w-[175px] sm:w-[220px] transform-gpu"
               style={{
-                width: "220px",
                 zIndex: visiblePhotos.length - index,
               }}
             >
-              <div className="relative w-full h-[170px] sm:h-[190px] bg-black overflow-hidden border border-white/5 rounded-xs">
+              <div className="relative w-full h-[140px] sm:h-[190px] bg-black overflow-hidden border border-white/5 rounded-xs">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photo.src}
@@ -134,12 +133,12 @@ export function PolaroidGallery() {
                   draggable={false}
                   loading="lazy"
                 />
-                <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-xs bg-black/60 backdrop-blur-xs font-mono text-[8px] text-green-400/80 border border-green-500/20">
+                <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-1.5 py-0.5 rounded-xs bg-black/70 backdrop-blur-xs font-mono text-[7px] sm:text-[8px] text-green-400/90 border border-green-500/20">
                   {photo.folder}
                 </div>
               </div>
-              <div className="mt-3 text-center pointer-events-none">
-                <p className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-green-400/80 truncate px-1">
+              <div className="mt-2.5 sm:mt-3 text-center pointer-events-none">
+                <p className="font-mono text-[9px] sm:text-[11px] uppercase tracking-widest text-green-400/80 truncate px-1">
                   {photo.caption}
                 </p>
               </div>
