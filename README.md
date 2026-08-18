@@ -1,47 +1,40 @@
-# OpenNext Starter
+# Rishab Raj • Portfolio
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A dual-perspective portfolio featuring **Founder (Builder)** and **Stalker (Hacker/Developer)** experiences, deployed on Cloudflare OpenNext edge runtime with real-time Spotify telemetry, dynamic Cloudinary photo gallery, and Supabase real-time guestbook.
 
-## Getting Started
+## ✨ Key Features
 
-Read the documentation at https://opennext.js.org/cloudflare.
+- **Dual Mode Persona:**
+  - **Founder Mode (`/founder`):** Clean, high-leverage systems engineering view focused on architecture, competencies, and ROI.
+  - **Stalker Mode (`/stalker`):** Cyberpunk terminal aesthetics with real-time Spotify telemetry, interactive skill decryptor, and draggable memories gallery.
+- **Dynamic Cloudinary Memories:** Fetches photos dynamically from Cloudinary folders (`portfolio/memories/ieee`, `hackathons`, `trips`) with responsive drag interactions and instant fallbacks.
+- **Real-Time Spotify Telemetry:** Shows current playing tracks with edge caching and conditional KV write protection.
+- **Interactive Supabase Guestbook:** Real-time digital wall with desktop double-click & mobile tap support, coordinate clamping, and input validation.
+- **Secret Terminal Easter Egg:** Interactive root shell accessible via the location pin.
 
-## Develop
+## 🚀 Tech Stack
 
-Run the Next.js development server:
+- **Framework:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling:** Tailwind CSS v4, Geist Font (Sans & Mono)
+- **Animation:** Framer Motion
+- **Edge Deployment:** Cloudflare Workers via `@opennextjs/cloudflare`
+- **Database & Storage:** Supabase (PostgreSQL Realtime), Cloudflare KV, Cloudinary
 
-```bash
-npm run dev
-# or similar package manager command
-```
+## 🛠️ Getting Started
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone repository and install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Configure environment variables in `.env` and `.dev.vars` (see `.env.example`).
 
-## Preview
+3. Run locally:
+   ```bash
+   npm run dev
+   ```
 
-Preview the application locally on the Cloudflare runtime:
-
-```bash
-npm run preview
-# or similar package manager command
-```
-
-## Deploy
-
-Deploy the application to Cloudflare:
-
-```bash
-npm run deploy
-# or similar package manager command
-```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Build & deploy to Cloudflare:
+   ```bash
+   npm run deploy
+   ```
