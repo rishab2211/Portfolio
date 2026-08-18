@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { timelineData } from "@/data/timeline";
+import { Tooltip } from "@/components/shared/Tooltip";
 
 interface TimelineProps {
   variant: "stalker" | "founder";
@@ -29,65 +30,69 @@ export function Timeline({ variant }: TimelineProps) {
           aria-label="Timeline Categories"
           className="flex gap-6 sm:gap-8 overflow-x-auto custom-scrollbar"
         >
-          <button
-            role="tab"
-            aria-selected={activeTab === "academic"}
-            aria-controls="academic-tabpanel"
-            id="tab-academic"
-            onClick={() => setActiveTab("academic")}
-            className={`pb-4 text-sm whitespace-nowrap transition-all duration-300 relative ${
-              activeTab === "academic"
-                ? isStalker
-                  ? "text-green-400 font-mono font-medium"
-                  : "text-white font-medium"
-                : isStalker
-                ? "text-green-500/40 hover:text-green-400 font-mono"
-                : "text-zinc-500 hover:text-zinc-300"
-            }`}
-          >
-            {isStalker ? "./academics_and_experience.sh" : "Academics & Experience"}
-            {/* Active Tab Indicator */}
-            {activeTab === "academic" && (
-              <motion.div
-                layoutId={`activeTabIndicator-${variant}`}
-                className={`absolute bottom-0 left-0 right-0 h-[2px] ${
-                  isStalker
-                    ? "bg-green-400 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
-                    : "bg-white"
-                }`}
-              />
-            )}
-          </button>
+          <Tooltip content="Software engineering roles & university education" side="top">
+            <button
+              role="tab"
+              aria-selected={activeTab === "academic"}
+              aria-controls="academic-tabpanel"
+              id="tab-academic"
+              onClick={() => setActiveTab("academic")}
+              className={`pb-4 text-sm whitespace-nowrap transition-all duration-300 relative cursor-pointer ${
+                activeTab === "academic"
+                  ? isStalker
+                    ? "text-green-400 font-mono font-medium"
+                    : "text-white font-medium"
+                  : isStalker
+                  ? "text-green-500/40 hover:text-green-400 font-mono"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              {isStalker ? "./academics_and_experience.sh" : "Academics & Experience"}
+              {/* Active Tab Indicator */}
+              {activeTab === "academic" && (
+                <motion.div
+                  layoutId={`activeTabIndicator-${variant}`}
+                  className={`absolute bottom-0 left-0 right-0 h-[2px] ${
+                    isStalker
+                      ? "bg-green-400 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+                      : "bg-white"
+                  }`}
+                />
+              )}
+            </button>
+          </Tooltip>
 
-          <button
-            role="tab"
-            aria-selected={activeTab === "ieee"}
-            aria-controls="ieee-tabpanel"
-            id="tab-ieee"
-            onClick={() => setActiveTab("ieee")}
-            className={`pb-4 text-sm whitespace-nowrap transition-all duration-300 relative ${
-              activeTab === "ieee"
-                ? isStalker
-                  ? "text-green-400 font-mono font-medium"
-                  : "text-white font-medium"
-                : isStalker
-                ? "text-green-500/40 hover:text-green-400 font-mono"
-                : "text-zinc-500 hover:text-zinc-300"
-            }`}
-          >
-            {isStalker ? "./ieee_leadership.sh" : "IEEE Leadership & Honors"}
-            {/* Active Tab Indicator */}
-            {activeTab === "ieee" && (
-              <motion.div
-                layoutId={`activeTabIndicator-${variant}`}
-                className={`absolute bottom-0 left-0 right-0 h-[2px] ${
-                  isStalker
-                    ? "bg-green-400 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
-                    : "bg-white"
-                }`}
-              />
-            )}
-          </button>
+          <Tooltip content="IEEE MAIT leadership progression & national council honors" side="top">
+            <button
+              role="tab"
+              aria-selected={activeTab === "ieee"}
+              aria-controls="ieee-tabpanel"
+              id="tab-ieee"
+              onClick={() => setActiveTab("ieee")}
+              className={`pb-4 text-sm whitespace-nowrap transition-all duration-300 relative cursor-pointer ${
+                activeTab === "ieee"
+                  ? isStalker
+                    ? "text-green-400 font-mono font-medium"
+                    : "text-white font-medium"
+                  : isStalker
+                  ? "text-green-500/40 hover:text-green-400 font-mono"
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+            >
+              {isStalker ? "./ieee_leadership.sh" : "IEEE Leadership & Honors"}
+              {/* Active Tab Indicator */}
+              {activeTab === "ieee" && (
+                <motion.div
+                  layoutId={`activeTabIndicator-${variant}`}
+                  className={`absolute bottom-0 left-0 right-0 h-[2px] ${
+                    isStalker
+                      ? "bg-green-400 shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+                      : "bg-white"
+                  }`}
+                />
+              )}
+            </button>
+          </Tooltip>
         </div>
       </div>
 
@@ -108,36 +113,49 @@ export function Timeline({ variant }: TimelineProps) {
               animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, x: 10, filter: "blur(5px)" }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="mb-12 ml-6 sm:ml-10 relative group"
+              className="relative pl-6 sm:pl-8 pb-12 sm:pb-16 group last:pb-4"
             >
-              {/* THE NODE */}
+              {/* TIMELINE NODE DOT */}
               <div
-                className={`absolute top-1.5 transition-all duration-300 ${
+                className={`absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border transition-all duration-300 ${
                   isStalker
-                    ? "-left-[29px] sm:-left-[45px] h-2 w-2 bg-green-500/50 group-hover:bg-green-400 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.8)]"
-                    : "-left-[28px] sm:-left-[44px] h-1.5 w-1.5 bg-zinc-600 rotate-45 group-hover:bg-white group-hover:scale-125"
+                    ? "border-green-500 bg-[#050505] group-hover:bg-green-400 group-hover:shadow-[0_0_10px_rgba(34,197,94,0.8)]"
+                    : "border-white bg-[#050505] group-hover:bg-white group-hover:scale-125"
                 }`}
               />
 
-              {/* CONTENT CONTAINER */}
-              <div className="flex flex-col gap-2">
-                {/* Date */}
-                <span
-                  className={
-                    isStalker
-                      ? "text-green-500/60 font-mono text-[10px] sm:text-xs"
-                      : "text-zinc-500 font-mono text-[10px] tracking-widest uppercase"
-                  }
-                >
-                  {event.date}
-                </span>
+              {/* TIMELINE CONTENT CARD */}
+              <div
+                className={`p-5 sm:p-6 rounded-lg transition-all duration-300 ${
+                  isStalker
+                    ? "border border-green-500/10 bg-[#080808]/60 hover:border-green-500/30 hover:bg-[#0a0a0a]"
+                    : "border border-white/5 bg-white/[0.01] hover:border-white/15 hover:bg-white/[0.03]"
+                }`}
+              >
+                {/* Meta details */}
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 mb-2">
+                  <span
+                    className={`font-mono text-xs ${
+                      isStalker ? "text-green-500/80" : "text-zinc-500 font-medium"
+                    }`}
+                  >
+                    {event.date}
+                  </span>
+                  <span
+                    className={`font-mono text-[11px] sm:text-xs ${
+                      isStalker ? "text-zinc-500" : "text-zinc-600"
+                    }`}
+                  >
+                    {event.role}
+                  </span>
+                </div>
 
                 {/* Title */}
                 <h3
-                  className={`text-xl sm:text-2xl transition-colors ${
+                  className={`text-lg sm:text-xl font-medium mb-3 ${
                     isStalker
-                      ? "text-white font-mono font-bold"
-                      : "text-zinc-200 group-hover:text-white font-medium tracking-tight"
+                      ? "text-zinc-200 group-hover:text-green-300 font-mono transition-colors"
+                      : "text-white"
                   }`}
                 >
                   {event.title}
@@ -145,28 +163,28 @@ export function Timeline({ variant }: TimelineProps) {
 
                 {/* Description */}
                 <p
-                  className={`mt-2 ${
+                  className={`text-sm leading-relaxed mb-4 ${
                     isStalker
-                      ? "text-zinc-400 font-mono text-xs sm:text-sm leading-relaxed"
-                      : "text-zinc-400 text-sm sm:text-base leading-relaxed font-light border-l border-white/10 pl-4 group-hover:border-zinc-500 group-hover:text-zinc-300 transition-colors"
+                      ? "font-mono text-zinc-400 text-xs sm:text-sm"
+                      : "font-sans text-zinc-400 font-light"
                   }`}
                 >
                   {isStalker ? event.stalkerText : event.founderText}
                 </p>
 
-                {/* TAGS */}
+                {/* Tech tags / Badges */}
                 {event.tags && event.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {event.tags.map((tag) => (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {event.tags.map((tag, tagIndex) => (
                       <span
-                        key={tag}
-                        className={`px-2.5 py-1 transition-colors ${
+                        key={tagIndex}
+                        className={`text-[10px] sm:text-[11px] px-2 py-0.5 rounded font-mono ${
                           isStalker
-                            ? "text-[10px] font-mono text-green-500 border border-green-500/20 bg-green-500/5 group-hover:bg-green-500/10 rounded-sm"
-                            : "text-[9px] sm:text-[10px] font-mono text-zinc-500 border border-white/10 uppercase tracking-widest group-hover:border-white/20 group-hover:text-zinc-400 rounded-xs bg-transparent"
+                            ? "bg-green-500/5 text-green-400/80 border border-green-500/20"
+                            : "bg-white/5 text-zinc-400 border border-white/10"
                         }`}
                       >
-                        {tag}
+                        {isStalker ? `#${tag}` : tag}
                       </span>
                     ))}
                   </div>

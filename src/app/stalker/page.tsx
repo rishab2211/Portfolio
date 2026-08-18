@@ -18,7 +18,6 @@ import {
   Sparkles,
   FileText,
   Cpu,
-  Layers,
   Code2,
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -32,6 +31,7 @@ import {
   SpotifyIcon,
   TwitterIcon,
 } from "@/components/shared/SocialIcons";
+import { Tooltip } from "@/components/shared/Tooltip";
 
 type SpotifyData = {
   isPlaying: boolean;
@@ -144,69 +144,71 @@ function SkillCard({
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.03 }}
-      role="button"
-      tabIndex={0}
-      aria-label={`View skill ${prefix}: ${title}`}
-      onKeyDown={handleKeyDown}
-      className="relative h-32 cursor-pointer group [perspective:1000px] w-full outline-none focus-visible:ring-1 focus-visible:ring-green-400 rounded-xl"
-      onClick={handleClick}
-    >
+    <Tooltip content={isFlipped ? "Click to flip back" : "Click to view stack payload"} side="top" className="w-full">
       <motion.div
-        className="absolute inset-0 w-full h-full"
-        animate={{ rotateX: isFlipped ? 180 : 0 }}
-        transition={{
-          duration: 0.4,
-          type: "spring",
-          stiffness: 240,
-          damping: 24,
-        }}
-        style={{ transformStyle: "preserve-3d" }}
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3, delay: index * 0.03 }}
+        role="button"
+        tabIndex={0}
+        aria-label={`View skill ${prefix}: ${title}`}
+        onKeyDown={handleKeyDown}
+        className="relative h-32 cursor-pointer group [perspective:1000px] w-full outline-none focus-visible:ring-1 focus-visible:ring-green-400 rounded-xl"
+        onClick={handleClick}
       >
-        {/* FRONT */}
-        <div className="absolute inset-0 w-full h-full rounded-xl border border-white/5 bg-[#080c08]/90 p-4 flex flex-col justify-between [backface-visibility:hidden] overflow-hidden transition-all duration-300 hover:border-green-500/40 hover:bg-[#0c120c]">
-          <div className="flex items-start justify-between w-full">
-            <div className="flex items-center justify-center p-2 rounded-lg bg-green-500/10 text-green-400">
-              {icon}
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          animate={{ rotateX: isFlipped ? 180 : 0 }}
+          transition={{
+            duration: 0.4,
+            type: "spring",
+            stiffness: 240,
+            damping: 24,
+          }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          {/* FRONT */}
+          <div className="absolute inset-0 w-full h-full rounded-xl border border-white/5 bg-[#080c08]/90 p-4 flex flex-col justify-between [backface-visibility:hidden] overflow-hidden transition-all duration-300 hover:border-green-500/40 hover:bg-[#0c120c]">
+            <div className="flex items-start justify-between w-full">
+              <div className="flex items-center justify-center p-2 rounded-lg bg-green-500/10 text-green-400">
+                {icon}
+              </div>
+              <span className="font-mono text-[10px] text-zinc-600 group-hover:text-green-500/70 transition-colors">
+                [{prefix}]
+              </span>
             </div>
-            <span className="font-mono text-[10px] text-zinc-600 group-hover:text-green-500/70 transition-colors">
-              [{prefix}]
-            </span>
+
+            <div>
+              <h3 className="font-sans text-sm font-medium text-white group-hover:text-green-300 transition-colors">
+                {title}
+              </h3>
+              <p className="font-mono text-[10px] text-zinc-500 truncate mt-1">
+                Click to decrypt stack →
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h3 className="font-sans text-sm font-medium text-white group-hover:text-green-300 transition-colors">
-              {title}
-            </h3>
-            <p className="font-mono text-[10px] text-zinc-500 truncate mt-1">
-              Click to view stack →
+          {/* BACK */}
+          <div className="absolute inset-0 w-full h-full rounded-xl border border-green-500/40 bg-[#050805] p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateX(180deg)] overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+            <div className="flex items-center justify-between border-b border-green-500/20 pb-1.5 shrink-0">
+              <span className="font-mono text-[9px] text-green-400 font-semibold uppercase tracking-wider">
+                {title}
+              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+            </div>
+
+            <p className="font-mono text-[11px] text-green-300 leading-relaxed">
+              {tech}
             </p>
-          </div>
-        </div>
 
-        {/* BACK */}
-        <div className="absolute inset-0 w-full h-full rounded-xl border border-green-500/40 bg-[#050805] p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateX(180deg)] overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-          <div className="flex items-center justify-between border-b border-green-500/20 pb-1.5 shrink-0">
-            <span className="font-mono text-[9px] text-green-400 font-semibold uppercase tracking-wider">
-              {title}
+            <span className="font-mono text-[8px] text-zinc-600 text-right uppercase">
+              Click to flip
             </span>
-            <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
           </div>
-
-          <p className="font-mono text-[11px] text-green-300 leading-relaxed">
-            {tech}
-          </p>
-
-          <span className="font-mono text-[8px] text-zinc-600 text-right uppercase">
-            Click to flip
-          </span>
-        </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </Tooltip>
   );
 }
 
@@ -214,28 +216,32 @@ function SocialPill({
   url,
   label,
   icon,
+  tooltip,
 }: {
   url: string;
   label: string;
   icon?: React.ReactNode;
+  tooltip: string;
 }) {
   return (
-    <motion.a
-      href={url}
-      target={url.startsWith("mailto") ? undefined : "_blank"}
-      rel="noopener noreferrer"
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.98 }}
-      className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-300 w-full overflow-hidden"
-    >
-      <span className="shrink-0 text-zinc-400 group-hover:text-green-400">
-        {icon}
-      </span>
-      <span className="truncate">{label}</span>
-      <span className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-green-500/60">
-        →
-      </span>
-    </motion.a>
+    <Tooltip content={tooltip} side="top" className="w-full">
+      <motion.a
+        href={url}
+        target={url.startsWith("mailto") ? undefined : "_blank"}
+        rel="noopener noreferrer"
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        className="group flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3 font-mono text-xs text-zinc-400 transition-all duration-200 hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-300 w-full overflow-hidden"
+      >
+        <span className="shrink-0 text-zinc-400 group-hover:text-green-400">
+          {icon}
+        </span>
+        <span className="truncate">{label}</span>
+        <span className="ml-auto shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-green-500/60">
+          →
+        </span>
+      </motion.a>
+    </Tooltip>
   );
 }
 
@@ -436,13 +442,15 @@ export default function StalkerPage() {
 
       {/* Top Floating Nav */}
       <nav className="fixed top-4 left-4 sm:top-6 sm:left-6 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-mono text-[11px] rounded-full bg-[#070c07]/90 px-4 py-2 text-zinc-400 hover:text-green-400 hover:bg-green-500/10 border border-green-500/20 hover:border-green-500/40 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          cd ..
-        </Link>
+        <Tooltip content="Return to Gateway selection" side="right">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono text-[11px] rounded-full bg-[#070c07]/90 px-4 py-2 text-zinc-400 hover:text-green-400 hover:bg-green-500/10 border border-green-500/20 hover:border-green-500/40 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            cd ..
+          </Link>
+        </Tooltip>
       </nav>
 
       {/* ── SECTION 1: HERO (AUTHENTIC DEVELOPER TERMINAL) ── */}
@@ -491,9 +499,9 @@ export default function StalkerPage() {
               className="relative z-10 w-full max-w-5xl"
             >
               {/* Terminal Window */}
-              <div className="rounded-2xl border border-green-500/20 bg-[#060a06]/95 overflow-hidden backdrop-blur-2xl shadow-2xl">
+              <div className="rounded-2xl border border-green-500/20 bg-[#060a06]/95 backdrop-blur-2xl shadow-2xl">
                 {/* Title Bar */}
-                <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-green-500/15 bg-[#080e08] font-mono text-xs text-zinc-400">
+                <div className="rounded-t-2xl flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-green-500/15 bg-[#080e08] font-mono text-xs text-zinc-400">
                   <div className="flex items-center gap-2">
                     <div className="h-3 w-3 rounded-full bg-red-500/60" />
                     <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
@@ -504,27 +512,31 @@ export default function StalkerPage() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <button
-                      onClick={handlePinClick}
-                      className="hidden sm:flex items-center gap-1.5 text-[11px] text-zinc-400 hover:text-green-300 transition-colors"
-                    >
-                      <MapPin className="h-3 w-3 text-red-400" />
-                      <span>Delhi, IN</span>
-                      <span className="text-zinc-600">[{time}]</span>
-                    </button>
+                    <Tooltip content="Click 3 times to reveal Easter egg shell" side="bottom">
+                      <button
+                        onClick={handlePinClick}
+                        className="hidden sm:flex items-center gap-1.5 text-[11px] text-zinc-400 hover:text-green-300 transition-colors cursor-help"
+                      >
+                        <MapPin className="h-3 w-3 text-red-400" />
+                        <span>Delhi, IN</span>
+                        <span className="text-zinc-600">[{time}]</span>
+                      </button>
+                    </Tooltip>
 
-                    <button
-                      onClick={() => setEasterEggActive(true)}
-                      className="flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/20 transition-all"
-                    >
-                      <TerminalIcon className="h-3 w-3 text-green-400" />
-                      <span>Terminal</span>
-                    </button>
+                    <Tooltip content="Launch interactive terminal commands" side="bottom" align="end">
+                      <button
+                        onClick={() => setEasterEggActive(true)}
+                        className="flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/20 transition-all cursor-pointer"
+                      >
+                        <TerminalIcon className="h-3 w-3 text-green-400" />
+                        <span>Terminal</span>
+                      </button>
+                    </Tooltip>
                   </div>
                 </div>
 
                 {/* Main Hero Content */}
-                <div className="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="rounded-b-2xl p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   {/* Left Column: Identity & Authentic Bio */}
                   <div className="lg:col-span-7 space-y-6">
                     <div>
@@ -554,41 +566,55 @@ export default function StalkerPage() {
                         EXPLORE WORKFLOWS:
                       </p>
                       <div className="flex flex-wrap gap-2 font-mono text-xs">
-                        <a
-                          href="#skills"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 transition-all"
-                        >
-                          <Zap className="h-3.5 w-3.5 text-green-400" />
-                          <span>Stacks & Skills</span>
-                        </a>
-                        <a
-                          href="#projects"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                        >
-                          <Cpu className="h-3.5 w-3.5 text-green-400" />
-                          <span>Projects</span>
-                        </a>
-                        <a
-                          href="#timeline"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                        >
-                          <FileText className="h-3.5 w-3.5 text-green-400" />
-                          <span>Experience & Awards</span>
-                        </a>
-                        <a
-                          href="#memories"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                        >
-                          <Sparkles className="h-3.5 w-3.5 text-green-400" />
-                          <span>Memories</span>
-                        </a>
-                        <a
-                          href="#guestbook"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
-                        >
-                          <Code2 className="h-3.5 w-3.5 text-green-400" />
-                          <span>Guestbook</span>
-                        </a>
+                        <Tooltip content="Jump to technical skill matrix" side="top">
+                          <a
+                            href="#skills"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 transition-all"
+                          >
+                            <Zap className="h-3.5 w-3.5 text-green-400" />
+                            <span>Stacks & Skills</span>
+                          </a>
+                        </Tooltip>
+
+                        <Tooltip content="Jump to featured software projects" side="top">
+                          <a
+                            href="#projects"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
+                          >
+                            <Cpu className="h-3.5 w-3.5 text-green-400" />
+                            <span>Projects</span>
+                          </a>
+                        </Tooltip>
+
+                        <Tooltip content="Jump to career experience & awards" side="top">
+                          <a
+                            href="#timeline"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
+                          >
+                            <FileText className="h-3.5 w-3.5 text-green-400" />
+                            <span>Experience & Awards</span>
+                          </a>
+                        </Tooltip>
+
+                        <Tooltip content="Jump to dynamic polaroid memories gallery" side="top">
+                          <a
+                            href="#memories"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
+                          >
+                            <Sparkles className="h-3.5 w-3.5 text-green-400" />
+                            <span>Memories</span>
+                          </a>
+                        </Tooltip>
+
+                        <Tooltip content="Jump to digital guestbook graffiti wall" side="top">
+                          <a
+                            href="#guestbook"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 transition-all"
+                          >
+                            <Code2 className="h-3.5 w-3.5 text-green-400" />
+                            <span>Guestbook</span>
+                          </a>
+                        </Tooltip>
                       </div>
                     </div>
                   </div>
@@ -596,94 +622,114 @@ export default function StalkerPage() {
                   {/* Right Column: Live Telemetry & Bento Grid */}
                   <div className="lg:col-span-5 space-y-4">
                     {/* Live Spotify Card */}
-                    <div className="rounded-xl border border-green-500/20 bg-[#091009] p-4 font-mono">
-                      <div className="flex items-center justify-between text-[10px] text-zinc-500 uppercase tracking-widest mb-3 border-b border-green-500/10 pb-2">
-                        <div className="flex items-center gap-2 text-green-400">
-                          <SpotifyIcon size={14} className="text-green-400" />
-                          <span>
-                            {spotifyData.isPlaying
-                              ? "NOW PLAYING"
-                              : spotifyData.lastPlayed
-                              ? "LAST PLAYED"
-                              : "SPOTIFY STATUS"}
-                          </span>
+                    <Tooltip
+                      content={
+                        spotifyData.isPlaying
+                          ? "Currently playing on Rishab's Spotify account"
+                          : spotifyData.lastPlayed
+                          ? "Last played track on Spotify"
+                          : "Spotify is currently idle"
+                      }
+                      side="top"
+                      className="w-full block"
+                    >
+                      <div className="rounded-xl border border-green-500/20 bg-[#091009] p-4 font-mono w-full">
+                        <div className="flex items-center justify-between text-[10px] text-zinc-500 uppercase tracking-widest mb-3 border-b border-green-500/10 pb-2">
+                          <div className="flex items-center gap-2 text-green-400">
+                            <SpotifyIcon size={14} className="text-green-400" />
+                            <span>
+                              {spotifyData.isPlaying
+                                ? "NOW PLAYING"
+                                : spotifyData.lastPlayed
+                                ? "LAST PLAYED"
+                                : "SPOTIFY STATUS"}
+                            </span>
+                          </div>
+
+                          {spotifyData.isPlaying && (
+                            <div className="flex items-end gap-0.5 h-3">
+                              <span className="w-1 bg-green-400 animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
+                              <span className="w-1 bg-green-400 animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
+                              <span className="w-1 bg-green-400 animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
+                              <span className="w-1 bg-green-400 animate-[pulse_0.5s_ease-in-out_infinite] h-2.5" />
+                            </div>
+                          )}
                         </div>
 
-                        {spotifyData.isPlaying && (
-                          <div className="flex items-end gap-0.5 h-3">
-                            <span className="w-1 bg-green-400 animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
-                            <span className="w-1 bg-green-400 animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
-                            <span className="w-1 bg-green-400 animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
-                            <span className="w-1 bg-green-400 animate-[pulse_0.5s_ease-in-out_infinite] h-2.5" />
+                        {spotifyData.isPlaying || spotifyData.lastPlayed ? (
+                          <a
+                            href={spotifyData.songUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block"
+                          >
+                            <p className="text-sm font-semibold text-white group-hover:text-green-400 transition-colors truncate">
+                              {spotifyData.title}
+                            </p>
+                            <p className="text-xs text-zinc-400 truncate mt-0.5">
+                              {spotifyData.artist}
+                            </p>
+                            <span className="text-[10px] text-green-500/70 mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
+                              Open in Spotify →
+                            </span>
+                          </a>
+                        ) : (
+                          <div className="text-xs text-zinc-500 flex items-center gap-2 py-1">
+                            <span className="h-2 w-2 rounded-full bg-zinc-700" />
+                            <span>Spotify is idle</span>
                           </div>
                         )}
                       </div>
-
-                      {spotifyData.isPlaying || spotifyData.lastPlayed ? (
-                        <a
-                          href={spotifyData.songUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group block"
-                        >
-                          <p className="text-sm font-semibold text-white group-hover:text-green-400 transition-colors truncate">
-                            {spotifyData.title}
-                          </p>
-                          <p className="text-xs text-zinc-400 truncate mt-0.5">
-                            {spotifyData.artist}
-                          </p>
-                          <span className="text-[10px] text-green-500/70 mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
-                            Open in Spotify →
-                          </span>
-                        </a>
-                      ) : (
-                        <div className="text-xs text-zinc-500 flex items-center gap-2 py-1">
-                          <span className="h-2 w-2 rounded-full bg-zinc-700" />
-                          <span>Spotify is idle</span>
-                        </div>
-                      )}
-                    </div>
+                    </Tooltip>
 
                     {/* 2x2 Telemetry Grid */}
                     <div className="grid grid-cols-2 gap-3 font-mono text-xs">
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5">
-                        <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          CURRENT ROLE
-                        </span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                          <span className="text-green-400 font-medium text-[11px] truncate">
-                            SDE @ Lolocab
+                      <Tooltip content="Lolocab: Carpooling & ridesharing platform" side="top" className="w-full">
+                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                            CURRENT ROLE
+                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
+                            <span className="text-green-400 font-medium text-[11px] truncate">
+                              SDE @ Lolocab
+                            </span>
+                          </div>
+                        </div>
+                      </Tooltip>
+
+                      <Tooltip content="Maharaja Agrasen Institute of Technology (2022-2026)" side="top" className="w-full">
+                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                            EDUCATION
+                          </span>
+                          <span className="text-zinc-200 font-medium text-[11px] truncate block">
+                            B.Tech IT • GPA 8.0
                           </span>
                         </div>
-                      </div>
+                      </Tooltip>
 
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5">
-                        <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          EDUCATION
-                        </span>
-                        <span className="text-zinc-200 font-medium text-[11px] truncate block">
-                          B.Tech IT • GPA 8.0
-                        </span>
-                      </div>
+                      <Tooltip content="Former Vice-Chair & Mentor at IEEE MAIT" side="top" className="w-full">
+                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                            COMMUNITY
+                          </span>
+                          <span className="text-zinc-200 font-medium text-[11px] truncate block">
+                            160+ MAIT Engineers
+                          </span>
+                        </div>
+                      </Tooltip>
 
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5">
-                        <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          COMMUNITY
-                        </span>
-                        <span className="text-zinc-200 font-medium text-[11px] truncate block">
-                          160+ MAIT Engineers
-                        </span>
-                      </div>
-
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5">
-                        <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          HONORS
-                        </span>
-                        <span className="text-green-400 font-medium text-[11px] truncate block">
-                          J.K. Pal & India Council
-                        </span>
-                      </div>
+                      <Tooltip content="National IEEE awards for leadership & technical excellence" side="top" className="w-full">
+                        <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3.5 w-full text-left">
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
+                            HONORS
+                          </span>
+                          <span className="text-green-400 font-medium text-[11px] truncate block">
+                            J.K. Pal & India Council
+                          </span>
+                        </div>
+                      </Tooltip>
                     </div>
                   </div>
                 </div>
@@ -834,31 +880,37 @@ export default function StalkerPage() {
               url="https://github.com/rishab2211"
               label="github.com/rishab2211"
               icon={<GithubIcon size={18} />}
+              tooltip="View GitHub profile, commits & source code"
             />
             <SocialPill
               url="https://linkedin.com/in/rishab2211"
               label="linkedin.com/in/rishab2211"
               icon={<LinkedinIcon size={18} />}
+              tooltip="Connect with Rishab on LinkedIn"
             />
             <SocialPill
               url="https://rishab2211.hashnode.dev"
               label="rishab2211.hashnode.dev"
               icon={<BookOpen className="h-4 w-4 text-green-400" />}
+              tooltip="Read technical engineering blogs on Hashnode"
             />
             <SocialPill
               url="https://x.com/Rshb_twts"
               label="x.com/Rshb_twts"
               icon={<TwitterIcon size={18} />}
+              tooltip="Follow on X (Twitter) @Rshb_twts"
             />
             <SocialPill
               url="mailto:rishabraj2211@gmail.com"
               label="rishabraj2211@gmail.com"
               icon={<Radio className="h-4 w-4 text-green-400" />}
+              tooltip="Send email directly to rishabraj2211@gmail.com"
             />
             <SocialPill
               url="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
               label="resume_latest.pdf"
               icon={<FileText className="h-4 w-4 text-green-400" />}
+              tooltip="Open latest resume PDF in Google Drive"
             />
           </div>
         </div>

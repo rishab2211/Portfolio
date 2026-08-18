@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
+import { Tooltip } from "@/components/shared/Tooltip";
 
 // Isolated zero-re-render timer component
 const LiveTime = memo(function LiveTime() {
@@ -125,30 +126,41 @@ export default function GatewayPage() {
       {/* ── TOP HUD HEADER ── */}
       <header className="relative z-30 w-full px-4 sm:px-8 pt-6 sm:pt-8 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-zinc-500">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
-          <span className="text-zinc-300 font-semibold tracking-wider">RISHAB RAJ</span>
+          <Tooltip content="Systems operational • Available for engineering roles" side="bottom">
+            <span className="flex items-center gap-2.5 cursor-help">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-zinc-300 font-semibold tracking-wider">RISHAB RAJ</span>
+            </span>
+          </Tooltip>
           <span className="text-zinc-700 hidden sm:inline">•</span>
           <span className="hidden sm:inline text-zinc-500">SYSTEMS & AI ENGINEER</span>
         </div>
 
         <div className="flex items-center gap-4 text-[10px] sm:text-[11px]">
-          <div className="flex items-center gap-1.5 text-zinc-400">
-            <Radio className="h-3 w-3 text-emerald-400 shrink-0" />
-            <span>DELHI, IN</span>
-            <span className="text-zinc-600 hidden sm:inline">
-              <LiveTime />
-            </span>
-          </div>
+          <Tooltip content="Local time in New Delhi, India" side="bottom">
+            <div className="flex items-center gap-1.5 text-zinc-400 cursor-help">
+              <Radio className="h-3 w-3 text-emerald-400 shrink-0" />
+              <span>DELHI, IN</span>
+              <span className="text-zinc-600 hidden sm:inline">
+                <LiveTime />
+              </span>
+            </div>
+          </Tooltip>
+
           <div className="hidden md:flex items-center gap-1.5 text-zinc-600">
-            <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400">
-              [1] STALKER
-            </span>
-            <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400">
-              [2] FOUNDER
-            </span>
+            <Tooltip content="Press '1' or 'S' key on keyboard to navigate" side="bottom">
+              <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400 cursor-help">
+                [1] STALKER
+              </span>
+            </Tooltip>
+            <Tooltip content="Press '2' or 'F' key on keyboard to navigate" side="bottom" align="end">
+              <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400 cursor-help">
+                [2] FOUNDER
+              </span>
+            </Tooltip>
           </div>
         </div>
       </header>
@@ -203,9 +215,11 @@ export default function GatewayPage() {
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     <span>[01 // DEV_LOGS]</span>
                   </div>
-                  <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
-                    KEY [1]
-                  </span>
+                  <Tooltip content="Shortcut: Press '1' or 'S'" side="top">
+                    <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
+                      KEY [1]
+                    </span>
+                  </Tooltip>
                 </div>
 
                 {/* Icon & Title */}
@@ -230,18 +244,26 @@ export default function GatewayPage() {
 
                 {/* Tech Pills */}
                 <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #LiveTelemetry
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #WebSockets
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #DigitalWall
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #Memories
-                  </span>
+                  <Tooltip content="Live Spotify track synchronization" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                      #LiveTelemetry
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="Real-time WebSockets & Socket.io" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                      #WebSockets
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="Leave public messages on live wall" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                      #DigitalWall
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="Cloudinary dynamic memories gallery" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
+                      #Memories
+                    </span>
+                  </Tooltip>
                 </div>
               </div>
 
@@ -274,9 +296,11 @@ export default function GatewayPage() {
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     <span>[02 // SYSTEMS_ROI]</span>
                   </div>
-                  <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-colors">
-                    KEY [2]
-                  </span>
+                  <Tooltip content="Shortcut: Press '2' or 'F'" side="top">
+                    <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-colors">
+                      KEY [2]
+                    </span>
+                  </Tooltip>
                 </div>
 
                 {/* Icon & Title */}
@@ -301,18 +325,26 @@ export default function GatewayPage() {
 
                 {/* Tech Pills */}
                 <div className="mt-5 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    System Architecture
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    High Concurrency
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    Full-Stack AI
-                  </span>
-                  <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    Technical Leadership
-                  </span>
+                  <Tooltip content="Distributed systems & schema indexing" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                      System Architecture
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="1M+ RPS Java socket engine benchmark" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                      High Concurrency
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="Gemini AI workflows & autonomous scraping" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                      Full-Stack AI
+                    </span>
+                  </Tooltip>
+                  <Tooltip content="160+ Student branch scaling & national awards" side="top">
+                    <span className="px-2 py-0.5 rounded-xs bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
+                      Technical Leadership
+                    </span>
+                  </Tooltip>
                 </div>
               </div>
 
@@ -334,45 +366,53 @@ export default function GatewayPage() {
         </div>
 
         <div className="flex items-center gap-3 text-[11px]">
-          <a
-            href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
-          >
-            <FileText className="h-3.5 w-3.5" />
-            <span>Resume</span>
-          </a>
+          <Tooltip content="View latest resume PDF on Google Drive" side="top">
+            <a
+              href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
+            >
+              <FileText className="h-3.5 w-3.5" />
+              <span>Resume</span>
+            </a>
+          </Tooltip>
 
-          <a
-            href="https://github.com/rishab2211"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
-          >
-            <GithubIcon size={14} className="shrink-0" />
-            <span>GitHub</span>
-          </a>
+          <Tooltip content="github.com/rishab2211 (Repositories & Code)" side="top">
+            <a
+              href="https://github.com/rishab2211"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
+            >
+              <GithubIcon size={14} className="shrink-0" />
+              <span>GitHub</span>
+            </a>
+          </Tooltip>
 
-          <a
-            href="https://linkedin.com/in/rishab2211"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
-          >
-            <LinkedinIcon size={14} className="shrink-0" />
-            <span>LinkedIn</span>
-          </a>
+          <Tooltip content="linkedin.com/in/rishab2211 (Connect on LinkedIn)" side="top">
+            <a
+              href="https://linkedin.com/in/rishab2211"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/30 hover:text-white transition-all"
+            >
+              <LinkedinIcon size={14} className="shrink-0" />
+              <span>LinkedIn</span>
+            </a>
+          </Tooltip>
 
-          <a
-            href="https://rishab2211.hashnode.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all"
-          >
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Blogs</span>
-          </a>
+          <Tooltip content="rishab2211.hashnode.dev (Technical engineering blogs)" side="top">
+            <a
+              href="https://rishab2211.hashnode.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Blogs</span>
+            </a>
+          </Tooltip>
         </div>
       </footer>
     </main>

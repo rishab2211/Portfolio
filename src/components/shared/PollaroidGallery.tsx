@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect, useMemo } from "react";
 import { FALLBACK_MEMORIES, type MemoryPhoto } from "@/lib/cloudinary";
+import { Tooltip } from "@/components/shared/Tooltip";
 
 const FOLDERS = ["All", "IEEE", "Hackathons", "Trips"] as const;
 
@@ -57,17 +58,26 @@ export function PolaroidGallery() {
 
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
           {FOLDERS.map((folder) => (
-            <button
+            <Tooltip
               key={folder}
-              onClick={() => setActiveFolder(folder)}
-              className={`px-3 sm:px-4 py-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-200 border rounded-sm ${
-                activeFolder === folder
-                  ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.15)]"
-                  : "border-white/5 text-zinc-600 hover:border-white/20 hover:text-zinc-400 bg-transparent"
-              }`}
+              content={
+                folder === "All"
+                  ? "Show all memories"
+                  : `Filter by ${folder} events & memories`
+              }
+              side="top"
             >
-              {folder}
-            </button>
+              <button
+                onClick={() => setActiveFolder(folder)}
+                className={`px-3 sm:px-4 py-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-200 border rounded-sm cursor-pointer ${
+                  activeFolder === folder
+                    ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.15)]"
+                    : "border-white/5 text-zinc-600 hover:border-white/20 hover:text-zinc-400 bg-transparent"
+                }`}
+              >
+                {folder}
+              </button>
+            </Tooltip>
           ))}
         </div>
       </div>

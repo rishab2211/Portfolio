@@ -13,14 +13,11 @@ import {
   CheckCircle2,
   FileDown,
   Award,
-  Zap,
-  Server,
-  Network,
-  Sparkles,
 } from "lucide-react";
 import { useState } from "react";
 import { Projects } from "@/components/shared/Projects";
 import { Timeline } from "@/components/shared/Timeline";
+import { Tooltip } from "@/components/shared/Tooltip";
 
 export default function FounderPage() {
   const [copied, setCopied] = useState(false);
@@ -53,13 +50,15 @@ export default function FounderPage() {
 
       {/* Top Floating Nav */}
       <nav className="fixed top-6 left-6 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-mono text-xs rounded-full bg-black/80 px-4 py-2 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10 hover:border-white/25 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Gateway
-        </Link>
+        <Tooltip content="Return to Gateway selection" side="right">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono text-xs rounded-full bg-black/80 px-4 py-2 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10 hover:border-white/25 backdrop-blur-md transition-all uppercase tracking-widest shadow-lg"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Gateway
+          </Link>
+        </Tooltip>
       </nav>
 
       {/* ── SECTION 1: HERO (THE ARCHITECT & BUILDER) ── */}
@@ -111,17 +110,19 @@ export default function FounderPage() {
                 <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
               </a>
 
-              <a
-                href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between w-full sm:w-64 px-5 py-3 border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300 rounded-xs"
-              >
-                <span className="font-mono text-[10px] sm:text-xs text-zinc-400 uppercase tracking-widest group-hover:text-white transition-colors">
-                  View Formal Resume
-                </span>
-                <FileDown className="h-3.5 w-3.5 text-zinc-600 group-hover:text-white transition-colors" />
-              </a>
+              <Tooltip content="Open formal resume PDF in Google Drive" side="right">
+                <a
+                  href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between w-full sm:w-64 px-5 py-3 border border-white/[0.08] hover:border-white/[0.2] bg-white/[0.01] hover:bg-white/[0.04] transition-all duration-300 rounded-xs"
+                >
+                  <span className="font-mono text-[10px] sm:text-xs text-zinc-400 uppercase tracking-widest group-hover:text-white transition-colors">
+                    View Formal Resume
+                  </span>
+                  <FileDown className="h-3.5 w-3.5 text-zinc-600 group-hover:text-white transition-colors" />
+                </a>
+              </Tooltip>
             </div>
           </div>
         </motion.div>
@@ -345,27 +346,29 @@ export default function FounderPage() {
               Open for high-impact software engineering roles, distributed systems discussions, and visionary product collaborations.
             </p>
 
-            <button
-              onClick={handleCopy}
-              aria-label="Copy Rishab's email address"
-              className="group flex items-center gap-4 text-left cursor-pointer"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900/50 transition-colors group-hover:bg-white group-hover:text-black">
-                {copied ? (
-                  <CheckCircle2 className="h-5 w-5 text-green-400 group-hover:text-black" />
-                ) : (
-                  <Copy className="h-5 w-5" />
-                )}
-              </div>
-              <div>
-                <span className="block font-mono text-xs text-zinc-500 uppercase tracking-widest mb-1">
-                  {copied ? "Copied to clipboard" : "Copy email address"}
-                </span>
-                <span className="block text-xl text-zinc-200 transition-colors group-hover:text-white">
-                  rishabraj2211@gmail.com
-                </span>
-              </div>
-            </button>
+            <Tooltip content={copied ? "Email copied to clipboard!" : "Click to copy rishabraj2211@gmail.com"} side="right">
+              <button
+                onClick={handleCopy}
+                aria-label="Copy Rishab's email address"
+                className="group flex items-center gap-4 text-left cursor-pointer"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-800 bg-zinc-900/50 transition-colors group-hover:bg-white group-hover:text-black">
+                  {copied ? (
+                    <CheckCircle2 className="h-5 w-5 text-green-400 group-hover:text-black" />
+                  ) : (
+                    <Copy className="h-5 w-5" />
+                  )}
+                </div>
+                <div>
+                  <span className="block font-mono text-xs text-zinc-500 uppercase tracking-widest mb-1">
+                    {copied ? "Copied to clipboard" : "Copy email address"}
+                  </span>
+                  <span className="block text-xl text-zinc-200 transition-colors group-hover:text-white">
+                    rishabraj2211@gmail.com
+                  </span>
+                </div>
+              </button>
+            </Tooltip>
           </div>
 
           <div className="flex flex-col gap-6 md:text-right">
@@ -373,38 +376,49 @@ export default function FounderPage() {
               External Nodes
             </span>
             <div className="flex flex-col gap-3.5">
-              <a
-                href="https://github.com/rishab2211"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg text-zinc-400 hover:text-white transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/rishab2211"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg text-zinc-400 hover:text-white transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://rishab2211.hashnode.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg text-zinc-400 hover:text-white transition-colors"
-              >
-                Hashnode Blogs
-              </a>
-              <a
-                href="https://x.com/Rshb_twts"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg text-zinc-400 hover:text-white transition-colors"
-              >
-                X (Twitter)
-              </a>
+              <Tooltip content="github.com/rishab2211" side="left">
+                <a
+                  href="https://github.com/rishab2211"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                >
+                  GitHub
+                </a>
+              </Tooltip>
+
+              <Tooltip content="linkedin.com/in/rishab2211" side="left">
+                <a
+                  href="https://linkedin.com/in/rishab2211"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </Tooltip>
+
+              <Tooltip content="rishab2211.hashnode.dev" side="left">
+                <a
+                  href="https://rishab2211.hashnode.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                >
+                  Hashnode Blogs
+                </a>
+              </Tooltip>
+
+              <Tooltip content="x.com/Rshb_twts" side="left">
+                <a
+                  href="https://x.com/Rshb_twts"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg text-zinc-400 hover:text-white transition-colors"
+                >
+                  X (Twitter)
+                </a>
+              </Tooltip>
             </div>
           </div>
         </div>
@@ -438,10 +452,12 @@ function BentoCard({
             {icon}
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] font-mono text-[10px] text-zinc-200 tracking-wider uppercase group-hover:border-white/30 group-hover:text-white transition-all shadow-xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-            <span>{metric}</span>
-          </div>
+          <Tooltip content="Production engineering metric" side="top" align="end">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] font-mono text-[10px] text-zinc-200 tracking-wider uppercase group-hover:border-white/30 group-hover:text-white transition-all shadow-xs cursor-help">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>{metric}</span>
+            </div>
+          </Tooltip>
         </div>
 
         {/* Title */}
