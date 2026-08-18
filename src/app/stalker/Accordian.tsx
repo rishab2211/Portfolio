@@ -17,7 +17,7 @@ const blogs: Blog[] = [
     title: "Optimizing WebSocket Connections & State in High-Traffic Environments",
     summary:
       "A deep dive into managing heartbeat timeouts, reconnection resilience, and Zustand state synchronization across distributed instances.",
-    link: "https://rishab2211.hashnode.dev",
+    link: "https://rishab2211.substack.com",
     date: "Jun 2026",
     tags: ["WebSockets", "Node.js", "State Management"],
   },
@@ -25,7 +25,7 @@ const blogs: Blog[] = [
     title: "Building High-Throughput Socket Servers from Scratch in Java",
     summary:
       "Benchmarking 1M+ RPS with custom thread pools, non-blocking I/O, and slashing memory overhead compared to naive multi-threading.",
-    link: "https://rishab2211.hashnode.dev",
+    link: "https://rishab2211.substack.com",
     date: "May 2026",
     tags: ["Java", "Concurrency", "Systems"],
   },
@@ -33,7 +33,7 @@ const blogs: Blog[] = [
     title: "Implementing Dynamic Pre-rendering & SEO on Edge Microservices",
     summary:
       "How we engineered custom node-based pre-rendering scripts, dynamic sitemaps, and asset pipelines to maximize search indexability.",
-    link: "https://rishab2211.hashnode.dev",
+    link: "https://rishab2211.substack.com",
     date: "Apr 2026",
     tags: ["SEO", "Node.js", "Edge Compute"],
   },
@@ -49,12 +49,12 @@ export function TechBlogsAccordion() {
           Technical Writing & Strategy
         </h2>
         <a
-          href="https://rishab2211.hashnode.dev"
+          href="https://rishab2211.substack.com"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 font-mono text-xs text-green-400 hover:underline"
         >
-          View all on Hashnode <ExternalLink className="h-3 w-3" />
+          View all on Substack <ExternalLink className="h-3 w-3" />
         </a>
       </div>
 
@@ -111,7 +111,7 @@ export function TechBlogsAccordion() {
                         rel="noopener noreferrer"
                         className="mt-5 inline-flex items-center gap-2 font-mono text-xs text-green-400 hover:text-green-300 transition-colors"
                       >
-                        Read on Hashnode <ArrowRight className="h-3.5 w-3.5" />
+                        Read on Substack <ArrowRight className="h-3.5 w-3.5" />
                       </a>
                     </div>
                   </motion.div>

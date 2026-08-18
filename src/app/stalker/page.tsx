@@ -22,14 +22,16 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Guestbook } from "./Guestbook";
-import { Timeline } from "@/components/shared/Timeline";
 import { Projects } from "@/components/shared/Projects";
+import { Timeline } from "@/components/shared/Timeline";
+import { Blogs } from "@/components/shared/Blogs";
 import { PolaroidGallery } from "@/components/shared/PollaroidGallery";
 import {
   GithubIcon,
   LinkedinIcon,
   SpotifyIcon,
   TwitterIcon,
+  SubstackIcon,
 } from "@/components/shared/SocialIcons";
 import { Tooltip } from "@/components/shared/Tooltip";
 
@@ -591,6 +593,14 @@ export default function StalkerPage() {
                         </a>
 
                         <a
+                          href="#blogs"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Blogs</span>
+                        </a>
+
+                        <a
                           href="#memories"
                           className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
                         >
@@ -815,6 +825,20 @@ export default function StalkerPage() {
         </div>
       </section>
 
+      {/* ── SECTION 5: ENGINEERING ESSAYS & SUBSTACK ── */}
+      <section
+        id="blogs"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
+      >
+        <div className="mx-auto max-w-5xl">
+          <SectionHeader
+            command="./cat_engineering_logs.sh"
+            label="technical essays & substack feed"
+          />
+          <Blogs variant="stalker" />
+        </div>
+      </section>
+
       {/* ── SECTION 5: MEMORIES GALLERY ── */}
       <section
         id="memories"
@@ -859,10 +883,10 @@ export default function StalkerPage() {
               tooltip="Connect with Rishab on LinkedIn"
             />
             <SocialPill
-              url="https://rishab2211.hashnode.dev"
-              label="rishab2211.hashnode.dev"
-              icon={<BookOpen className="h-4 w-4 text-green-400" />}
-              tooltip="Read technical engineering blogs on Hashnode"
+              url="https://rishab2211.substack.com"
+              label="rishab2211.substack.com"
+              icon={<SubstackIcon size={18} className="text-[#FF6719]" />}
+              tooltip="Read technical essays and newsletters on Substack"
             />
             <SocialPill
               url="https://x.com/Rshb_twts"

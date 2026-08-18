@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import { Projects } from "@/components/shared/Projects";
 import { Timeline } from "@/components/shared/Timeline";
+import { Blogs } from "@/components/shared/Blogs";
 import { Tooltip } from "@/components/shared/Tooltip";
 
 export default function FounderPage() {
@@ -335,6 +336,13 @@ export default function FounderPage() {
         </div>
       </section>
 
+      {/* ── SECTION 4.5: WRITINGS & PUBLICATIONS ── */}
+      <section id="publications" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]">
+        <div className="max-w-7xl mx-auto">
+          <Blogs variant="founder" />
+        </div>
+      </section>
+
       {/* ── SECTION 5: CONTACT & DISCUSS ALIGNMENT ── */}
       <section id="contact" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-36 border-t border-white/[0.04]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12">
@@ -398,14 +406,14 @@ export default function FounderPage() {
                 </a>
               </Tooltip>
 
-              <Tooltip content="rishab2211.hashnode.dev" side="left">
+              <Tooltip content="rishab2211.substack.com" side="left">
                 <a
-                  href="https://rishab2211.hashnode.dev"
+                  href="https://rishab2211.substack.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm sm:text-lg text-zinc-400 hover:text-white transition-colors"
                 >
-                  Hashnode Blogs
+                  Substack Essays
                 </a>
               </Tooltip>
 

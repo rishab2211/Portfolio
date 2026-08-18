@@ -115,7 +115,7 @@ export const projectsData: Project[] = [
     tech_stack: ["React", "HonoJS", "Cloudflare Workers", "Prisma"],
     links: {
       github: "https://github.com/rishab2211/Blogging-web-app",
-      demo: "https://rishab2211.hashnode.dev",
+      demo: "https://rishab2211.substack.com",
     },
     founder: {
       tagline: "Type-safe dynamic publishing deployed on global edge runtimes",

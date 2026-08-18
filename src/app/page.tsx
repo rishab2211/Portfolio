@@ -12,7 +12,7 @@ import {
   FileText,
   Sparkles,
 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/shared/SocialIcons";
+import { GithubIcon, LinkedinIcon, SubstackIcon } from "@/components/shared/SocialIcons";
 import { Tooltip } from "@/components/shared/Tooltip";
 
 // Isolated zero-re-render timer component
@@ -389,15 +389,15 @@ export default function GatewayPage() {
             </a>
           </Tooltip>
 
-          <Tooltip content="rishab2211.hashnode.dev (Technical engineering blogs)" side="top" align="end">
+          <Tooltip content="rishab2211.substack.com (Technical essays & newsletters)" side="top" align="end">
             <a
-              href="https://rishab2211.hashnode.dev"
+              href="https://rishab2211.substack.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/5 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FF6719]/10 border border-[#FF6719]/30 text-[#FF6719] hover:bg-[#FF6719]/20 hover:border-[#FF6719]/50 transition-all"
             >
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Blogs</span>
+              <SubstackIcon size={14} className="shrink-0" />
+              <span>Substack</span>
             </a>
           </Tooltip>
         </div>
