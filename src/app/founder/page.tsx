@@ -88,10 +88,9 @@ export default function FounderPage() {
 
           <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl">
             <p className="text-sm sm:text-lg text-zinc-400 leading-relaxed font-light">
-              I build high-concurrency backends, autonomous AI pipelines, and
-              edge-optimized microservices aligned directly with business ROI.
-              Code engineered to eliminate latency bottlenecks, scale gracefully,
-              and endure heavy loads.
+              I gravitate toward the hard parts — the systems that need to hold under real load,
+              the pipelines where a failure at 2am costs someone money. I care less about
+              being clever and more about building things that just keep working.
             </p>
 
             <div className="flex flex-col items-start gap-4 sm:gap-6">
@@ -107,7 +106,7 @@ export default function FounderPage() {
                 href="#contact"
                 className="group flex items-center gap-3 font-mono text-xs sm:text-sm text-zinc-500 uppercase tracking-widest hover:text-white transition-colors"
               >
-                Discuss Alignment
+                Get in touch
                 <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
               </a>
 
@@ -269,7 +268,7 @@ export default function FounderPage() {
 
                 <div className="flex-1 pt-1 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
                   <h3 className="text-lg sm:text-2xl font-medium tracking-tight text-zinc-200 mb-2 sm:mb-3 group-hover/item:text-white transition-colors">
-                    Market Viability {">"} Mechanics
+                    Ship something real, then optimize.
                   </h3>
                   <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
                     Every line of code is a business liability until it generates
@@ -299,7 +298,7 @@ export default function FounderPage() {
 
                 <div className="flex-1 pt-1 sm:pt-6 transition-transform duration-500 ease-out group-hover/item:translate-x-2">
                   <h3 className="text-lg sm:text-2xl font-medium tracking-tight text-zinc-200 mb-2 sm:mb-3 group-hover/item:text-white transition-colors">
-                    Compound Execution Over Heroics
+                    Systems beat sprints.
                   </h3>
                   <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
                     Sustainable engineering velocity isn&apos;t built on late-night
@@ -348,10 +347,10 @@ export default function FounderPage() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-5xl font-medium tracking-tight text-white mb-4 sm:mb-6">
-              Initiate Contact.
+              Worth a conversation?
             </h2>
             <p className="text-sm sm:text-lg text-zinc-400 font-light leading-relaxed mb-8 sm:mb-10">
-              Open for high-impact software engineering roles, distributed systems discussions, and visionary product collaborations.
+              Looking for a place where good engineering actually matters — where I can bring what I know and have it move something real.
             </p>
 
             <Tooltip content={copied ? "Email copied to clipboard!" : "Click to copy rishabraj2211@gmail.com"} side="right">
@@ -381,7 +380,7 @@ export default function FounderPage() {
 
           <div className="flex flex-col gap-4 sm:gap-6 md:text-right w-full sm:w-auto">
             <span className="font-mono text-[10px] sm:text-xs tracking-widest text-zinc-600 uppercase">
-              External Nodes
+              Find me here
             </span>
             <div className="flex flex-wrap sm:flex-col gap-3 sm:gap-3.5">
               <Tooltip content="github.com/rishab2211" side="left">

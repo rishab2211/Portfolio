@@ -186,7 +186,7 @@ function SkillCard({
                 {title}
               </h3>
               <p className="font-mono text-[9px] sm:text-[10px] text-zinc-500 truncate mt-0.5 sm:mt-1">
-                Tap to decrypt stack →
+                flip for the stack →
               </p>
             </div>
           </div>
@@ -555,11 +555,7 @@ export default function StalkerPage() {
                     </div>
 
                     <p className="font-sans text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
-                      I build high-concurrency Java socket servers, production
-                      Node.js backends at <span className="text-white font-medium">Lolocab</span>,
-                      and autonomous web automation pipelines with Gemini AI.
-                      Previously scaled the <span className="text-white font-medium">IEEE MAIT</span> community
-                      to 160+ student engineers in Delhi.
+                      I tend to build the things that require actually understanding how something works at the bottom — not just what the framework does for you. Shipped backend systems that hold under real traffic, and spent three years turning a near-empty student community into 160+ people who actually build things.
                     </p>
 
                     {/* Navigation Chips */}
@@ -791,7 +787,7 @@ export default function StalkerPage() {
               index={7}
               icon={<Users className="text-green-400 h-5 w-5" />}
               title="Leadership & Scale"
-              tech="Scaled IEEE MAIT <10 to 160+ members, 2000+ outreach, Agentic AI Hackathon"
+              tech="Scaled IEEE MAIT from <10 to 160+ members, 2000+ outreach, national-level events"
             />
           </div>
         </div>
@@ -804,7 +800,7 @@ export default function StalkerPage() {
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
-            command="./view_projects.sh"
+            command="cat projects.md"
             label="featured systems & projects"
           />
           <Projects variant="stalker" />
@@ -818,7 +814,7 @@ export default function StalkerPage() {
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
-            command="./cat_experience.log"
+            command="git log --author=rishab"
             label="experience & honors"
           />
           <Timeline variant="stalker" />
@@ -832,7 +828,7 @@ export default function StalkerPage() {
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
-            command="./cat_engineering_logs.sh"
+            command="cat blog/*.md | head -20"
             label="technical essays & substack feed"
           />
           <Blogs variant="stalker" />
@@ -866,7 +862,7 @@ export default function StalkerPage() {
       <section className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 bg-black">
         <div className="mx-auto max-w-5xl">
           <SectionHeader
-            command="./connect_socials.sh"
+            command="ssh connect@rishab.dev"
             label="links & contact"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3">

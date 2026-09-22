@@ -30,7 +30,7 @@ export const timelineData: TimelineEvent[] = [
     stalkerText:
       "Deep diving into systems programming, backend architectures, Ubuntu servers, and managing high-performance packages.",
     founderText:
-      "Pursuing B.Tech in Information Technology at Maharaja Agrasen Institute of Technology (GPA: 8). Core coursework in Data Structures & Algorithms, DBMS, Computer Networks, Operating Systems, Compiler Design, and OOPs.",
+      "B.Tech IT @ MAIT, Delhi. GPA 8. Spent most of my time building things outside the curriculum — the DSA and networks coursework still held up though.",
   },
   {
     id: "high-school",
@@ -63,9 +63,9 @@ export const timelineData: TimelineEvent[] = [
     category: "ieee",
     tags: ["Advisory", "20+ Member Exec Team", "160+ Community"],
     stalkerText:
-      "Orchestrated proactive restructuring to transition to an advisory role, empowering the 20+ member executive team and mentoring 160+ engineers.",
+      "When I left as VC, I made sure the next team was set up to actually run it. Stayed on as mentor for 20+ people, mostly to answer 'what do I do now?' questions.",
     founderText:
-      "Orchestrated a proactive, mid-tenure organizational restructuring, transitioning to an advisory role to empower a 20+ member executive team and mentoring an engineering community of 160+ students on technical architecture and project delivery.",
+      "Transitioned to an advisory role after my VC term to support the incoming 20+ member leadership team and mentor students on project delivery and technical architecture.",
   },
   {
     id: "ieee-award-council",
@@ -83,11 +83,11 @@ export const timelineData: TimelineEvent[] = [
     date: "Aug 2023 - Mar 2026",
     title: "Vice Chairperson • IEEE MAIT Student Branch",
     category: "ieee",
-    tags: ["10 → 160+ Engineers", "2,000+ Outreach", "50+ Initiatives", "Agentic AI Hackathon"],
+    tags: ["10 → 160+ Engineers", "2,000+ Outreach", "50+ Initiatives", "National Events"],
     stalkerText:
-      "Scaled core active membership from under 10 to 160+ student engineers, impacted 2,000+ students, and spearheaded 50+ initiatives including a national Agentic AI Hackathon.",
+      "Took the branch from 8 active members to 160+. Ran 50+ national level events. I was the one setting direction and making sure things shipped.",
     founderText:
-      "Drove massive organizational growth by scaling active core membership from under 10 to 160+ student engineers, while expanding overall outreach to impact 2,000+ students across 50+ technical initiatives, including architecting a national-level Agentic AI Hackathon.",
+      "Grew active membership from under 10 to 160+ student engineers and expanded outreach to 2,000+ students across 50+ technical initiatives and national hackathons.",
   },
   {
     id: "ieee-core",

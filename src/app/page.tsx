@@ -10,9 +10,6 @@ import {
   ArrowRight,
   Radio,
   FileText,
-  Sparkles,
-  Zap,
-  ShieldCheck,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, SubstackIcon } from "@/components/shared/SocialIcons";
 import { Tooltip } from "@/components/shared/Tooltip";
@@ -172,17 +169,6 @@ export default function GatewayPage() {
 
       {/* ── MAIN HERO & PROMPT ── */}
       <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-6 sm:py-10 max-w-5xl mx-auto w-full text-center">
-        {/* Intro sequence */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/5 font-mono text-[10px] sm:text-xs tracking-widest text-zinc-400 uppercase mb-3.5 sm:mb-5"
-        >
-          <Sparkles className="h-3 w-3 text-emerald-400" />
-          <span>Context dictates the experience</span>
-        </motion.div>
-
         {/* The Main Question */}
         <motion.h1
           initial={{ opacity: 0, y: 8 }}
@@ -194,7 +180,7 @@ export default function GatewayPage() {
         </motion.h1>
 
         <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto font-light leading-relaxed mb-6 sm:mb-12">
-          Select an experience below to explore technical depth, live telemetry, or business impact.
+          Two paths. Pick the one that fits you better.
         </p>
 
         {/* The Choice Cards */}
@@ -322,7 +308,7 @@ export default function GatewayPage() {
                 </p>
 
                 <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-2.5 sm:mt-3">
-                  For founders, recruiters, and engineering leaders. High-concurrency system design, scalable microservices, edge compute, and technical execution built for business impact.
+                  For founders and recruiters. Here&apos;s what I&apos;ve actually built.
                 </p>
 
                 {/* Tech Pills */}
@@ -353,13 +339,7 @@ export default function GatewayPage() {
       </div>
 
       {/* ── FLOATING BOTTOM DOCK ── */}
-      <footer className="relative z-30 w-full px-4 sm:px-8 pb-5 sm:pb-7 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 font-mono text-xs text-zinc-500">
-        <div className="flex items-center justify-center gap-2 text-[10px] sm:text-[11px] text-center max-w-full">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
-          <span className="tracking-wider uppercase text-zinc-400 truncate">
-            JAVA • SPRING BOOT • NODE.JS • NEXT.JS • DOCKER
-          </span>
-        </div>
+      <footer className="relative z-30 w-full px-4 sm:px-8 pb-5 sm:pb-7 flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3 sm:gap-4 font-mono text-xs text-zinc-500">
 
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-2.5 w-full sm:w-auto max-w-xs sm:max-w-none">
           <Tooltip content="View latest resume PDF on Google Drive" side="top">

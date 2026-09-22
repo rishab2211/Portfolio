@@ -50,10 +50,10 @@ export const projectsData: Project[] = [
       github: "https://github.com/rishab2211/ChatX",
     },
     founder: {
-      tagline: "High-availability (99.9% uptime) real-time communication platform",
+      tagline: "Real-time communication with WebSocket architecture and client-side state optimization",
       description: [
-        "Engineered a high-availability (99.9% uptime) real-time chat application, implementing a WebSocket architecture for instantaneous messaging and securing all endpoints with JWT authentication.",
-        "Made a comprehensive, multi-format file-sharing system (10MB upload capacity) and optimized UI performance by 40% through efficient state management with Zustand.",
+        "WebSocket-based chat app with JWT authentication and file sharing up to 10MB.",
+        "Maintained 99.9% uptime after debugging a message queue race condition, using Zustand to keep state management predictable across active rooms.",
       ],
     },
     stalker: {
@@ -95,10 +95,10 @@ export const projectsData: Project[] = [
       github: "https://github.com/rishab2211/Social",
     },
     founder: {
-      tagline: "Enterprise-grade relational social graph engine",
+      tagline: "Relational social backend with Spring Boot and PostgreSQL",
       description: [
-        "Engineered robust user authentication leveraging Spring Security and JWT, successfully securing 15+ RESTful API endpoints and managing secure user sessions.",
-        "Designed and developed a scalable, RESTful backend using Spring Boot and PostgreSQL, architecting the database schema and complex business logic for all core social features (posts, follows, likes & user profile).",
+        "Designed the database schema and business logic for posts, follows, likes, and profiles using Spring Boot and PostgreSQL.",
+        "Secured 15+ REST endpoints with Spring Security and stateless JWT authentication.",
       ],
     },
     stalker: {
@@ -118,10 +118,10 @@ export const projectsData: Project[] = [
       demo: "https://rishab2211.substack.com",
     },
     founder: {
-      tagline: "Type-safe dynamic publishing deployed on global edge runtimes",
+      tagline: "Serverless publishing platform deployed on Cloudflare Workers",
       description: [
-        "Developed a production-grade full-stack platform optimized for global edge compute networks.",
-        "Utilized HonoJS and Prisma to build ultra-responsive API routes with near-zero cold-start latency.",
+        "Built a full-stack publishing platform running at the edge on Cloudflare Workers using HonoJS and Prisma.",
+        "Designed lightweight API routes to keep cold starts near zero and response times minimal globally.",
       ],
     },
     stalker: {
