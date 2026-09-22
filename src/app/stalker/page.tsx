@@ -666,7 +666,7 @@ export default function StalkerPage() {
                       )}
                     </div>
 
-                    {/* 2x2 Telemetry Grid */}
+                    {/* Telemetry Row */}
                     <div className="grid grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs">
                       <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
                         <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
@@ -686,24 +686,6 @@ export default function StalkerPage() {
                         </span>
                         <span className="text-zinc-200 font-medium text-[10px] sm:text-[11px] truncate block">
                           B.Tech IT • GPA 8.0
-                        </span>
-                      </div>
-
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
-                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          COMMUNITY
-                        </span>
-                        <span className="text-zinc-200 font-medium text-[10px] sm:text-[11px] truncate block">
-                          160+ MAIT Engineers
-                        </span>
-                      </div>
-
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
-                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          HONORS
-                        </span>
-                        <span className="text-green-400 font-medium text-[10px] sm:text-[11px] truncate block">
-                          J.K. Pal & India Council
                         </span>
                       </div>
                     </div>
