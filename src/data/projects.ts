@@ -29,15 +29,15 @@ export const projectsData: Project[] = [
     founder: {
       tagline: "Intelligent, node-based custom scraping workflow builder",
       description: [
-        "Architected an intelligent web scraping platform featuring a drag-and-drop UI for custom workflows and an AI-powered data extraction module delivering 85% accuracy on unstructured data.",
-        "Implemented a robust, automated backend system using a cron-based scheduler and a comprehensive logging module for performance optimization and error tracking.",
+        "Architected an intelligent web scraping platform featuring a drag-and-drop workflow canvas and an LLM-driven structured schema normalization pipeline for dynamic web pages.",
+        "Engineered scheduled cron execution with automated retry backoffs and schema fallback validation when target DOM trees mutate.",
       ],
     },
     stalker: {
-      tagline: "Because writing RegEx makes me cry.",
+      tagline: "Replacing brittle RegEx with schema-aware LLM parsing.",
       description: [
-        "A drag-and-drop canvas where you just point at things and tell the AI to figure out the HTML mess.",
-        "Puppeteer does the heavy lifting, Gemini does the reading. I just sit back and watch the database fill up.",
+        "A drag-and-drop canvas where you wire nodes together and let the AI normalize the HTML chaos.",
+        "Puppeteer does the heavy lifting, Gemini extracts structured JSON. Scheduled crons keep the database fed.",
       ],
     },
   },
@@ -52,15 +52,15 @@ export const projectsData: Project[] = [
     founder: {
       tagline: "Real-time communication with WebSocket architecture and client-side state optimization",
       description: [
-        "WebSocket-based chat app with JWT authentication and file sharing up to 10MB.",
-        "Maintained 99.9% uptime after debugging a message queue race condition, using Zustand to keep state management predictable across active rooms.",
+        "WebSocket-based chat app with JWT authentication and binary file sharing up to 10MB.",
+        "Eliminated message interleaving race conditions during concurrent room broadcasts via Zustand client state reconciliation.",
       ],
     },
     stalker: {
-      tagline: "WebSockets go brrr. 🚀",
+      tagline: "Real-time state sync and binary streaming.",
       description: [
         "Built this because I was tired of standard chat apps compressing my files into oblivion.",
-        "State management was a nightmare until I found Zustand. Uptime is 99.9% (as long as I don't trip over the server cable).",
+        "Fixed room broadcast race conditions and state sync headaches with Zustand. Rock-solid persistence (as long as I don't trip over the server cable).",
       ],
     },
   },
@@ -75,15 +75,15 @@ export const projectsData: Project[] = [
     founder: {
       tagline: "High-performance bare-metal network server implementation",
       description: [
-        "Built a high-performance, multi-threaded web server and benchmarked it at 1M+ RPS.",
-        "Created efficient thread pooling system that reduced memory usage by 35% compared to the naive implementation.",
+        "Built a high-performance, multi-threaded web server and benchmarked it at 1M+ RPS over loopback with wrk.",
+        "Created efficient thread pooling system that reduced memory usage by 35% compared to unbounded thread-per-connection baselines.",
       ],
     },
     stalker: {
       tagline: "Bare metal, zero frameworks, maximum throughput.",
       description: [
-        "Decided to reinvent the wheel and build a web server in raw Java just to see how it works under the hood.",
-        "Handled 1 Million RPS and turned my laptop into a space heater in the process. Worth it.",
+        "Decided to reinvent the wheel and build an HTTP/1.1 server in raw Java sockets to study connection scheduling.",
+        "Pushed past 1M synthetic requests/sec on loopback benchmarks and turned my laptop into a space heater. Worth it.",
       ],
     },
   },
@@ -98,7 +98,7 @@ export const projectsData: Project[] = [
       tagline: "Relational social backend with Spring Boot and PostgreSQL",
       description: [
         "Designed the database schema and business logic for posts, follows, likes, and profiles using Spring Boot and PostgreSQL.",
-        "Secured 15+ REST endpoints with Spring Security and stateless JWT authentication.",
+        "Secured backend REST endpoints with Spring Security filter chains and stateless JWT authentication.",
       ],
     },
     stalker: {
@@ -115,7 +115,6 @@ export const projectsData: Project[] = [
     tech_stack: ["React", "HonoJS", "Cloudflare Workers", "Prisma"],
     links: {
       github: "https://github.com/rishab2211/Blogging-web-app",
-      demo: "https://rishab2211.substack.com",
     },
     founder: {
       tagline: "Serverless publishing platform deployed on Cloudflare Workers",

@@ -376,7 +376,7 @@ export default function StalkerPage() {
         break;
       case "projects":
         response =
-          "1. AI Web Scraping Automation Tool (Next.js, Puppeteer, Gemini)\n2. ChatX Real-Time Chat (React, Node, MongoDB, Zustand)\n3. Multithreaded TCP Server (Java Sockets, 1M+ RPS)\n4. Social App Backend (Java, Spring Boot, PostgreSQL, JWT)";
+          "1. AI Web Scraping Automation Tool (Next.js, Puppeteer, Gemini)\n2. ChatX Real-Time Chat (React, Node, MongoDB, Zustand)\n3. Multithreaded TCP Server (Java Sockets, 1M+ Loopback RPS)\n4. Social App Backend (Java, Spring Boot, PostgreSQL, JWT)";
         break;
       case "awards":
         response =
@@ -727,19 +727,19 @@ export default function StalkerPage() {
               index={0}
               icon={<BrainCircuit className="text-green-400 h-5 w-5" />}
               title="AI & Scraping Automation"
-              tech="Next.js, Puppeteer, ReactFlow, Gemini AI, Cron jobs (85%+ extraction accuracy)"
+              tech="Next.js, Puppeteer, ReactFlow, Gemini AI, Cron jobs (resilient schema parsing)"
             />
             <SkillCard
               index={1}
               icon={<Zap className="text-green-400 h-5 w-5" />}
               title="Real-Time Systems"
-              tech="Node.js, Express.js, WebSockets, Socket.IO, JWT, Zustand, 99.9% uptime"
+              tech="Node.js, Express.js, WebSockets, Socket.IO, JWT, Zustand (state reconciliation)"
             />
             <SkillCard
               index={2}
               icon={<Database className="text-green-400 h-5 w-5" />}
               title="Backend & REST APIs"
-              tech="Java, Spring Boot, PostgreSQL, Spring Security, JWT, 15+ secured endpoints"
+              tech="Java, Spring Boot, PostgreSQL, Spring Security, JWT (stateless auth filter chain)"
             />
             <SkillCard
               index={3}
@@ -757,7 +757,7 @@ export default function StalkerPage() {
               index={5}
               icon={<Network className="text-green-400 h-5 w-5" />}
               title="High Concurrency"
-              tech="Java Socket Programming, Multi-Threading, Thread Pooling (1M+ RPS benchmark)"
+              tech="Java Socket Programming, Multi-Threading, Thread Pooling (1M+ loopback RPS)"
             />
             <SkillCard
               index={6}

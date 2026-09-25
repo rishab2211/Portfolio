@@ -168,7 +168,7 @@ export default function FounderPage() {
             <BentoCard
               icon={<BrainCircuit className="h-5 w-5" />}
               title="Agentic AI & Scraping"
-              metric="85%+ Accuracy"
+              metric="Structured Extraction"
               description="Engineering node-based workflows and LLM extraction pipelines with Gemini AI, Puppeteer, and cron scheduling."
               tags={["Gemini AI", "Puppeteer", "ReactFlow", "Cron"]}
             />
@@ -176,7 +176,7 @@ export default function FounderPage() {
             <BentoCard
               icon={<Activity className="h-5 w-5" />}
               title="High-Concurrency JVM"
-              metric="1M+ RPS Benchmarked"
+              metric="1M+ Loopback RPS"
               description="Building bare-metal socket servers and thread pooling in Java that slash memory usage by 35% under peak traffic."
               tags={["Java Sockets", "Multithreading", "Thread Pooling"]}
             />

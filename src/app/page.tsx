@@ -314,7 +314,7 @@ export default function GatewayPage() {
                 {/* Tech Pills */}
                 <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[9px]">
                   <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    1M+ RPS Benchmarked
+                    1M+ Loopback RPS
                   </span>
                   <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
                     Bare-Metal Java Sockets

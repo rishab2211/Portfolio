@@ -24,7 +24,7 @@ const blogs: Blog[] = [
   {
     title: "Building High-Throughput Socket Servers from Scratch in Java",
     summary:
-      "Benchmarking 1M+ RPS with custom thread pools, non-blocking I/O, and slashing memory overhead compared to naive multi-threading.",
+      "Benchmarking 1M+ loopback RPS with custom worker thread pools, non-blocking I/O, and slashing memory overhead compared to unbounded multi-threading.",
     link: "https://rishab2211.substack.com",
     date: "May 2026",
     tags: ["Java", "Concurrency", "Systems"],
