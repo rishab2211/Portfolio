@@ -4,14 +4,12 @@ import { useState, useEffect, useRef, memo } from "react";
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Terminal, Briefcase, ArrowRight, Radio, FileText } from "lucide-react";
 import {
-  Terminal,
-  Briefcase,
-  ArrowRight,
-  Radio,
-  FileText,
-} from "lucide-react";
-import { GithubIcon, LinkedinIcon, SubstackIcon } from "@/components/shared/SocialIcons";
+  GithubIcon,
+  LinkedinIcon,
+  SubstackIcon,
+} from "@/components/shared/SocialIcons";
 import { Tooltip } from "@/components/shared/Tooltip";
 
 // Isolated zero-re-render timer component
@@ -30,7 +28,7 @@ const LiveTime = memo(function LiveTime() {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-        }) + " IST"
+        }) + " IST",
       );
     };
     updateTime();
@@ -61,14 +59,20 @@ const itemVariants: Variants = {
 
 export default function GatewayPage() {
   const router = useRouter();
-  const [hoveredCard, setHoveredCard] = useState<"stalker" | "founder" | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<"stalker" | "founder" | null>(
+    null,
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
 
   // Keyboard navigation shortcuts: [1] Stalker, [2] Founder
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      )
+        return;
 
       if (e.key === "1" || e.key.toLowerCase() === "s") {
         router.push("/stalker");
@@ -114,8 +118,8 @@ export default function GatewayPage() {
             hoveredCard === "stalker"
               ? "rgba(34, 197, 94, 0.08)"
               : hoveredCard === "founder"
-              ? "rgba(255, 255, 255, 0.06)"
-              : "rgba(255, 255, 255, 0.02)"
+                ? "rgba(255, 255, 255, 0.06)"
+                : "rgba(255, 255, 255, 0.02)"
           }, transparent 70%)`,
         }}
       />
@@ -128,17 +132,24 @@ export default function GatewayPage() {
       {/* ── TOP HUD HEADER ── */}
       <header className="relative z-30 w-full px-4 sm:px-8 pt-5 sm:pt-7 flex items-center justify-between gap-3 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-zinc-500">
         <div className="flex items-center gap-2 sm:gap-3">
-          <Tooltip content="Systems Operational • SDE Intern @ Lolocab" side="bottom">
+          <Tooltip
+            content="Systems Operational • SDE Intern @ Lolocab"
+            side="bottom"
+          >
             <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/10 cursor-help">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="text-zinc-200 font-semibold tracking-wider">RISHAB RAJ</span>
+              <span className="text-zinc-200 font-semibold tracking-wider">
+                RISHAB RAJ
+              </span>
             </div>
           </Tooltip>
           <span className="hidden md:inline text-zinc-600">•</span>
-          <span className="hidden md:inline text-zinc-500">SYSTEMS & AI ENGINEER</span>
+          <span className="hidden md:inline text-zinc-500">
+            SYSTEMS & AI ENGINEER
+          </span>
         </div>
 
         <div className="flex items-center gap-2.5 sm:gap-4 text-[10px] sm:text-[11px]">
@@ -158,7 +169,11 @@ export default function GatewayPage() {
                 [1] STALKER
               </span>
             </Tooltip>
-            <Tooltip content="Press '2' or 'F' key on keyboard" side="bottom" align="end">
+            <Tooltip
+              content="Press '2' or 'F' key on keyboard"
+              side="bottom"
+              align="end"
+            >
               <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400 cursor-help">
                 [2] FOUNDER
               </span>
@@ -207,11 +222,11 @@ export default function GatewayPage() {
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between mb-3.5 sm:mb-5">
-                  <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] text-emerald-400/90 tracking-widest uppercase">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>[01 // DEV_LOGS]</span>
-                  </div>
-                  <Tooltip content="Keyboard shortcut: Press '1' or 'S'" side="top" align="end">
+                  <Tooltip
+                    content="Keyboard shortcut: Press '1' or 'S'"
+                    side="top"
+                    align="end"
+                  >
                     <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-colors">
                       KEY [1]
                     </span>
@@ -231,33 +246,15 @@ export default function GatewayPage() {
                 </div>
 
                 <p className="font-mono text-[10px] sm:text-xs text-zinc-400 mt-1">
-                  [ Just Stalking • The Hacker Perspective ]
+                  [ Just Stalking ]
                 </p>
-
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-2.5 sm:mt-3">
-                  For curious developers, peers & late-night explorers. Real-time Spotify telemetry, socket decryptors, candid Polaroid memories, and interactive digital guestbook.
-                </p>
-
-                {/* Tech Pills */}
-                <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #LiveSpotify
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #WebSockets
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #DigitalGuestbook
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-emerald-300 group-hover:border-emerald-500/20 transition-colors">
-                    #Memories
-                  </span>
-                </div>
               </div>
 
               {/* Action Footer */}
               <div className="mt-5 sm:mt-6 pt-3.5 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-emerald-400 transition-colors">
-                <span className="tracking-widest uppercase text-[11px] font-semibold">&gt; Enter Terminal</span>
+                <span className="tracking-widest uppercase text-[11px] font-semibold">
+                  &gt; Enter Terminal
+                </span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </motion.div>
@@ -280,11 +277,11 @@ export default function GatewayPage() {
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between mb-3.5 sm:mb-5">
-                  <div className="flex items-center gap-2 font-mono text-[9px] sm:text-[10px] text-zinc-400 tracking-widest uppercase">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                    <span>[02 // SYSTEMS_ROI]</span>
-                  </div>
-                  <Tooltip content="Keyboard shortcut: Press '2' or 'F'" side="top" align="end">
+                  <Tooltip
+                    content="Keyboard shortcut: Press '2' or 'F'"
+                    side="top"
+                    align="end"
+                  >
                     <span className="font-mono text-[9px] px-2 py-0.5 rounded border border-white/10 bg-white/[0.02] text-zinc-500 group-hover:text-white group-hover:border-white/30 transition-colors">
                       KEY [2]
                     </span>
@@ -304,33 +301,15 @@ export default function GatewayPage() {
                 </div>
 
                 <p className="font-mono text-[10px] sm:text-xs text-zinc-400 mt-1">
-                  [ Founders & Recruiters • Proof of Work ]
+                  [ Founders & Recruiters ]
                 </p>
-
-                <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mt-2.5 sm:mt-3">
-                  For founders and recruiters. Here&apos;s what I&apos;ve actually built.
-                </p>
-
-                {/* Tech Pills */}
-                <div className="mt-4 flex flex-wrap gap-1.5 font-mono text-[9px]">
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    1M+ Loopback RPS
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    Bare-Metal Java Sockets
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    AI Autonomous Workflows
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-white/[0.02] border border-white/5 text-zinc-400 group-hover:text-zinc-200 group-hover:border-white/20 transition-colors">
-                    Edge Compute
-                  </span>
-                </div>
               </div>
 
               {/* Action Footer */}
               <div className="mt-5 sm:mt-6 pt-3.5 border-t border-white/5 flex items-center justify-between font-mono text-xs text-zinc-500 group-hover:text-white transition-colors">
-                <span className="tracking-widest uppercase text-[11px] font-semibold">&gt; View Proof of Work</span>
+                <span className="tracking-widest uppercase text-[11px] font-semibold">
+                  &gt; View Proof of Work
+                </span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </div>
             </motion.div>
@@ -340,7 +319,6 @@ export default function GatewayPage() {
 
       {/* ── FLOATING BOTTOM DOCK ── */}
       <footer className="relative z-30 w-full px-4 sm:px-8 pb-5 sm:pb-7 flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-3 sm:gap-4 font-mono text-xs text-zinc-500">
-
         <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-2.5 w-full sm:w-auto max-w-xs sm:max-w-none">
           <Tooltip content="View latest resume PDF on Google Drive" side="top">
             <a
@@ -354,7 +332,10 @@ export default function GatewayPage() {
             </a>
           </Tooltip>
 
-          <Tooltip content="github.com/rishab2211 (Repositories & Code)" side="top">
+          <Tooltip
+            content="github.com/rishab2211 (Repositories & Code)"
+            side="top"
+          >
             <a
               href="https://github.com/rishab2211"
               target="_blank"
@@ -366,7 +347,10 @@ export default function GatewayPage() {
             </a>
           </Tooltip>
 
-          <Tooltip content="linkedin.com/in/rishab2211 (Connect on LinkedIn)" side="top">
+          <Tooltip
+            content="linkedin.com/in/rishab2211 (Connect on LinkedIn)"
+            side="top"
+          >
             <a
               href="https://linkedin.com/in/rishab2211"
               target="_blank"
@@ -378,7 +362,11 @@ export default function GatewayPage() {
             </a>
           </Tooltip>
 
-          <Tooltip content="rishab2211.substack.com (Technical essays & newsletters)" side="top" align="end">
+          <Tooltip
+            content="rishab2211.substack.com (Technical essays & newsletters)"
+            side="top"
+            align="end"
+          >
             <a
               href="https://rishab2211.substack.com"
               target="_blank"

@@ -76,7 +76,8 @@ export default function FounderPage() {
               Rishab Raj
             </h2>
             <p className="font-mono text-[11px] sm:text-xs tracking-widest text-zinc-500 uppercase">
-              Software Development Engineer Intern @ Lolocab • Full-Stack AI Engineer
+              Software Development Engineer Intern @ Lolocab • Full-Stack AI
+              Engineer
             </p>
           </div>
 
@@ -88,9 +89,11 @@ export default function FounderPage() {
 
           <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-4xl">
             <p className="text-sm sm:text-lg text-zinc-400 leading-relaxed font-light">
-              I gravitate toward the hard parts — the systems that need to hold under real load,
-              the pipelines where a failure at 2am costs someone money. I care less about
-              being clever and more about building things that just keep working.
+              I gravitate toward the hard parts, the systems that have to survive
+              real load, the pipelines where a failure at 2 a.m. has a real
+              cost. I care less about writing clever code and more about
+              building systems that keep working when the easy assumptions stop
+              holding.
             </p>
 
             <div className="flex flex-col items-start gap-4 sm:gap-6">
@@ -110,7 +113,10 @@ export default function FounderPage() {
                 <ArrowDownRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" />
               </a>
 
-              <Tooltip content="Open formal resume PDF in Google Drive" side="top">
+              <Tooltip
+                content="Open formal resume PDF in Google Drive"
+                side="top"
+              >
                 <a
                   href="https://drive.google.com/drive/folders/14FEmV08dBFJCtdYDF36QlUadfLI7OfLX?usp=sharing"
                   target="_blank"
@@ -143,8 +149,9 @@ export default function FounderPage() {
             </h2>
 
             <p className="text-xs sm:text-base text-zinc-400 font-light leading-relaxed mb-6 sm:mb-8">
-              A strict focus on high-throughput backend mechanics, JVM concurrency,
-              autonomous web extraction pipelines, and high-impact engineering leadership.
+              A strict focus on high-throughput backend mechanics, JVM
+              concurrency, autonomous web extraction pipelines, and high-impact
+              engineering leadership.
             </p>
 
             <div className="flex flex-col gap-2.5 font-mono text-xs text-zinc-500">
@@ -215,8 +222,8 @@ export default function FounderPage() {
                 <span className="text-zinc-600">Judgment is not.</span>
               </p>
               <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed max-w-sm">
-                Scaling products requires a multi-disciplinary lens. Systems must
-                be evaluated against user psychology, speed to market, and
+                Scaling products requires a multi-disciplinary lens. Systems
+                must be evaluated against user psychology, speed to market, and
                 fault-tolerant engineering.
               </p>
             </div>
@@ -271,10 +278,11 @@ export default function FounderPage() {
                     Ship something real, then optimize.
                   </h3>
                   <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
-                    Every line of code is a business liability until it generates
-                    real leverage. Technical decisions—from edge compute routing
-                    to relational schema indexing—are evaluated strictly against
-                    reliability, time-to-market, and measurable value.
+                    Every line of code is a business liability until it
+                    generates real leverage. Technical decisions—from edge
+                    compute routing to relational schema indexing—are evaluated
+                    strictly against reliability, time-to-market, and measurable
+                    value.
                   </p>
                   <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
                     <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
@@ -301,10 +309,10 @@ export default function FounderPage() {
                     Systems beat sprints.
                   </h3>
                   <p className="text-xs sm:text-base text-zinc-500 font-light leading-relaxed group-hover/item:text-zinc-400 transition-colors">
-                    Sustainable engineering velocity isn&apos;t built on late-night
-                    firefighting. It is created through modular clean code,
-                    observable telemetry, resilient error boundaries, and deep
-                    architectural documentation.
+                    Sustainable engineering velocity isn&apos;t built on
+                    late-night firefighting. It is created through modular clean
+                    code, observable telemetry, resilient error boundaries, and
+                    deep architectural documentation.
                   </p>
                   <div className="mt-4 sm:mt-5 flex flex-wrap gap-1.5 sm:gap-2">
                     <span className="px-2 py-0.5 sm:py-1 bg-white/[0.02] border border-white/[0.05] rounded-xs font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
@@ -322,7 +330,10 @@ export default function FounderPage() {
       </section>
 
       {/* ── SECTION 3: PROOF OF WORK (PROJECTS) ── */}
-      <section id="execution" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]">
+      <section
+        id="execution"
+        className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]"
+      >
         <div className="max-w-7xl mx-auto">
           <Projects variant="founder" />
         </div>
@@ -336,24 +347,38 @@ export default function FounderPage() {
       </section>
 
       {/* ── SECTION 4.5: WRITINGS & PUBLICATIONS ── */}
-      <section id="publications" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]">
+      <section
+        id="publications"
+        className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-32 border-t border-white/[0.04]"
+      >
         <div className="max-w-7xl mx-auto">
           <Blogs variant="founder" />
         </div>
       </section>
 
       {/* ── SECTION 5: CONTACT & DISCUSS ALIGNMENT ── */}
-      <section id="contact" className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-36 border-t border-white/[0.04]">
+      <section
+        id="contact"
+        className="relative px-4 sm:px-12 md:px-24 py-16 sm:py-36 border-t border-white/[0.04]"
+      >
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-5xl font-medium tracking-tight text-white mb-4 sm:mb-6">
               Worth a conversation?
             </h2>
             <p className="text-sm sm:text-lg text-zinc-400 font-light leading-relaxed mb-8 sm:mb-10">
-              Looking for a place where good engineering actually matters — where I can bring what I know and have it move something real.
+              Looking for a place where good engineering actually matters —
+              where I can bring what I know and have it move something real.
             </p>
 
-            <Tooltip content={copied ? "Email copied to clipboard!" : "Click to copy rishabraj2211@gmail.com"} side="right">
+            <Tooltip
+              content={
+                copied
+                  ? "Email copied to clipboard!"
+                  : "Click to copy rishabraj2211@gmail.com"
+              }
+              side="right"
+            >
               <button
                 onClick={handleCopy}
                 aria-label="Copy Rishab's email address"
@@ -459,7 +484,11 @@ function BentoCard({
             {icon}
           </div>
 
-          <Tooltip content="Production engineering metric" side="top" align="end">
+          <Tooltip
+            content="Production engineering metric"
+            side="top"
+            align="end"
+          >
             <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] font-mono text-[9px] sm:text-[10px] text-zinc-200 tracking-wider uppercase group-hover:border-white/30 group-hover:text-white transition-all shadow-xs cursor-help">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span className="truncate">{metric}</span>

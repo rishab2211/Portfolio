@@ -109,7 +109,9 @@ function SectionHeader({
         {label}
       </span>
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="font-mono text-green-500/60 text-xs sm:text-sm">$</span>
+        <span className="font-mono text-green-500/60 text-xs sm:text-sm">
+          $
+        </span>
         <span className="font-mono text-green-400 text-xs sm:text-base tracking-tight break-all">
           {command}
         </span>
@@ -146,7 +148,11 @@ function SkillCard({
   };
 
   return (
-    <Tooltip content={isFlipped ? "Click to flip back" : "Click to view stack payload"} side="top" className="w-full">
+    <Tooltip
+      content={isFlipped ? "Click to flip back" : "Click to view stack payload"}
+      side="top"
+      className="w-full"
+    >
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +299,7 @@ export default function StalkerPage() {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
-        }) + " IST"
+        }) + " IST",
       );
     };
     updateTime();
@@ -364,7 +370,7 @@ export default function StalkerPage() {
         break;
       case "whoami":
         response =
-          "Rishab Raj • Software Development Engineer Intern @ Lolocab\nB.Tech in IT @ Maharaja Agrasen Institute of Technology (GPA 8.0)";
+          "Rishab Raj • SDE Intern @ Lolocab\nB.Tech in IT @ Maharaja Agrasen Institute of Technology (GPA 8.0)";
         break;
       case "experience":
         response =
@@ -514,7 +520,10 @@ export default function StalkerPage() {
                   </div>
 
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Tooltip content="Click 3 times to reveal Easter egg shell" side="bottom">
+                    <Tooltip
+                      content="Click 3 times to reveal Easter egg shell"
+                      side="bottom"
+                    >
                       <button
                         onClick={handlePinClick}
                         className="hidden sm:flex items-center gap-1.5 text-[11px] text-zinc-400 hover:text-green-300 transition-colors cursor-help"
@@ -525,7 +534,11 @@ export default function StalkerPage() {
                       </button>
                     </Tooltip>
 
-                    <Tooltip content="Launch interactive terminal commands" side="bottom" align="end">
+                    <Tooltip
+                      content="Launch interactive terminal commands"
+                      side="bottom"
+                      align="end"
+                    >
                       <button
                         onClick={() => setEasterEggActive(true)}
                         className="flex items-center gap-1 text-[10px] sm:text-[11px] px-2 sm:px-2.5 py-0.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 hover:bg-green-500/20 transition-all cursor-pointer"
@@ -550,12 +563,13 @@ export default function StalkerPage() {
                         Rishab Raj
                       </h1>
                       <p className="mt-1.5 sm:mt-2 text-xs sm:text-base font-mono text-green-400">
-                        Software Development Engineer Intern @ Lolocab
+                        SDE Intern @ Lolocab
                       </p>
                     </div>
 
                     <p className="font-sans text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
-                      I tend to build the things that require actually understanding how something works at the bottom — not just what the framework does for you. Shipped backend systems that hold under real traffic, and spent three years turning a near-empty student community into 160+ people who actually build things.
+                      I tend to build things that require actually understanding
+                      how something works at its core.
                     </p>
 
                     {/* Navigation Chips */}
@@ -621,13 +635,16 @@ export default function StalkerPage() {
                     <div className="rounded-xl border border-green-500/20 bg-[#091009] p-3.5 sm:p-4 font-mono w-full">
                       <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-2.5 sm:mb-3 border-b border-green-500/10 pb-2">
                         <div className="flex items-center gap-2 text-green-400">
-                          <SpotifyIcon size={14} className="text-green-400 shrink-0" />
+                          <SpotifyIcon
+                            size={14}
+                            className="text-green-400 shrink-0"
+                          />
                           <span className="truncate">
                             {spotifyData.isPlaying
                               ? "NOW PLAYING"
                               : spotifyData.lastPlayed
-                              ? "LAST PLAYED"
-                              : "SPOTIFY STATUS"}
+                                ? "LAST PLAYED"
+                                : "SPOTIFY STATUS"}
                           </span>
                         </div>
 
@@ -890,7 +907,9 @@ export default function StalkerPage() {
 
       {/* Footer */}
       <footer className="border-t border-green-500/10 py-6 sm:py-8 px-4 text-center font-mono text-[10px] text-zinc-600">
-        <p>Rishab Raj • Portfolio Stalker Mode • Built with Next.js & TailwindCSS</p>
+        <p>
+          Rishab Raj • Portfolio Stalker Mode • Built with Next.js & TailwindCSS
+        </p>
       </footer>
     </main>
   );
