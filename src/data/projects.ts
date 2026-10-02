@@ -23,13 +23,12 @@ export const projectsData: Project[] = [
     name: "AI-powered Web Scraping Automation Tool",
     tech_stack: ["Next.js", "Puppeteer", "ReactFlow", "Gemini", "Cron"],
     links: {
-      demo: "https://www.linkedin.com/posts/rishab2211_excited-to-unveil-my-latest-project-activity-7313520047497363457-DfRW",
       github: "https://github.com/rishab2211/AI-WebScraping-Automator",
     },
     founder: {
       tagline: "Intelligent, node-based custom scraping workflow builder",
       description: [
-        "Architected an intelligent web scraping platform featuring a drag-and-drop workflow canvas and an LLM-driven structured schema normalization pipeline for dynamic web pages.",
+        "Built an intelligent web scraping platform featuring a drag-and-drop workflow canvas and an LLM-driven structured schema normalization pipeline for dynamic web pages.",
         "Engineered scheduled cron execution with automated retry backoffs and schema fallback validation when target DOM trees mutate.",
       ],
     },
@@ -53,14 +52,14 @@ export const projectsData: Project[] = [
       tagline: "Real-time communication with WebSocket architecture and client-side state optimization",
       description: [
         "WebSocket-based chat app with JWT authentication and binary file sharing up to 10MB.",
-        "Eliminated message interleaving race conditions during concurrent room broadcasts via Zustand client state reconciliation.",
+        "Reconciled WebSocket message ordering client-side via Zustand to eliminate message interleaving during concurrent room broadcasts.",
       ],
     },
     stalker: {
       tagline: "Real-time state sync and binary streaming.",
       description: [
         "Built this because I was tired of standard chat apps compressing my files into oblivion.",
-        "Fixed room broadcast race conditions and state sync headaches with Zustand. Rock-solid persistence (as long as I don't trip over the server cable).",
+        "Fixed room broadcast race conditions by reconciling WebSocket message ordering client-side with Zustand. Binary file sharing up to 10MB without the compression most chat apps force on you.",
       ],
     },
   },
@@ -69,21 +68,20 @@ export const projectsData: Project[] = [
     name: "Multithreaded TCP Server",
     tech_stack: ["Java", "Socket Programming", "Multi-threading"],
     links: {
-      demo: "https://www.linkedin.com/posts/rishab2211_webservers-under-the-hood-from-50k-to-1-activity-7318576772684357632-iDon",
       github: "https://github.com/rishab2211/Webserver-JAVA",
     },
     founder: {
       tagline: "High-performance bare-metal network server implementation",
       description: [
-        "Built a high-performance, multi-threaded web server and benchmarked it at 1M+ RPS over loopback with wrk.",
-        "Created efficient thread pooling system that reduced memory usage by 35% compared to unbounded thread-per-connection baselines.",
+        "Built a bare-metal HTTP server in raw Java sockets, benchmarking 1M+ requests/sec on loopback (wrk) to profile thread scheduling and connection lifecycle bottlenecks.",
+        "Implemented custom thread pooling that cut memory overhead 35% compared to thread-per-connection baselines, maintaining stable socket reuse under concurrency.",
       ],
     },
     stalker: {
       tagline: "Bare metal, zero frameworks, maximum throughput.",
       description: [
-        "Decided to reinvent the wheel and build an HTTP/1.1 server in raw Java sockets to study connection scheduling.",
-        "Pushed past 1M synthetic requests/sec on loopback benchmarks and turned my laptop into a space heater. Worth it.",
+        "Decided to build an HTTP/1.1 server from scratch in raw Java sockets to study connection scheduling at the OS layer.",
+        "1M+ requests/sec on loopback — synthetic, but it forced me to understand where the bottleneck actually was (the thread scheduler, not the network). Built custom thread pooling to cut memory overhead 35%.",
       ],
     },
   },
@@ -95,17 +93,17 @@ export const projectsData: Project[] = [
       github: "https://github.com/rishab2211/Social",
     },
     founder: {
-      tagline: "Relational social backend with Spring Boot and PostgreSQL",
+      tagline: "Relational social graph backend with Spring Boot and PostgreSQL",
       description: [
-        "Designed the database schema and business logic for posts, follows, likes, and profiles using Spring Boot and PostgreSQL.",
-        "Secured backend REST endpoints with Spring Security filter chains and stateless JWT authentication.",
+        "Engineered a relational social graph backend focused on asymmetric read/write patterns in follow graphs and fan-out feeds using PostgreSQL and Spring Boot.",
+        "Secured REST endpoints with Spring Security filter chains and stateless JWT authentication, optimizing relational joins across user activities.",
       ],
     },
     stalker: {
       tagline: "Who needs a frontend anyway?",
       description: [
-        "Built a massive relational graph engine to handle all the messy logic of a social network.",
-        "Just pure backend architecture, complex SQL queries, and JWTs. Handled the chaos of followers and likes without writing a single line of CSS.",
+        "Built this after realizing I didn't understand how a social graph actually works at the database level — follows are bidirectional relationships with asymmetric read patterns.",
+        "Pure backend architecture, indexing strategies, and relational schema design to handle follower queries cleanly without ORM overhead.",
       ],
     },
   },

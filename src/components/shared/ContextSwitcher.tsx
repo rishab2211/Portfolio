@@ -19,12 +19,12 @@ export function ContextSwitcher() {
       className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[60] flex items-center rounded-full border border-white/10 bg-black/60 p-1 backdrop-blur-md shadow-lg"
     >
       <Tooltip
-        content={!isFounder ? "Active: Stalker (Developer) Mode" : "Switch to Stalker (Developer) Mode"}
+        content={!isFounder ? "Active: Stalker Mode" : "Switch to Stalker Mode"}
         side="bottom"
       >
         <Link
           href="/stalker"
-          aria-label="Switch to Stalker Developer mode"
+          aria-label="Switch to Stalker mode"
           className={`relative flex items-center gap-1.5 sm:gap-2 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-mono transition-colors ${
             !isFounder ? "text-black font-semibold" : "text-zinc-400 hover:text-white"
           }`}
@@ -43,7 +43,7 @@ export function ContextSwitcher() {
       </Tooltip>
 
       <Tooltip
-        content={isFounder ? "Active: Founder (Builder) Mode" : "Switch to Founder (Builder) Mode"}
+        content={isFounder ? "Active: Founder Mode" : "Switch to Founder Mode"}
         side="bottom"
       >
         <Link

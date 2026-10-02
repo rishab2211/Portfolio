@@ -163,22 +163,6 @@ export default function GatewayPage() {
             </div>
           </Tooltip>
 
-          <div className="hidden sm:flex items-center gap-1.5 text-zinc-500">
-            <Tooltip content="Press '1' or 'S' key on keyboard" side="bottom">
-              <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400 cursor-help">
-                [1] STALKER
-              </span>
-            </Tooltip>
-            <Tooltip
-              content="Press '2' or 'F' key on keyboard"
-              side="bottom"
-              align="end"
-            >
-              <span className="px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/10 text-zinc-400 cursor-help">
-                [2] FOUNDER
-              </span>
-            </Tooltip>
-          </div>
         </div>
       </header>
 

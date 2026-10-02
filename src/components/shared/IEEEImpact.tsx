@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Trophy, Users, Zap, Award } from "lucide-react";
 
 interface IEEEImpactProps {
   variant: "stalker" | "founder";
@@ -12,7 +11,7 @@ function AnimatedCounter({
   target,
   suffix = "",
   prefix = "",
-  duration = 1800,
+  duration = 1600,
   isStalker,
 }: {
   target: number;
@@ -23,7 +22,7 @@ function AnimatedCounter({
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   useEffect(() => {
     if (!inView) return;
@@ -43,8 +42,8 @@ function AnimatedCounter({
   return (
     <span
       ref={ref}
-      className={`tabular-nums font-bold text-2xl sm:text-3xl lg:text-4xl ${
-        isStalker ? "text-green-400 font-mono" : "text-white font-sans"
+      className={`tabular-nums font-mono text-3xl sm:text-4xl font-bold tracking-tight ${
+        isStalker ? "text-green-400" : "text-white"
       }`}
     >
       {prefix}
@@ -56,193 +55,329 @@ function AnimatedCounter({
 
 const stats = [
   {
-    icon: Users,
-    label: "Student Members Scaled",
-    sublabel: "from ~5 to 160+",
     target: 160,
     suffix: "+",
-    stalkerNote: "// 3 years. volunteer → vice chair.",
-    founderNote: "Built a community from the ground up",
+    label: "Student Members Scaled",
+    detail: "Grew active chapter from ~5 to 160+ engineers",
   },
   {
-    icon: Zap,
-    label: "Events & Initiatives",
-    sublabel: "national + college level",
     target: 50,
     suffix: "+",
-    stalkerNote: "// hackathons, workshops, bootcamps",
-    founderNote: "Technical events, hackathons, workshops",
+    label: "Technical Initiatives",
+    detail: "Hackathons, workshops & backend summer camps",
   },
   {
-    icon: Trophy,
-    label: "Students Reached",
-    sublabel: "across outreach programs",
     target: 2000,
     suffix: "+",
-    stalkerNote: "// bootcamps, fast-track courses",
-    founderNote: "Direct outreach across programs",
+    label: "Students Reached",
+    detail: "Hands-on engineering outreach across colleges",
   },
   {
-    icon: Award,
-    label: "National Awards",
-    sublabel: "IEEE India Council + Delhi SSN",
     target: 2,
     suffix: "",
-    stalkerNote: "// outstanding branch + J.K. Pal memorial",
-    founderNote: "Recognition at the highest national level",
+    label: "National Honors",
+    detail: "Dr. J.K. Pal Memorial + Outstanding Student Branch",
   },
 ];
 
-const journey = [
-  { role: "Volunteer", date: "Aug 2023", note: "walked in, knew nobody" },
-  { role: "Core Team", date: "Jan 2024", note: "3 months later" },
-  { role: "Core Lead", date: "Jun 2024", note: "8 months in" },
-  { role: "Vice Chair", date: "Feb 2025", note: "and 8 months after that" },
-  { role: "Mentor", date: "Mar 2026", note: "after the handover" },
-  { role: "J.K. Pal Award", date: "Jun 2026", note: "individual national honor" },
+const milestones = [
+  {
+    step: "01",
+    role: "Volunteer",
+    date: "Aug 2023",
+    note: "Walked in with zero credentials or prior network.",
+  },
+  {
+    step: "02",
+    role: "Core Team",
+    date: "Jan 2024",
+    note: "Promoted in 3 months; taught git & web fundamentals.",
+  },
+  {
+    step: "03",
+    role: "Core Lead",
+    date: "Jun 2024",
+    note: "Designed technical curriculum for summer bootcamps.",
+  },
+  {
+    step: "04",
+    role: "Vice Chair",
+    date: "Feb 2025",
+    note: "Elected to executive leadership; scaled branch to 160+.",
+  },
+  {
+    step: "05",
+    role: "Mentor",
+    date: "Mar 2026",
+    note: "Structured leadership handover; stayed on as advisor.",
+  },
+  {
+    step: "06",
+    role: "J.K. Pal Award",
+    date: "Jun 2026",
+    note: "National honor awarded by IEEE Delhi SSN.",
+  },
 ];
 
 export function IEEEImpact({ variant }: IEEEImpactProps) {
   const isStalker = variant === "stalker";
 
   return (
-    <div className="w-full space-y-10 sm:space-y-14">
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        {stats.map((stat, i) => {
-          const Icon = stat.icon;
-          return (
-            <motion.div
+    <div className="w-full space-y-10 sm:space-y-12">
+      {/* ── 1. UNIFIED IMPACT METRICS ── */}
+      <div
+        className={`rounded-xl border ${
+          isStalker
+            ? "border-green-500/20 bg-[#060a06]/80"
+            : "border-white/10 bg-white/[0.02]"
+        } p-6 sm:p-8`}
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:divide-x lg:divide-white/5">
+          {stats.map((stat, i) => (
+            <div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
-              className={`group relative rounded-xl border p-4 sm:p-5 flex flex-col gap-3 transition-all duration-300 ${
-                isStalker
-                  ? "border-green-500/15 bg-[#080c08]/80 hover:border-green-500/40 hover:bg-[#0a100a]"
-                  : "border-white/8 bg-white/[0.015] hover:border-white/20 hover:bg-white/[0.03]"
+              className={`flex flex-col justify-between ${
+                i !== 0 ? "lg:pl-8" : ""
               }`}
             >
-              {/* Icon */}
-              <div
-                className={`flex items-center justify-center h-8 w-8 rounded-lg flex-shrink-0 ${
-                  isStalker
-                    ? "bg-green-500/10 text-green-400"
-                    : "bg-white/[0.05] text-zinc-300"
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-              </div>
-
-              {/* Counter */}
-              <AnimatedCounter
-                target={stat.target}
-                suffix={stat.suffix}
-                isStalker={isStalker}
-              />
-
-              {/* Label */}
               <div>
-                <p
-                  className={`text-xs sm:text-sm font-medium leading-tight ${
-                    isStalker ? "font-mono text-zinc-300" : "font-sans text-white"
+                <AnimatedCounter
+                  target={stat.target}
+                  suffix={stat.suffix}
+                  isStalker={isStalker}
+                />
+                <h3
+                  className={`mt-2 text-xs sm:text-sm font-medium ${
+                    isStalker ? "font-mono text-zinc-200" : "font-sans text-white"
                   }`}
                 >
                   {stat.label}
-                </p>
-                <p
-                  className={`text-[10px] sm:text-[11px] mt-0.5 ${
-                    isStalker
-                      ? "font-mono text-green-500/60"
-                      : "font-sans text-zinc-500"
-                  }`}
-                >
-                  {isStalker ? stat.stalkerNote : stat.sublabel}
-                </p>
+                </h3>
               </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Journey Progression Bar */}
-      <div>
-        <p
-          className={`mb-6 sm:mb-8 font-mono text-[9px] sm:text-[10px] uppercase tracking-widest ${
-            isStalker ? "text-green-500/50" : "text-zinc-600"
-          }`}
-        >
-          {isStalker
-            ? "// the progression — volunteer → vice chair → mentor → award"
-            : "The Progression"}
-        </p>
-
-        <div className="relative">
-          {/* Connector Line */}
-          <div
-            className={`absolute top-3 left-3 right-3 h-px ${
-              isStalker
-                ? "bg-gradient-to-r from-green-500/40 via-green-400/20 to-transparent"
-                : "bg-gradient-to-r from-white/20 via-white/10 to-transparent"
-            } hidden sm:block`}
-          />
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {journey.map((step, i) => (
-              <motion.div
-                key={step.role}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.3, delay: i * 0.06 }}
-                className={`relative flex flex-col gap-2 rounded-lg border p-3 transition-all duration-300 ${
+              <p
+                className={`mt-1.5 text-xs leading-relaxed ${
                   isStalker
-                    ? "border-green-500/15 bg-[#080c08]/60 hover:border-green-500/35"
-                    : "border-white/8 bg-white/[0.01] hover:border-white/20"
+                    ? "font-mono text-zinc-500"
+                    : "font-sans text-zinc-400 font-light"
                 }`}
               >
-                {/* Node dot */}
+                {stat.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── 2. PROGRESSION TIMELINE ── */}
+      <div className="space-y-6">
+        {/* Subheader */}
+        <div
+          className={`flex items-center justify-between border-b pb-3 ${
+            isStalker ? "border-green-500/10" : "border-white/10"
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                isStalker ? "bg-green-400 animate-pulse" : "bg-white animate-pulse"
+              }`}
+            />
+            <p
+              className={`font-mono text-xs tracking-wider uppercase font-semibold ${
+                isStalker ? "text-green-400/90" : "text-zinc-300"
+              }`}
+            >
+              {isStalker ? "Leadership Progression" : "Leadership Trajectory"}
+            </p>
+          </div>
+          <span className="font-mono text-[11px] text-zinc-500">
+            Aug 2023 — Jun 2026
+          </span>
+        </div>
+
+        {/* Desktop Horizontal Stepper Track */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-6 gap-3.5 relative">
+            {milestones.map((m, idx) => {
+              const isFirst = idx === 0;
+              const isLast = idx === milestones.length - 1;
+
+              return (
+                <div key={m.step} className="relative flex flex-col">
+                  {/* Top Timeline Connector Bar */}
+                  <div className="relative flex items-center h-6 mb-3">
+                    {/* Left Line Segment (hidden for first) */}
+                    <div
+                      className={`h-px flex-1 ${
+                        isFirst
+                          ? "invisible"
+                          : isStalker
+                          ? "bg-green-500/25"
+                          : "bg-white/15"
+                      }`}
+                    />
+
+                    {/* Milestone Node */}
+                    <div className="relative px-2 flex items-center gap-1.5 shrink-0">
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full ${
+                          isLast
+                            ? isStalker
+                              ? "bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.9)]"
+                              : "bg-white"
+                            : isStalker
+                            ? "bg-green-500/80"
+                            : "bg-zinc-500"
+                        }`}
+                      />
+                      <span
+                        className={`font-mono text-[10px] font-medium ${
+                          isLast
+                            ? isStalker
+                              ? "text-green-300 font-bold"
+                              : "text-white"
+                            : isStalker
+                            ? "text-green-500/70"
+                            : "text-zinc-500"
+                        }`}
+                      >
+                        {m.step}
+                      </span>
+                    </div>
+
+                    {/* Right Line Segment (hidden for last) */}
+                    <div
+                      className={`h-px flex-1 ${
+                        isLast
+                          ? "invisible"
+                          : isStalker
+                          ? "bg-green-500/25"
+                          : "bg-white/15"
+                      }`}
+                    />
+                  </div>
+
+                  {/* Card Container */}
+                  <div
+                    className={`flex-1 rounded-lg border p-4 flex flex-col justify-between transition-all duration-200 ${
+                      isLast
+                        ? isStalker
+                          ? "border-green-500/40 bg-green-500/[0.04]"
+                          : "border-white/20 bg-white/[0.02]"
+                        : isStalker
+                        ? "border-green-500/15 bg-black/40 hover:border-green-500/35 hover:bg-green-500/[0.02]"
+                        : "border-white/5 bg-white/[0.01] hover:border-white/15"
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span
+                          className={`font-mono text-[10px] ${
+                            isStalker ? "text-green-400" : "text-zinc-400"
+                          }`}
+                        >
+                          {m.date}
+                        </span>
+                      </div>
+                      <h4
+                        className={`text-xs sm:text-sm font-semibold leading-snug ${
+                          isStalker ? "font-mono text-zinc-100" : "font-sans text-white"
+                        }`}
+                      >
+                        {m.role}
+                      </h4>
+                    </div>
+
+                    <p
+                      className={`text-[11px] leading-relaxed mt-2.5 pt-2 border-t ${
+                        isStalker
+                          ? "border-green-500/10 font-mono text-zinc-400"
+                          : "border-white/5 font-sans text-zinc-400 font-light"
+                      }`}
+                    >
+                      {m.note}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile / Tablet Vertical Timeline */}
+        <div
+          className={`lg:hidden relative border-l ml-3 pl-6 space-y-5 ${
+            isStalker ? "border-green-500/25" : "border-white/15"
+          }`}
+        >
+          {milestones.map((m, idx) => {
+            const isLast = idx === milestones.length - 1;
+            return (
+              <div key={m.step} className="relative">
+                {/* Node dot on vertical line */}
                 <div
-                  className={`h-2 w-2 rounded-full flex-shrink-0 ${
-                    i === journey.length - 1
+                  className={`absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border ${
+                    isLast
                       ? isStalker
-                        ? "bg-green-400 shadow-[0_0_8px_rgba(34,197,94,0.6)]"
-                        : "bg-white shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                        ? "border-green-400 bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.9)]"
+                        : "border-white bg-white"
                       : isStalker
-                      ? "bg-green-500/40"
-                      : "bg-zinc-600"
+                      ? "border-green-500 bg-[#040604]"
+                      : "border-zinc-500 bg-black"
                   }`}
                 />
 
-                <div>
+                <div
+                  className={`rounded-lg border p-3.5 ${
+                    isLast
+                      ? isStalker
+                        ? "border-green-500/40 bg-green-500/[0.04]"
+                        : "border-white/20 bg-white/[0.02]"
+                      : isStalker
+                      ? "border-green-500/15 bg-black/40"
+                      : "border-white/5 bg-white/[0.01]"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <span
+                      className={`font-mono text-[10px] ${
+                        isStalker ? "text-green-400" : "text-zinc-400"
+                      }`}
+                    >
+                      {m.date}
+                    </span>
+                    <span
+                      className={`font-mono text-[9px] px-1.5 py-0.5 rounded border ${
+                        isStalker
+                          ? "border-green-500/20 text-green-500/60"
+                          : "border-white/10 text-zinc-500"
+                      }`}
+                    >
+                      {m.step}
+                    </span>
+                  </div>
+
+                  <h4
+                    className={`text-xs sm:text-sm font-semibold ${
+                      isStalker ? "font-mono text-zinc-100" : "font-sans text-white"
+                    }`}
+                  >
+                    {m.role}
+                  </h4>
+
                   <p
-                    className={`text-xs font-medium leading-tight ${
+                    className={`text-xs leading-relaxed mt-1.5 pt-1.5 border-t ${
                       isStalker
-                        ? `font-mono ${i === journey.length - 1 ? "text-green-300" : "text-zinc-300"}`
-                        : `font-sans ${i === journey.length - 1 ? "text-white" : "text-zinc-300"}`
+                        ? "border-green-500/10 font-mono text-zinc-400"
+                        : "border-white/5 font-sans text-zinc-400 font-light"
                     }`}
                   >
-                    {step.role}
-                  </p>
-                  <p
-                    className={`text-[9px] sm:text-[10px] mt-0.5 ${
-                      isStalker ? "font-mono text-green-500/50" : "font-sans text-zinc-600"
-                    }`}
-                  >
-                    {step.date}
-                  </p>
-                  <p
-                    className={`text-[9px] mt-1 leading-snug ${
-                      isStalker ? "font-mono text-zinc-600" : "font-sans text-zinc-600"
-                    }`}
-                  >
-                    {step.note}
+                    {m.note}
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Clock, Calendar, Sparkles } from "lucide-react";
+import { ArrowUpRight, Clock, Calendar } from "lucide-react";
 import type { BlogPost } from "@/app/api/blogs/route";
 import { Tooltip } from "@/components/shared/Tooltip";
 import { SubstackIcon } from "@/components/shared/SocialIcons";
@@ -20,7 +20,7 @@ export function Blogs({ variant }: BlogsProps) {
     let isMounted = true;
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("/api/blogs", { cache: "no-store" });
+        const res = await fetch("/api/blogs");
         if (res.ok) {
           const data = (await res.json()) as BlogPost[];
           if (isMounted && Array.isArray(data)) {
@@ -55,34 +55,6 @@ export function Blogs({ variant }: BlogsProps) {
 
   return (
     <div className="w-full">
-      {/* HEADER FOR FOUNDER MODE */}
-      {!isStalker && (
-        <div className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
-          <div>
-            <div className="flex items-center gap-2 font-mono text-xs text-zinc-500 tracking-widest uppercase mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>[03 // ESSAYS & PUBLICATIONS]</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-medium text-white tracking-tight leading-snug">
-              Technical Essays & Writing.
-            </h2>
-          </div>
-
-          <Tooltip content="Subscribe & read on rishab2211.substack.com" side="left">
-            <a
-              href="https://rishab2211.substack.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs text-zinc-400 hover:text-white uppercase tracking-wider transition-colors"
-            >
-              <SubstackIcon size={14} className="text-[#FF6719]" />
-              <span>Read on Substack</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          </Tooltip>
-        </div>
-      )}
-
       {/* SKELETON LOADING STATE */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
@@ -247,20 +219,6 @@ export function Blogs({ variant }: BlogsProps) {
         </div>
       )}
 
-      {/* FOOTER CTA FOR STALKER */}
-      {isStalker && blogs.length > 0 && (
-        <div className="mt-8 text-center font-mono text-xs">
-          <a
-            href="https://rishab2211.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/30 text-green-300 hover:bg-green-500/20 transition-all text-[11px]"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-green-400" />
-            <span>Read and subscribe on rishab2211.substack.com →</span>
-          </a>
-        </div>
-      )}
     </div>
   );
 }

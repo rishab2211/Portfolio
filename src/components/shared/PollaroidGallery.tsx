@@ -7,17 +7,20 @@ import { Tooltip } from "@/components/shared/Tooltip";
 
 const FOLDERS = ["All", "IEEE", "Hackathons", "Trips"] as const;
 
-export function PolaroidGallery() {
+export function PolaroidGallery({
+  variant = "stalker",
+}: {
+  variant?: "stalker" | "founder";
+} = {}) {
+  const isStalker = variant === "stalker";
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeFolder, setActiveFolder] = useState<string>("All");
   const [allPhotos, setAllPhotos] = useState<MemoryPhoto[]>(FALLBACK_MEMORIES);
-  const [isSyncing, setIsSyncing] = useState(false);
 
   // Single dynamic fetch on mount, instant client-side memoized filtering
   useEffect(() => {
     let isMounted = true;
     const fetchAllMemories = async () => {
-      setIsSyncing(true);
       try {
         const res = await fetch("/api/memories?folder=All");
         if (res.ok) {
@@ -28,8 +31,6 @@ export function PolaroidGallery() {
         }
       } catch (err) {
         console.warn("Dynamic memories sync fallback:", err);
-      } finally {
-        if (isMounted) setIsSyncing(false);
       }
     };
 
@@ -52,8 +53,8 @@ export function PolaroidGallery() {
       ref={containerRef}
     >
       <div className="mb-8 sm:mb-16 text-center relative z-50">
-        <h2 className="font-mono text-green-500/80 text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-8">
-          {">"} system.memories --view={activeFolder.toLowerCase()}
+        <h2 className="font-mono text-zinc-500 text-xs sm:text-sm tracking-[0.2em] uppercase mb-4 sm:mb-8">
+          moments & memories
         </h2>
 
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -71,7 +72,9 @@ export function PolaroidGallery() {
                 onClick={() => setActiveFolder(folder)}
                 className={`px-3 sm:px-4 py-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-200 border rounded-sm cursor-pointer ${
                   activeFolder === folder
-                    ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.15)]"
+                    ? isStalker
+                      ? "border-green-500 bg-green-500/10 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.15)]"
+                      : "border-white bg-white/10 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                     : "border-white/5 text-zinc-600 hover:border-white/20 hover:text-zinc-400 bg-transparent"
                 }`}
               >
@@ -83,11 +86,6 @@ export function PolaroidGallery() {
       </div>
 
       <div className="relative h-[420px] sm:h-[580px] w-full flex items-center justify-center">
-        {isSyncing && (
-          <div className="absolute top-2 right-2 sm:top-4 sm:right-4 font-mono text-[10px] text-green-500/40 animate-pulse">
-            [SYNCING_CLOUDINARY...]
-          </div>
-        )}
 
         <AnimatePresence mode="popLayout">
           {visiblePhotos.map((photo, index) => (
@@ -129,16 +127,28 @@ export function PolaroidGallery() {
                 <img
                   src={photo.src}
                   alt={photo.caption}
+                  width={220}
+                  height={190}
                   className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-300 transform-gpu"
                   draggable={false}
                   loading="lazy"
                 />
-                <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-1.5 py-0.5 rounded-xs bg-black/70 backdrop-blur-xs font-mono text-[7px] sm:text-[8px] text-green-400/90 border border-green-500/20">
+                <div
+                  className={`absolute top-1.5 right-1.5 sm:top-2 sm:right-2 px-1.5 py-0.5 rounded-xs bg-black/70 backdrop-blur-xs font-mono text-[7px] sm:text-[8px] ${
+                    isStalker
+                      ? "text-green-400/90 border border-green-500/20"
+                      : "text-zinc-200 border border-white/20"
+                  }`}
+                >
                   {photo.folder}
                 </div>
               </div>
               <div className="mt-2.5 sm:mt-3 text-center pointer-events-none">
-                <p className="font-mono text-[9px] sm:text-[11px] uppercase tracking-widest text-green-400/80 truncate px-1">
+                <p
+                  className={`font-mono text-[9px] sm:text-[11px] uppercase tracking-widest truncate px-1 ${
+                    isStalker ? "text-green-400/80" : "text-zinc-300"
+                  }`}
+                >
                   {photo.caption}
                 </p>
               </div>

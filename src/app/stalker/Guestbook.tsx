@@ -30,7 +30,7 @@ export function Guestbook() {
           .from("guestbook_traces")
           .select("*")
           .order("created_at", { ascending: true })
-          .limit(100);
+          .limit(50);
         if (!error && data && isMounted) setTraces(data);
       } catch (err) {
         console.warn("Guestbook traces fetch error:", err);
@@ -140,11 +140,8 @@ export function Guestbook() {
     >
       {/* Instructions Overlay */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center opacity-40 px-4">
-        <p className="font-mono text-xs sm:text-sm tracking-widest text-green-500/80">
-          DIGITAL WALL
-        </p>
-        <p className="mt-2 font-mono text-[10px] sm:text-xs text-zinc-500">
-          Double-tap or click anywhere to leave your mark.
+        <p className="font-mono text-xs sm:text-sm text-zinc-400">
+          Double-tap or click anywhere to leave a note.
         </p>
       </div>
 

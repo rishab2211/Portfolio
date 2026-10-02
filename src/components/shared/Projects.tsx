@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { projectsData } from "@/data/projects";
-import { SocialIcon } from "react-social-icons";
+import { GithubIcon } from "@/components/shared/SocialIcons";
 import { Tooltip } from "@/components/shared/Tooltip";
 
 interface ProjectsProps {
@@ -15,20 +15,6 @@ export function Projects({ variant }: ProjectsProps) {
 
   return (
     <div className="w-full">
-      {/* HEADER SECTION (Rendered only for founder mode to prevent redundancy with stalker section header) */}
-      {!isStalker && (
-        <div className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
-          <div>
-            <h2 className="text-xs sm:text-sm font-medium tracking-widest text-zinc-500 uppercase font-mono mb-2 sm:mb-3">
-              Proof of Work
-            </h2>
-            <p className="text-2xl sm:text-4xl font-medium text-white tracking-tight leading-snug">
-              Systems & Architecture.
-            </p>
-          </div>
-        </div>
-      )}
-
       {/* GRID SECTION */}
       <div
         className={`grid grid-cols-1 gap-5 sm:gap-6 ${
@@ -96,27 +82,24 @@ export function Projects({ variant }: ProjectsProps) {
                   <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                     {project.links.github && (
                       <Tooltip content="View source code on GitHub" side="top">
-                        <SocialIcon
-                          url={project.links.github}
+                        <a
+                          href={project.links.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          bgColor="transparent"
-                          fgColor="currentColor"
-                          style={{
-                            height: isStalker ? 30 : 26,
-                            width: isStalker ? 30 : 26,
-                          }}
-                          className={`transition-all hover:scale-110 ${
+                          aria-label={`View ${project.name} source code on GitHub`}
+                          className={`flex items-center justify-center p-1.5 rounded-md transition-all hover:scale-110 ${
                             isStalker
                               ? "text-green-400 hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]"
                               : "text-zinc-400 hover:text-white"
                           }`}
-                        />
+                        >
+                          <GithubIcon size={isStalker ? 20 : 18} />
+                        </a>
                       </Tooltip>
                     )}
                     {externalLink && (
                       <Tooltip
-                        content={isLiveLink ? "Open live application" : "View demonstration on LinkedIn"}
+                        content={isLiveLink ? "Open live application" : "View live demo"}
                         side="top"
                       >
                         <a

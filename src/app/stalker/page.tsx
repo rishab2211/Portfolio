@@ -6,20 +6,12 @@ import {
   ArrowLeft,
   MapPin,
   Terminal as TerminalIcon,
-  BrainCircuit,
   Zap,
-  Users,
-  Database,
-  CloudFog,
-  LayoutTemplate,
-  Network,
   BookOpen,
   Radio,
   Sparkles,
   FileText,
   Cpu,
-  Code2,
-  HeartPulse,
   GitBranch,
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -28,8 +20,6 @@ import { Projects } from "@/components/shared/Projects";
 import { Timeline } from "@/components/shared/Timeline";
 import { Blogs } from "@/components/shared/Blogs";
 import { PolaroidGallery } from "@/components/shared/PollaroidGallery";
-import { OriginStory } from "@/components/shared/OriginStory";
-import { Passions } from "@/components/shared/Passions";
 import { IEEEImpact } from "@/components/shared/IEEEImpact";
 import {
   GithubIcon,
@@ -127,104 +117,6 @@ function SectionHeader({
   );
 }
 
-function SkillCard({
-  icon,
-  title,
-  tech,
-  index,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  tech: string;
-  index: number;
-}) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const prefix = String(index + 1).padStart(2, "0");
-
-  const handleClick = () => {
-    setIsFlipped(!isFlipped);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handleClick();
-    }
-  };
-
-  return (
-    <Tooltip
-      content={isFlipped ? "Click to flip back" : "Click to view stack payload"}
-      side="top"
-      className="w-full"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, delay: index * 0.03 }}
-        role="button"
-        tabIndex={0}
-        aria-label={`View skill ${prefix}: ${title}`}
-        onKeyDown={handleKeyDown}
-        className="relative h-28 sm:h-32 cursor-pointer group [perspective:1000px] w-full outline-none focus-visible:ring-1 focus-visible:ring-green-400 rounded-xl touch-manipulation"
-        onClick={handleClick}
-      >
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          animate={{ rotateX: isFlipped ? 180 : 0 }}
-          transition={{
-            duration: 0.4,
-            type: "spring",
-            stiffness: 240,
-            damping: 24,
-          }}
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          {/* FRONT */}
-          <div className="absolute inset-0 w-full h-full rounded-xl border border-white/5 bg-[#080c08]/90 p-3.5 sm:p-4 flex flex-col justify-between [backface-visibility:hidden] overflow-hidden transition-all duration-300 hover:border-green-500/40 hover:bg-[#0c120c]">
-            <div className="flex items-start justify-between w-full">
-              <div className="flex items-center justify-center p-1.5 sm:p-2 rounded-lg bg-green-500/10 text-green-400">
-                {icon}
-              </div>
-              <span className="font-mono text-[9px] sm:text-[10px] text-zinc-600 group-hover:text-green-500/70 transition-colors">
-                [{prefix}]
-              </span>
-            </div>
-
-            <div>
-              <h3 className="font-sans text-xs sm:text-sm font-medium text-white group-hover:text-green-300 transition-colors truncate">
-                {title}
-              </h3>
-              <p className="font-mono text-[9px] sm:text-[10px] text-zinc-500 truncate mt-0.5 sm:mt-1">
-                flip for the stack →
-              </p>
-            </div>
-          </div>
-
-          {/* BACK */}
-          <div className="absolute inset-0 w-full h-full rounded-xl border border-green-500/40 bg-[#050805] p-3 sm:p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateX(180deg)] overflow-hidden shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <div className="flex items-center justify-between border-b border-green-500/20 pb-1 shrink-0">
-              <span className="font-mono text-[8px] sm:text-[9px] text-green-400 font-semibold uppercase tracking-wider truncate">
-                {title}
-              </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-            </div>
-
-            <p className="font-mono text-[10px] sm:text-[11px] text-green-300 leading-snug line-clamp-3">
-              {tech}
-            </p>
-
-            <span className="font-mono text-[7px] sm:text-[8px] text-zinc-600 text-right uppercase">
-              Tap to flip
-            </span>
-          </div>
-        </motion.div>
-      </motion.div>
-    </Tooltip>
-  );
-}
-
 function SocialPill({
   url,
   label,
@@ -265,7 +157,7 @@ export default function StalkerPage() {
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalHistory, setTerminalHistory] = useState<string[]>([
     "Rishab Raj Terminal Shell v2.4",
-    "Type 'help' for commands, or 'exit' to return to UI.",
+    "Type 'help' for commands, or 'exit' to close.",
   ]);
   const [spotifyData, setSpotifyData] = useState<SpotifyData>({
     isPlaying: false,
@@ -312,6 +204,7 @@ export default function StalkerPage() {
     return () => clearInterval(interval);
   }, []);
 
+  // Spotify polling at 30s interval
   useEffect(() => {
     let interval: NodeJS.Timeout;
     const fetchSpotify = async () => {
@@ -328,7 +221,7 @@ export default function StalkerPage() {
     };
 
     fetchSpotify();
-    interval = setInterval(fetchSpotify, 15000);
+    interval = setInterval(fetchSpotify, 30000);
 
     const handleVisibilityChange = () => {
       if (!document.hidden) fetchSpotify();
@@ -340,6 +233,17 @@ export default function StalkerPage() {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
+
+  // Escape key closes terminal modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && easterEggActive) {
+        setEasterEggActive(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [easterEggActive]);
 
   const handlePinClick = () => {
     const next = clickCount + 1;
@@ -371,7 +275,7 @@ export default function StalkerPage() {
     switch (cmd) {
       case "help":
         response =
-          "Commands: whoami, experience, skills, projects, awards, spotify, exit, clear";
+          "Commands: whoami, experience, projects, awards, spotify, exit, clear";
         break;
       case "whoami":
         response =
@@ -380,10 +284,6 @@ export default function StalkerPage() {
       case "experience":
         response =
           "Lolocab (Triptota Services Pvt. Ltd.) • SDE Intern (May 2026 - Present)\nBuilt carpooling search/booking engines, coupon APIs, and dynamic SEO pre-rendering.";
-        break;
-      case "skills":
-        response =
-          "Languages & Tech: Java, Spring Boot, Node.js, Express, React, Next.js, PostgreSQL, MongoDB, Cloudflare Workers, WebSockets, Python, Docker";
         break;
       case "projects":
         response =
@@ -396,7 +296,7 @@ export default function StalkerPage() {
       case "spotify":
         response = spotifyData.isPlaying
           ? `Playing: ${spotifyData.title} by ${spotifyData.artist}`
-          : "Spotify is currently offline.";
+          : "Spotify is currently idle.";
         break;
       default:
         response = `Command not found: '${cmd}'. Type 'help' for available commands.`;
@@ -404,49 +304,6 @@ export default function StalkerPage() {
 
     setTerminalHistory((prev) => [...prev, `$ ${cmd}`, response]);
   };
-
-  if (easterEggActive) {
-    return (
-      <main className="min-h-screen bg-black p-4 sm:p-8 font-mono text-green-400 overflow-y-auto flex flex-col justify-between">
-        <div>
-          <div className="flex items-center justify-between border-b border-green-500/30 pb-3 mb-4">
-            <span className="text-xs sm:text-sm font-bold truncate">
-              ~/rishab_terminal [SHELL]
-            </span>
-            <button
-              onClick={() => setEasterEggActive(false)}
-              className="text-xs px-2.5 py-1 bg-green-500/10 border border-green-500/40 rounded hover:bg-green-500/20 text-green-300"
-            >
-              [EXIT]
-            </button>
-          </div>
-
-          <div className="space-y-2 text-xs sm:text-sm">
-            {terminalHistory.map((line, idx) => (
-              <p key={idx} className="whitespace-pre-wrap leading-relaxed">
-                {line}
-              </p>
-            ))}
-          </div>
-        </div>
-
-        <form
-          onSubmit={handleTerminalSubmit}
-          className="mt-6 flex items-center gap-2 border-t border-green-500/20 pt-4"
-        >
-          <span className="text-green-500">$</span>
-          <input
-            autoFocus
-            type="text"
-            value={terminalInput}
-            onChange={(e) => setTerminalInput(e.target.value)}
-            placeholder="Type command ('help', 'projects', 'whoami')..."
-            className="flex-1 bg-transparent text-green-300 font-mono text-xs sm:text-sm outline-none placeholder:text-green-500/30"
-          />
-        </form>
-      </main>
-    );
-  }
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#040604] text-zinc-300 selection:bg-green-500/30 selection:text-white">
@@ -467,7 +324,7 @@ export default function StalkerPage() {
       </nav>
 
       {/* ── SECTION 1: HERO (AUTHENTIC DEVELOPER TERMINAL) ── */}
-      <section className="relative flex min-h-[100dvh] items-center justify-center px-3.5 sm:px-8 py-20 lg:py-24">
+      <section className="relative flex min-h-[92dvh] items-center justify-center px-3.5 sm:px-8 py-20 lg:py-24">
         {/* Soft Ambient Glow (Desktop only) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[650px] rounded-full bg-green-500/[0.04] blur-[100px] pointer-events-none hidden sm:block" />
 
@@ -540,7 +397,7 @@ export default function StalkerPage() {
                     </Tooltip>
 
                     <Tooltip
-                      content="Launch interactive terminal commands"
+                      content="Launch interactive terminal shell"
                       side="bottom"
                       align="end"
                     >
@@ -558,58 +415,46 @@ export default function StalkerPage() {
                 {/* Main Hero Content */}
                 <div className="rounded-b-2xl p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                   {/* Left Column: Identity & Authentic Bio */}
-                  <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+                  <div className="lg:col-span-7 space-y-4 sm:space-y-5">
                     <div>
-                      <div className="flex items-center gap-2 font-mono text-xs text-green-500/70 mb-1.5 sm:mb-2">
+                      <div className="flex items-center gap-2 font-mono text-xs text-green-500/70 mb-1 sm:mb-1.5">
                         <span>$</span>
                         <span>whoami</span>
                       </div>
                       <h1 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white">
                         Rishab Raj
                       </h1>
-                      <p className="mt-1.5 sm:mt-2 text-xs sm:text-base font-mono text-green-400">
-                        SDE Intern @ Lolocab
+                      <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm font-mono text-green-400">
+                        SDE Intern @ Lolocab • B.Tech IT @ MAIT
                       </p>
                     </div>
 
-                    {/* Hook line */}
+                    {/* Grounded Hook Line */}
                     <div className="border border-green-500/20 rounded-lg px-3.5 sm:px-4 py-2.5 sm:py-3 bg-green-500/[0.03]">
-                      <span className="font-mono text-[9px] sm:text-[10px] text-green-500/50 uppercase tracking-widest block mb-1">// identity.log</span>
-                      <p className="font-mono text-xs sm:text-sm text-green-300 leading-relaxed">
+                      <p className="font-mono text-xs sm:text-sm text-green-300 font-medium leading-relaxed">
                         generalist around experts. expert around generalists.
                       </p>
+                      <p className="font-mono text-[10px] sm:text-xs text-green-500/70 mt-1 leading-relaxed">
+                        Two years in systems and backend. Three years building and leading communities. One current job.
+                      </p>
                     </div>
 
-                    <p className="font-sans text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
-                      I tend to build things that require actually understanding
-                      how something works at its core.
-                    </p>
+                    {/* Grounded Bio with Origin Arc */}
+                    <div className="border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
+                      <span className="block font-mono text-[10px] sm:text-xs text-green-500/70 uppercase tracking-widest mb-1.5">
+                        // when did it all start
+                      </span>
+                      <p className="font-sans text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+                        I wrote a loop that printed numbers and thought — wait, the computer is actually doing what I told it to. That was the moment. Today I tend to build systems that require understanding how something works at the layer most people skip.
+                      </p>
+                    </div>
 
                     {/* Navigation Chips */}
-                    <div className="pt-1 sm:pt-2">
-                      <p className="font-mono text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-2 sm:mb-3">
-                        EXPLORE WORKFLOWS:
-                      </p>
+                    <div className="pt-2">
                       <div className="flex flex-wrap gap-1.5 sm:gap-2 font-mono text-xs">
                         <a
-                          href="#origin"
-                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-violet-500/10 border border-violet-500/25 text-violet-300 hover:bg-violet-500/20 text-[11px] sm:text-xs transition-all"
-                        >
-                          <HeartPulse className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-violet-400" />
-                          <span>Origin</span>
-                        </a>
-
-                        <a
-                          href="#skills"
-                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 text-[11px] sm:text-xs transition-all"
-                        >
-                          <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
-                          <span>Stacks & Skills</span>
-                        </a>
-
-                        <a
                           href="#projects"
-                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 text-[11px] sm:text-xs transition-all"
                         >
                           <Cpu className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
                           <span>Projects</span>
@@ -636,7 +481,7 @@ export default function StalkerPage() {
                           className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
                         >
                           <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
-                          <span>Blogs</span>
+                          <span>Essays</span>
                         </a>
 
                         <a
@@ -651,24 +496,32 @@ export default function StalkerPage() {
                           href="#guestbook"
                           className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
                         >
-                          <Code2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
                           <span>Guestbook</span>
+                        </a>
+
+                        <a
+                          href="#contact"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <Radio className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Contact</span>
                         </a>
                       </div>
                     </div>
                   </div>
 
-                  {/* Right Column: Live Telemetry & Bento Grid */}
+                  {/* Right Column: Live Telemetry & Spotify */}
                   <div className="lg:col-span-5 space-y-3 sm:space-y-4">
                     {/* Live Spotify Card */}
-                    <div className="rounded-xl border border-green-500/20 bg-[#091009] p-3.5 sm:p-4 font-mono w-full">
-                      <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-2.5 sm:mb-3 border-b border-green-500/10 pb-2">
+                    <div className="rounded-xl border border-green-500/20 bg-[#091009] p-4 font-mono w-full">
+                      <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-zinc-500 uppercase tracking-widest mb-3 border-b border-green-500/10 pb-2">
                         <div className="flex items-center gap-2 text-green-400">
                           <SpotifyIcon
                             size={14}
                             className="text-green-400 shrink-0"
                           />
-                          <span className="truncate">
+                          <span className="truncate font-semibold">
                             {spotifyData.isPlaying
                               ? "NOW PLAYING"
                               : spotifyData.lastPlayed
@@ -700,7 +553,7 @@ export default function StalkerPage() {
                           <p className="text-[11px] sm:text-xs text-zinc-400 truncate mt-0.5">
                             {spotifyData.artist}
                           </p>
-                          <span className="text-[9px] sm:text-[10px] text-green-500/70 mt-1.5 sm:mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
+                          <span className="text-[9px] sm:text-[10px] text-green-500/70 mt-2 inline-flex items-center gap-1 group-hover:text-green-400">
                             Open in Spotify →
                           </span>
                         </a>
@@ -710,30 +563,6 @@ export default function StalkerPage() {
                           <span>Spotify is idle</span>
                         </div>
                       )}
-                    </div>
-
-                    {/* Telemetry Row */}
-                    <div className="grid grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs">
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
-                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          CURRENT ROLE
-                        </span>
-                        <div className="flex items-center gap-1.5">
-                          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
-                          <span className="text-green-400 font-medium text-[10px] sm:text-[11px] truncate">
-                            SDE @ Lolocab
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3 sm:p-3.5 w-full text-left">
-                        <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest block mb-1">
-                          EDUCATION
-                        </span>
-                        <span className="text-zinc-200 font-medium text-[10px] sm:text-[11px] truncate block">
-                          B.Tech IT • GPA 8.0
-                        </span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -758,96 +587,7 @@ export default function StalkerPage() {
         </motion.div>
       </section>
 
-      {/* ── SECTION 2: SKILL MATRIX ── */}
-      <section
-        id="skills"
-        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
-      >
-        <div className="mx-auto max-w-5xl">
-          <SectionHeader
-            command="./view_skills.sh"
-            label="technical architecture & stacks"
-          />
-          <div className="grid grid-cols-1 gap-2.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <SkillCard
-              index={0}
-              icon={<BrainCircuit className="text-green-400 h-5 w-5" />}
-              title="AI & Scraping Automation"
-              tech="Next.js, Puppeteer, ReactFlow, Gemini AI, Cron jobs (resilient schema parsing)"
-            />
-            <SkillCard
-              index={1}
-              icon={<Zap className="text-green-400 h-5 w-5" />}
-              title="Real-Time Systems"
-              tech="Node.js, Express.js, WebSockets, Socket.IO, JWT, Zustand (state reconciliation)"
-            />
-            <SkillCard
-              index={2}
-              icon={<Database className="text-green-400 h-5 w-5" />}
-              title="Backend & REST APIs"
-              tech="Java, Spring Boot, PostgreSQL, Spring Security, JWT (stateless auth filter chain)"
-            />
-            <SkillCard
-              index={3}
-              icon={<CloudFog className="text-green-400 h-5 w-5" />}
-              title="Cloud & Edge Runtimes"
-              tech="Cloudflare Workers, HonoJS, OpenNext, AWS (S3, EC2), Docker"
-            />
-            <SkillCard
-              index={4}
-              icon={<LayoutTemplate className="text-green-400 h-5 w-5" />}
-              title="Modern Frontend"
-              tech="React.js, Next.js, Vite, TailwindCSS, Zustand, Framer Motion"
-            />
-            <SkillCard
-              index={5}
-              icon={<Network className="text-green-400 h-5 w-5" />}
-              title="High Concurrency"
-              tech="Java Socket Programming, Multi-Threading, Thread Pooling (1M+ loopback RPS)"
-            />
-            <SkillCard
-              index={6}
-              icon={<TerminalIcon className="text-green-400 h-5 w-5" />}
-              title="Systems & Tooling"
-              tech="Ubuntu Linux, Bash, Git, Postman, IntelliJ Ultimate, VS Code"
-            />
-            <SkillCard
-              index={7}
-              icon={<Users className="text-green-400 h-5 w-5" />}
-              title="Leadership & Scale"
-              tech="Scaled IEEE MAIT from <10 to 160+ members, 2000+ outreach, national-level events"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 2.5: ORIGIN STORY + PASSIONS ── */}
-      <section
-        id="origin"
-        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
-      >
-        <div className="mx-auto max-w-5xl space-y-14 sm:space-y-20">
-          {/* Origin Story */}
-          <div>
-            <SectionHeader
-              command="cat origin.log"
-              label="the story so far"
-            />
-            <OriginStory variant="stalker" />
-          </div>
-
-          {/* Passions */}
-          <div>
-            <SectionHeader
-              command="ls ~/passions/"
-              label="what actually drives me"
-            />
-            <Passions variant="stalker" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 3: PROOF OF WORK ── */}
+      {/* ── SECTION 2: PROOF OF WORK (PROJECTS) ── */}
       <section
         id="projects"
         className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
@@ -861,7 +601,7 @@ export default function StalkerPage() {
         </div>
       </section>
 
-      {/* ── SECTION 3.5: IEEE LEADERSHIP IMPACT ── */}
+      {/* ── SECTION 3: IEEE LEADERSHIP IMPACT ── */}
       <section
         id="ieee"
         className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
@@ -883,7 +623,7 @@ export default function StalkerPage() {
         <div className="mx-auto max-w-5xl">
           <SectionHeader
             command="git log --author=rishab"
-            label="experience & honors"
+            label="experience & academics"
           />
           <Timeline variant="stalker" />
         </div>
@@ -903,7 +643,7 @@ export default function StalkerPage() {
         </div>
       </section>
 
-      {/* ── SECTION 5: MEMORIES GALLERY ── */}
+      {/* ── SECTION 6: MEMORIES GALLERY ── */}
       <section
         id="memories"
         className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 overflow-hidden"
@@ -911,7 +651,7 @@ export default function StalkerPage() {
         <PolaroidGallery />
       </section>
 
-      {/* ── SECTION 6: GUESTBOOK ── */}
+      {/* ── SECTION 7: GUESTBOOK ── */}
       <section
         id="guestbook"
         className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
@@ -926,8 +666,11 @@ export default function StalkerPage() {
         </div>
       </section>
 
-      {/* ── SECTION 7: EXTERNAL NODES ── */}
-      <section className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 bg-black">
+      {/* ── SECTION 8: EXTERNAL NODES & CONTACT ── */}
+      <section
+        id="contact"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10 bg-black"
+      >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
             command="ssh connect@rishab.dev"
@@ -980,6 +723,80 @@ export default function StalkerPage() {
           Rishab Raj • Portfolio Stalker Mode • Built with Next.js & TailwindCSS
         </p>
       </footer>
+
+      {/* ── TERMINAL EASTER EGG MODAL OVERLAY ── */}
+      <AnimatePresence>
+        {easterEggActive && (
+          <div
+            className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setEasterEggActive(false);
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-2xl h-[520px] rounded-xl border border-green-500/40 bg-[#040804] p-4 sm:p-6 font-mono text-green-400 shadow-[0_0_50px_rgba(34,197,94,0.15)] flex flex-col justify-between"
+            >
+              {/* Terminal Title Bar */}
+              <div className="flex items-center justify-between border-b border-green-500/30 pb-3 mb-3 shrink-0">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <span
+                      className="h-2.5 w-2.5 rounded-full bg-red-500/80 cursor-pointer hover:opacity-80"
+                      onClick={() => setEasterEggActive(false)}
+                      title="Close"
+                    />
+                    <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-bold truncate ml-2 text-green-300">
+                    ~/rishab_terminal [SHELL]
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-zinc-500 hidden sm:inline">
+                    ESC to close
+                  </span>
+                  <button
+                    onClick={() => setEasterEggActive(false)}
+                    className="text-xs px-2.5 py-1 bg-green-500/10 border border-green-500/40 rounded hover:bg-green-500/20 text-green-300 transition-colors"
+                  >
+                    [EXIT]
+                  </button>
+                </div>
+              </div>
+
+              {/* Terminal History */}
+              <div className="flex-1 overflow-y-auto space-y-2 text-xs sm:text-sm pr-2 custom-scrollbar">
+                {terminalHistory.map((line, idx) => (
+                  <p key={idx} className="whitespace-pre-wrap leading-relaxed">
+                    {line}
+                  </p>
+                ))}
+              </div>
+
+              {/* Command Prompt Form */}
+              <form
+                onSubmit={handleTerminalSubmit}
+                className="mt-4 flex items-center gap-2 border-t border-green-500/20 pt-3 shrink-0"
+              >
+                <span className="text-green-500 text-sm">$</span>
+                <input
+                  autoFocus
+                  type="text"
+                  value={terminalInput}
+                  onChange={(e) => setTerminalInput(e.target.value)}
+                  placeholder="Type command ('help', 'projects', 'whoami', 'exit')..."
+                  className="flex-1 bg-transparent text-green-300 font-mono text-xs sm:text-sm outline-none placeholder:text-green-500/30"
+                />
+              </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
