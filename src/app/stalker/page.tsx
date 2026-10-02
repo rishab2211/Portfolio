@@ -19,6 +19,8 @@ import {
   FileText,
   Cpu,
   Code2,
+  HeartPulse,
+  GitBranch,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Guestbook } from "./Guestbook";
@@ -26,6 +28,9 @@ import { Projects } from "@/components/shared/Projects";
 import { Timeline } from "@/components/shared/Timeline";
 import { Blogs } from "@/components/shared/Blogs";
 import { PolaroidGallery } from "@/components/shared/PollaroidGallery";
+import { OriginStory } from "@/components/shared/OriginStory";
+import { Passions } from "@/components/shared/Passions";
+import { IEEEImpact } from "@/components/shared/IEEEImpact";
 import {
   GithubIcon,
   LinkedinIcon,
@@ -567,6 +572,14 @@ export default function StalkerPage() {
                       </p>
                     </div>
 
+                    {/* Hook line */}
+                    <div className="border border-green-500/20 rounded-lg px-3.5 sm:px-4 py-2.5 sm:py-3 bg-green-500/[0.03]">
+                      <span className="font-mono text-[9px] sm:text-[10px] text-green-500/50 uppercase tracking-widest block mb-1">// identity.log</span>
+                      <p className="font-mono text-xs sm:text-sm text-green-300 leading-relaxed">
+                        generalist around experts. expert around generalists.
+                      </p>
+                    </div>
+
                     <p className="font-sans text-xs sm:text-base text-zinc-300 font-light leading-relaxed border-l-2 border-green-500/40 pl-3.5 sm:pl-4 py-1">
                       I tend to build things that require actually understanding
                       how something works at its core.
@@ -578,6 +591,14 @@ export default function StalkerPage() {
                         EXPLORE WORKFLOWS:
                       </p>
                       <div className="flex flex-wrap gap-1.5 sm:gap-2 font-mono text-xs">
+                        <a
+                          href="#origin"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-violet-500/10 border border-violet-500/25 text-violet-300 hover:bg-violet-500/20 text-[11px] sm:text-xs transition-all"
+                        >
+                          <HeartPulse className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-violet-400" />
+                          <span>Origin</span>
+                        </a>
+
                         <a
                           href="#skills"
                           className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-green-500/10 border border-green-500/25 text-green-300 hover:bg-green-500/20 text-[11px] sm:text-xs transition-all"
@@ -595,11 +616,19 @@ export default function StalkerPage() {
                         </a>
 
                         <a
+                          href="#ieee"
+                          className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
+                        >
+                          <GitBranch className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
+                          <span>Leadership</span>
+                        </a>
+
+                        <a
                           href="#timeline"
                           className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-zinc-300 hover:border-green-500/40 hover:text-green-300 text-[11px] sm:text-xs transition-all"
                         >
                           <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-green-400" />
-                          <span>Experience & Awards</span>
+                          <span>Experience</span>
                         </a>
 
                         <a
@@ -792,6 +821,32 @@ export default function StalkerPage() {
         </div>
       </section>
 
+      {/* ── SECTION 2.5: ORIGIN STORY + PASSIONS ── */}
+      <section
+        id="origin"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
+      >
+        <div className="mx-auto max-w-5xl space-y-14 sm:space-y-20">
+          {/* Origin Story */}
+          <div>
+            <SectionHeader
+              command="cat origin.log"
+              label="the story so far"
+            />
+            <OriginStory variant="stalker" />
+          </div>
+
+          {/* Passions */}
+          <div>
+            <SectionHeader
+              command="ls ~/passions/"
+              label="what actually drives me"
+            />
+            <Passions variant="stalker" />
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTION 3: PROOF OF WORK ── */}
       <section
         id="projects"
@@ -806,10 +861,24 @@ export default function StalkerPage() {
         </div>
       </section>
 
+      {/* ── SECTION 3.5: IEEE LEADERSHIP IMPACT ── */}
+      <section
+        id="ieee"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
+      >
+        <div className="mx-auto max-w-5xl">
+          <SectionHeader
+            command="./ieee_impact.sh --stats"
+            label="community leadership & national honors"
+          />
+          <IEEEImpact variant="stalker" />
+        </div>
+      </section>
+
       {/* ── SECTION 4: TIMELINE / EXPERIENCE ── */}
       <section
         id="timeline"
-        className="relative py-12 sm:py-24 px-3.5 sm:px-8 bg-[#050805] border-t border-green-500/10"
+        className="relative py-12 sm:py-24 px-3.5 sm:px-8 border-t border-green-500/10"
       >
         <div className="mx-auto max-w-5xl">
           <SectionHeader
